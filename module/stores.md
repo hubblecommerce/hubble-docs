@@ -8,5 +8,24 @@ In general hubble uses the store modules to provide the components with the fetc
 
 If you like to edit an existing store module you need to deactivate this specific module via the module configuration in nuxt.config.js. 
 
+{% code-tabs %}
+{% code-tabs-item title="nuxt.config.js" %}
+```text
+/*
+** Nuxt.js modules
+*/
+modules: [
+    [
+        '~/modules/hubble/module',
+        {
+            // hubble module config
+            deactivateStores: []
+        }
+    ]
+]
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
 After that you simply copy the store file into your /store directory and edit it as you like. 
 

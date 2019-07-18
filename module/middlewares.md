@@ -10,6 +10,25 @@ hubble primarily handles router middleware to call the api via store modules and
 
 If you like to edit an existing middleware you need to deactivate this specific middleware via the module configuration in nuxt.config.js. 
 
+{% code-tabs %}
+{% code-tabs-item title="nuxt.config.js" %}
+```text
+/*
+** Nuxt.js modules
+*/
+modules: [
+    [
+        '~/modules/hubble/module',
+        {
+            // hubble module config
+            deactivateMiddleware: []
+        }
+    ]
+]
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
 After that you simply copy the original hubble core file into your /middleware directory and edit it as you like.  
 
 

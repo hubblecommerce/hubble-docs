@@ -15,7 +15,14 @@ You can find all configurations considering the hubble module in nuxt.config.js 
 ** Nuxt.js modules
 */
 modules: [
-    '~/modules/hubble/module'
+    '~/modules/hubble/module',
+    {
+        // hubble module config
+        deactivateStores: [],
+        deactivatePlugins: [],
+        deactivateMiddleware: [],
+        useTheme: true
+    }
 ],
 ```
 {% endcode-tabs-item %}
