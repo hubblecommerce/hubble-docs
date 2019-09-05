@@ -12,8 +12,8 @@ The following installation guide was tested on MacOS and Linux environments. The
 The installation of the frontend ist pretty straight forward. Get the code from github, create the required .env file from the .env\_example file and install via npm. After installation is finished you can start up the application in dev mode \(npm run dev\) or in production mode \(npm run build -&gt; npm start\).
 
 ```bash
-git clone git@github.com:hubble.git
-cd hubble
+git clone git@github.com:hubblecommerce/hubble-frontend-pwa.git
+cd hubble-frontend-pwa
 cp .env_example .env
 npm install 
 npm run dev
