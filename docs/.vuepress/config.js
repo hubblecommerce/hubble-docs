@@ -106,6 +106,7 @@ module.exports = {
                         'CartItemsList',
                         'Coupons',
                         'Totals',
+                        'RegisterForm',
                     ]
                 },
                 {
