@@ -1,0 +1,23 @@
+{
+  "name": "hubble-documentation",
+  "version": "1.0.0",
+  "description": "Hubble Documentation",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vuepress": "^1.2.0"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.digitalmanufaktur.net:hubble/docs.git"
+  },
+  "author": "digitalmanufaktur",
+  "license": "ISC"
+}
