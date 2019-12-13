@@ -113,7 +113,6 @@ module.exports = {
                     collapsable: false, // optional, defaults to true
                     children: [
                         'AmazonPayButton',
-
                     ]
                 }
             ],
