@@ -52,17 +52,49 @@ module.exports = {
             ],
             '/PWA/': [
                 {
-                    title: 'PWA',   // required
+                    title: 'hubble Module',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        ['', 'Overview'],
-                        'setup',
-                        'components',
+                        '',
                         'stores',
                         'middlewares',
                         'plugins',
-                        'assets',
+                        'assets'
+                    ]
+                },
+                {
+                    title: 'Layouts',   // required
+                    collapsable: false, // optional, defaults to true
+                    children: [
+
+                    ]
+                },
+                {
+                    title: 'Middlewares',   // required
+                    collapsable: false, // optional, defaults to true
+                    children: [
+
+                    ]
+                },
+                {
+                    title: 'Vuex',   // required
+                    collapsable: false, // optional, defaults to true
+                    children: [
+
+                    ]
+                },
+                {
+                    title: 'Pages',   // required
+                    collapsable: false, // optional, defaults to true
+                    children: [
                         'checkout'
+                    ]
+                },
+                {
+                    title: 'Payment Modules',   // required
+                    collapsable: false, // optional, defaults to true
+                    children: [
+
                     ]
                 },
             ],
@@ -71,13 +103,17 @@ module.exports = {
                     title: 'Basic Components',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
+                        'CartItemsList',
+                        'Coupons',
+                        'Totals',
                     ]
                 },
                 {
                     title: 'Payment Components',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'AmazonPay'
+                        'AmazonPayButton',
+
                     ]
                 }
             ],

@@ -10,7 +10,7 @@ _Amazon Pay_ and apply vouchers.
 - CartItemsList
 - Coupon
 - Totals 
-- AmazonPay
+- AmazonPayButton
 
 ## `checkout/login`
 This is where your customer can log in with his/her credentials, continue as a Guest or use 
