@@ -1,6 +1,6 @@
 # RegisterForm
 
-Implements a form to register a new customer. 
+Implements a form to register a new customer. After registration the new customer is automatically logged in. 
 
 ## Usage
 ```html

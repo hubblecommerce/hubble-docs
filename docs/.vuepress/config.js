@@ -107,6 +107,7 @@ module.exports = {
                         'Coupons',
                         'Totals',
                         'RegisterForm',
+                        'LoginForm',
                     ]
                 },
                 {
