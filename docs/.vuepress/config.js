@@ -108,6 +108,8 @@ module.exports = {
                         'Totals',
                         'RegisterForm',
                         'LoginForm',
+                        'CustomerAddresses',
+                        'PaymentMethods',
                     ]
                 },
                 {
