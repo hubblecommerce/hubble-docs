@@ -148,15 +148,13 @@ modules: [
 
 The structure of the hubble module is based on the nuxt.js [directory structure](https://nuxtjs.org/guide/directory-structure). 
 
-[Components](/Module/components.md) 
-
-[Stores](/Module//stores.md)
+[Stores](./stores.md)
  
-[Middleware](/Module//middlewares.md)
+[Middleware](./middlewares.md)
  
-[Plugins](/Module//plugins.md)
+[Plugins](./plugins.md)
 
-[Assets](/Module//assets.md) 
+[Assets](./assets.md) 
 
 
 

@@ -66,7 +66,9 @@ module.exports = {
                     title: 'Layouts',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-
+                        'hubbleLayout',
+                        'hubbleLightLayout',
+                        'hubbleExpressLayout',
                     ]
                 },
                 {
