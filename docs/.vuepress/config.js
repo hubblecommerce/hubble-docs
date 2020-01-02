@@ -103,13 +103,29 @@ module.exports = {
                     title: 'Basic Components',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'CartItemsList',
-                        'Coupons',
-                        'Totals',
+                    ]
+                },
+                {
+                    title: 'Customer Components',   // required
+                    collapsable: false, // optional, defaults to true
+                    children: [
                         'RegisterForm',
                         'LoginForm',
                         'CustomerAddresses',
+                    ]
+                },
+                {
+                    title: 'Checkout Components',   // required
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                        'CartItemsList',
+                        'CartItemsListNonInteractive',
+                        'Coupons',
+                        'OrderComment',
+                        'OrderDetail',
                         'PaymentMethods',
+                        'ShippingMethods',
+                        'Totals',
                     ]
                 },
                 {

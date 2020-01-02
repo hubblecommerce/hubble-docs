@@ -42,6 +42,13 @@ and conditions and places the order.
 - [CartItemsListNonInteractive](../Components/CartItemsListNonInteractive) 
 - [Totals](../Components/Totals)
 
+In this component you can find also the action to place the order finally. Watch out for the _placeOrder_ function:
+This function collects all order relevant data and validates it. If everything is valid it clones the final order 
+object to a store state called _finalOrder_. Then it emits an "event" called setBeforePlaceOrder. It's not a
+real JS event but more like a vuex store state that changes its status if the function is complete. 
+You can listen to it via a watch on _state.modApiPayment.beforePlaceOrder_ e.g if you want to implement your own
+custom payment provider. 
+
 ## `checkout/success`
 After the successful response from the payment provider, the order will be placed via api call
 to your shop system. If your shop responds with no errors, the customer will be redirected
