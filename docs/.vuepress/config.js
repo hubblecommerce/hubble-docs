@@ -96,7 +96,8 @@ module.exports = {
                     title: 'Payment Modules',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-
+                        'payone',
+                        'amazonPay'
                     ]
                 },
             ],
