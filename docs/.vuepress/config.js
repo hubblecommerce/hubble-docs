@@ -73,17 +73,17 @@ module.exports = {
                     ]
                 },
                 {
-                    title: 'Middlewares',   // required
+                    title: 'Middleware',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-
+                        'middlewareInGeneral'
                     ]
                 },
                 {
                     title: 'Vuex',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-
+                        'vuexInGeneral'
                     ]
                 },
                 {
