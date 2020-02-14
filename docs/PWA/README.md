@@ -20,7 +20,6 @@ git clone git@github.com:hubblecommerce/hubble-frontend-pwa.git
 cd hubble-frontend-pwa
 cp .env_example .env
 npm install 
-npm run dev
 ```
 
 ## Configuration
@@ -28,44 +27,61 @@ npm run dev
 You can find the API configuration right into the .env file in root folder. As default values the hubble demo API is set. The hubble demo data is based on a plain Magento 2 installation with Magento 2 demo data installed.
 
 ```dotenv
-####################################################
-#
-# development (process.env.NODE_ENV != 'production')
-#
-DEV_HOST = 'http://localhost'
-DEV_PORT = 3000
-####################################################
-
-#
-# app
+# APP
 APP_BASE_URL = 'http://localhost'
 
-#
 # image controller base url
 IMG_BASE_URL = 'http://localhost'
 
-#
-# api
+# Domain where to recieve images for products from e.g. CDN
+CUSTOMER_DOMAIN = 'https://cdn.com/'
+
+# Directory name of Theme in assets/scss directory
+# use hubble as default
+THEME = 'hubble'
+
+# Storeview Id from shop if given
+STORE_ID = 1
+
+# Configure Address format
+STREETINFO_INCLUDES_HOUSENO = 'true'
+
+# Configure if addressbook/register should have alternative shipping address
+ALTERNATIVE_SHIPPING_ADDRESS = 'false'
+
+# Always use default error page
+DEFAULT_ERROR_PAGE = 'true'
+
+
+# API
+# Define api type:
+# possible source parameters are:
+# api = hubble Api based on elastic search
+# sw = official Shopware 6 API (headless Channel)
+API_TYPE          = 'sw | api'
+API_SW_ACCESS_KEY = ''
 API_BASE_URL      = 'http://localhost'
 API_CLIENT_ID     = 1
 API_CLIENT_SECRET = 'cde1234dce'
 API_ENDPOINT_AUTH = 'oauth/token'
 
-# payment
+# PAYMENT API
+# only relevant for apy type 'api'
 API_PAYMENT_BASE_URL      = 'http://localhost'
 API_PAYMENT_CLIENT_ID     = 1
 API_PAYMENT_CLIENT_SECRET = 'f1m2thu'
 API_PAYMENT_ENDPOINT_AUTH = 'oauth/token'
 
-#
+
 # Payone Integration
+# live or test
 PAYONE_MODE = 'test'
 PAYONE_MID = '20000'
 PAYONE_AID = '20001'
 PAYONE_PORTALID = '2000000'
 PAYONE_KEY = '123xyz'
 
-#
+
 # Amazon Payment
 AMAZON_PAY_SANDBOX = 'true'
 AMAZON_PAY_MERCHANT_ID = 'ABCD123456'
@@ -83,17 +99,14 @@ AMAZON_PAY_MODE = 'api_integration'
 AMAZON_PAY_RETURN_URL = 'http://localhost:3336/checkout/cart'
 AMAZON_PAY_CANCEL_RETURN_URL = 'http://localhost:3336/checkout/error'
 
-#
-# google analytics id
-GOOGLE_ANALYTICS_ID = 'UA-123-4'
 
-#
+# Google
 # google tag manager id
 GOOGLE_TAG_MANAGER_ID = 'GTM-1234567'
 
-#
 # google recaptcha
-GOOGLE_RECAPTCHA_SITEKEY = '6LeVIL8UAAAAAGOdK-6KP_2rAiY1f7EBwfagAzO'
+GOOGLE_RECAPTCHA_SITEKEY = 'XXXXXXXXXXXXXXXXXXXXX'
+
 
 #
 # trusted shops ID
@@ -103,25 +116,10 @@ TRUSTED_SHOPS_ID = 'ABCDEFGHIJKLMOPQRSTUWXYZ123456789'
 # one signal token
 ONESIGNAL_TOKEN = '1234-1234-1234'
 
-#
-# Directory name of Theme in assets/scss directory
-THEME = ''
 
-#
-# Storeview Id form Shop
-STORE_ID = 1
-
-
-# Configure Address format
-STREETINFO_INCLUDES_HOUSENO = 'true'
-
-
-# Configure if addressbook/register should have alternative shipping address
-ALTERNATIVE_SHIPPING_ADDRESS = 'true'
-
-#
+# Debug
 # If set to true, call api/auth/token via node serverside to prevent cors error
-NO_CORS = 'true'
+NO_CORS = 'false'
 ```
 
 hubble core code for frontend is shipped as a module and installed as a dependency for nuxt.js. Further infos about [modules](https://nuxtjs.org/guide/modules) you can read in the official nuxt.js docs.
@@ -136,13 +134,27 @@ modules: [
     '~/modules/hubble/module',
     {
         // hubble module config
+        apiType: process.env.API_TYPE,
         deactivateStores: [],
         deactivatePlugins: [],
         deactivateMiddleware: [],
-        useTheme: true
+        useTheme: false,
+        gtmId: process.env.GOOGLE_TAG_MANAGER_ID,
+        payone: {},
+        amazonPay: {
+            sandbox: true
+        }
     }
 ],
 ```
+
+## Start Application
+
+```bash
+npm run dev
+```
+
+After a short time you can access your app via http://localhost:3336/
 
 ## Structure
 

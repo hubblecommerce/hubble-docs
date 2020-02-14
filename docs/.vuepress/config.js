@@ -55,6 +55,7 @@ module.exports = {
                     title: 'hubble Module',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
+                        'sw6Qickstart',
                         '',
                         'stores',
                         'middlewares',
