@@ -13,7 +13,7 @@ Includes:
 ```
 
 ## Imports
-- [CartItemsListNonInteractive](../Components/CartItemsListNonInteractive) 
+- [CartItemsListNonInteractive](/Components/checkoutComponents/CartItemsListNonInteractive.md) 
 - formMixins
 
 ## Properties

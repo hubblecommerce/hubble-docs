@@ -55,7 +55,7 @@ module.exports = {
                     title: 'hubble Module',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'sw6Qickstart',
+                        'sw6Quickstart',
                         '',
                         'stores',
                         'middlewares',
@@ -67,38 +67,40 @@ module.exports = {
                     title: 'Layouts',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'hubbleLayout',
-                        'hubbleLightLayout',
-                        'hubbleExpressLayout',
+                        'layouts/hubbleLayout',
+                        'layouts/hubbleLightLayout',
+                        'layouts/hubbleExpressLayout',
                     ]
                 },
                 {
                     title: 'Middleware',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'middlewareInGeneral'
+                        'middleware/middlewareInGeneral'
                     ]
                 },
                 {
                     title: 'Vuex',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'vuexInGeneral'
+                        'vuex/vuexInGeneral'
                     ]
                 },
                 {
                     title: 'Pages',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'checkout'
+                        'pages/checkout',
+                        'pages/customer',
+                        'pages/dynamicPages'
                     ]
                 },
                 {
                     title: 'Payment Modules',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'payone',
-                        'amazonPay'
+                        'paymentModules/payone',
+                        'paymentModules/amazonPay'
                     ]
                 },
             ],
@@ -113,30 +115,30 @@ module.exports = {
                     title: 'Customer Components',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'RegisterForm',
-                        'LoginForm',
-                        'CustomerAddresses',
+                        'customerComponents/RegisterForm',
+                        'customerComponents/LoginForm',
+                        'customerComponents/CustomerAddresses',
                     ]
                 },
                 {
                     title: 'Checkout Components',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'CartItemsList',
-                        'CartItemsListNonInteractive',
-                        'Coupons',
-                        'OrderComment',
-                        'OrderDetail',
-                        'PaymentMethods',
-                        'ShippingMethods',
-                        'Totals',
+                        'checkoutComponents/CartItemsList',
+                        'checkoutComponents/CartItemsListNonInteractive',
+                        'checkoutComponents/Coupons',
+                        'checkoutComponents/OrderComment',
+                        'checkoutComponents/OrderDetail',
+                        'checkoutComponents/PaymentMethods',
+                        'checkoutComponents/ShippingMethods',
+                        'checkoutComponents/Totals',
                     ]
                 },
                 {
                     title: 'Payment Components',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'AmazonPayButton',
+                        'paymentComponents/AmazonPayButton',
                     ]
                 }
             ],

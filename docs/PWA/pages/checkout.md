@@ -7,17 +7,17 @@ To switch between the different steps hubble comes with a _CheckoutProgressBar.v
 Besides the classic cart overview with a list of products, customers can directly checkout via 
 _Amazon Pay_ and apply vouchers.
 
-- [CartItemsList](../Components/CartItemsList)
-- [Coupons](../Components/Coupons)
-- [Totals](../Components/Totals)
-- [AmazonPayButton](../Components/AmazonPayButton)
+- [CartItemsList](/Components/checkoutComponents/CartItemsList.md)
+- [Coupons](/Components/checkoutComponents/Coupons.md)
+- [Totals](/Components/checkoutComponents/Totals.md)
+- [AmazonPayButton](/Components/paymentComponents/AmazonPayButton.md)
 
 ## `checkout/login`
 This is where your customer can log in with his/her credentials, continue as a Guest or use 
 a express checkout payment experience like _Amazon Pay_.
 
-- [RegisterForm](../Components/RegisterForm)
-- [LoginForm](../Components/LoginForm)
+- [RegisterForm](/Components/customerComponents/RegisterForm.md)
+- [LoginForm](/Components/customerComponents/LoginForm.md)
 
 ## `checkout/payment`
 Your customer sees his available billing and shipping addresses and can create, edit or choose 
@@ -28,19 +28,19 @@ he/she can also apply a voucher and write an order comment.
 At this moment hubble supports [Payone](https://www.bspayone.com/) as a great payment provider,
 which is fully integrated in hubble checkout without leading the customer away from your checkout.
 
-- [CustomerAddresses](../Components/CustomerAddresses) 
-- [PaymentMethods](../Components/PaymentMethods) 
-- [ShippingMethods](../Components/ShippingMethods) 
-- [Coupons](../Components/Coupons) 
-- [OrderComment](../Components/OrderComment) 
+- [CustomerAddresses](/Components/customerComponents/CustomerAddresses.md) 
+- [PaymentMethods](/Components/checkoutComponents/PaymentMethods.md) 
+- [ShippingMethods](/Components/checkoutComponents/ShippingMethods.md) 
+- [Coupons](/Components/checkoutComponents/Coupons.md) 
+- [OrderComment](/Components/checkoutComponents/OrderComment.md) 
 
 ## `checkout/summary`
 This is the last chance for the customer to review the order before he/she accepts the terms
 and conditions and places the order.
 
-- [CustomerAddresses](../Components/CustomerAddresses)
-- [CartItemsListNonInteractive](../Components/CartItemsListNonInteractive) 
-- [Totals](../Components/Totals)
+- [CustomerAddresses](/Components/customerComponents/CustomerAddresses.md)
+- [CartItemsListNonInteractive](/Components/checkoutComponents/CartItemsListNonInteractive.md) 
+- [Totals](/Components/checkoutComponents/Totals.md)
 
 In this component you can find also the action to place the order finally. Watch out for the _placeOrder_ function:
 This function collects all order relevant data and validates it. If everything is valid it clones the final order 
@@ -55,6 +55,6 @@ to your shop system. If your shop responds with no errors, the customer will be 
 to the success page where he/she sees the order in total. Customer will see a notification to
 check their e-mail inbox for an order confirmation.
 
-- [OrderDetail](../Components/OrderDetail) 
+- [OrderDetail](/Components/checkoutComponents/OrderDetail.md) 
 
 
