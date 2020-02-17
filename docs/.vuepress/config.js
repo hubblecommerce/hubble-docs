@@ -117,7 +117,10 @@ module.exports = {
                     children: [
                         'customerComponents/RegisterForm',
                         'customerComponents/LoginForm',
+                        'customerComponents/CustomerAccountNavigation',
                         'customerComponents/CustomerAddresses',
+                        'customerComponents/CustomerOrderList',
+                        'customerComponents/CustomerPasswordChange'
                     ]
                 },
                 {
