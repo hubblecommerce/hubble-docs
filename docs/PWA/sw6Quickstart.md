@@ -10,7 +10,7 @@ The following installation guide was tested on MacOS and Linux environments. The
 
 * Node.js \(&gt;=8.0.0\)
 * NPM \(&gt;=6.0.0\)
-* **DMF SEO Url Api Plugin**
+* [Shopware 6 API Plugin](https://github.com/hubblecommerce/shopware6-api-plugin)
 
 ## Installation
 
