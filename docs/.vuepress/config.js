@@ -92,7 +92,6 @@ module.exports = {
                     children: [
                         'pages/checkout',
                         'pages/customer',
-                        'pages/dynamicPages'
                     ]
                 },
                 {
