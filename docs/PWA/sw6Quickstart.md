@@ -25,6 +25,7 @@ npm install
 
 ## Configuration
 
+### PWA Configuration
 Configure the settings in the .env file. For the simple Shopware 6 connection set the following values:
 
 ```dotenv
@@ -32,6 +33,14 @@ API_TYPE          = 'sw'
 API_SW_ACCESS_KEY = 'ENTER_YOUR_ACCESS_KEY_HERE'
 API_BASE_URL      = 'http://shopware.local'
 ```
+
+
+
+### Shopware 6 Configuration 
+In order to work with the Shopware 6 API Plugin you need to change the seo urls of all products:
+In the Shopware Backend just go to: Settings->SEO and change the SEO Url Template to:
+
+![](/assets/images/shopware_quickstart_seourls.png)
 
 ## Start Application
 
