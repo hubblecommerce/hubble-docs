@@ -102,6 +102,13 @@ module.exports = {
                         'paymentModules/amazonPay'
                     ]
                 },
+                {
+                    title: 'Testing',   // required
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                        'testing/',
+                    ]
+                },
             ],
             '/Components/': [
                 {
