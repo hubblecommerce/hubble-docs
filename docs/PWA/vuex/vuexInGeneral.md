@@ -5,7 +5,7 @@ properties inside a component. To keep the reactivity save of the states you can
 You have to commit/dispatch changes.
 
 There are some stores which are more shop system specific than others. Those are placed in a separate
-directory within the store folder. Name of this folder is equal the considering api type. 
+directory within the store folder. Name of this folder is equal api type. 
 
 * hubble/core/store/module.js -> common store 
 * hubble/core/store/api/module.js -> store only available for api type 'api' (hubble Api)
