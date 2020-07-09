@@ -60,7 +60,10 @@ module.exports = {
                         'stores',
                         'middlewares',
                         'plugins',
-                        'assets'
+                        'assets',
+                        'routing',
+                        'theming',
+                        'statemanagement'
                     ]
                 },
                 {
