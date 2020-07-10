@@ -63,7 +63,8 @@ module.exports = {
                         'assets',
                         'routing',
                         'theming',
-                        'statemanagement'
+                        'statemanagement',
+                        'layouts'
                     ]
                 },
                 {
