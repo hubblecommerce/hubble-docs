@@ -2,7 +2,7 @@
 
 As Hubble's architecture is based on Nuxt, the creation of a routing table works through following the directory structure of Nuxt.
 
-As the __pages__ directory is the reference point for the router configuration, creating files in this directory get automatically configured as routes in the application.
+Because the __pages__ directory is the reference point for the router configuration, creating files in this directory get automatically configured as routes in the application.
 
 There are 2 files that are special:
 * The __pages/index.vue__ which is the entry point or root of the application
