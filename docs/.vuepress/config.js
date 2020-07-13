@@ -64,7 +64,8 @@ module.exports = {
                         'routing',
                         'theming',
                         'statemanagement',
-                        'layouts'
+                        'layouts',
+                        'lazyloading'
                     ]
                 },
                 {
