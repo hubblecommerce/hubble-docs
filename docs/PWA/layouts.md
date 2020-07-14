@@ -1,27 +1,40 @@
 # Layouts
 
 Pages can define a __`layout`__ property which will import a set of components that form a frame for the page content.
-The default layout used in Hubble can be found under
+Meaning the content of [pages](pagetypes.md) is embedded into the defined layout.
+
+``` js
+// ~/pages/index.vue
+export default {
+    name: 'Index',
+    layout: 'hubble'
+    // ...
+}
 ```
-layouts/hubble.vue
+
+The default layout used in hubble can be found under
 ```
-which all components except checkout pages use (__`CheckoutCart`__ at __pages/checkout/cart.vue__ being an exception).
+~/layouts/hubble.vue
+```
+which all components except (almost all) __checkout__ pages use. The __`CheckoutCart`__ at __`~/pages/checkout/cart.vue`__ is an exception that uses the default layout as it still allows to continue shopping or editing the existing shopping cart.
 This means that almost all pages have the same navigation at the top with access to, for example, the wishlist, user account and search field.
 
-One way in Hubble to show feedback on the success state of user actions are flash messages. 
+::: tip
+Any component that should be visible on all (non-checkout) pages should be included in the respective layout that is used as the default.
+In the case of hubble this is the __`~/layouts/hubble.vue`__.
+:::
+
+##### An Example
 From adding products to the wishlist to changing billing information there is always the possibility for errors, for example, due to network connection loss.
-To make it easy to conform to good User Experience (UX) principles and provide users with feedback on interaction all layouts include the __`<flash-messages/>`__ component.
-Each component from the __components__ folder can opt to push a flash message onto the flash messages array which gets displayed by the __`<flash-messages/>`__ component included in the layout files.
- 
-In conclusion this means that any component that should be visible on all pages should be included in the respective layout that is used as the default, 
-in the case of Hubble it is the __layouts/hubble.vue__.
+To provide users with feedback each component can push a flash message onto the flash messages array which gets displayed by the __`<flash-messages/>`__ component included in all layout files.
+
 
 
 
 ### Distraction Free Layouts
 
-As mentioned above most but not all pages use the __`hubble`__ layout at __layouts/hubble.vue__. 
-To provide a distraction free checkout experience the layouts __`hubble_light`__ and __`hubble_express`__ are used for pages related to checkout.
+As mentioned above most but not all pages use the __`hubble`__ layout at __`~/layouts/hubble.vue`__. 
+To provide a distraction free checkout experience the layouts __`hubble_light`__ and __`hubble_express`__ are used for pages related to __checkout__.
 Distraction free means that less components are included in the layout so the checkout process is the main and most prominent action when customers visit checkout related pages.
 
 #### Layouts checkout pages use:
@@ -56,7 +69,5 @@ Distraction free means that less components are included in the layout so the ch
 | TheSearchDirect |  |  |
 | TrustedShopsBadge |  |  |
 
-
-
-
-
+##### Learn More
+To learn more about types of views in the context of NuxtJS please refer to the [Views section](https://nuxtjs.org/guide/views) of the official NuxtJS documentation.
