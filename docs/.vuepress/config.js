@@ -65,7 +65,8 @@ module.exports = {
                         'theming',
                         'statemanagement',
                         'layouts',
-                        'lazyloading'
+                        'lazyloading',
+                        'usersession'
                     ]
                 },
                 {
