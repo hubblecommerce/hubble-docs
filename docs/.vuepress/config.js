@@ -67,7 +67,8 @@ module.exports = {
                         'layouts',
                         'lazyloading',
                         'usersession',
-                        'configuration'
+                        'configuration',
+                        'pagetypes'
                     ]
                 },
                 {
