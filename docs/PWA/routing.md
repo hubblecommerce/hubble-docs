@@ -1,24 +1,27 @@
 # Routing & Data Flow
 
-As hubble's architecture is based on NuxtJS, the creation of a routing table works through following the [directory structure of Nuxt](https://nuxtjs.org/guide/directory-structure).
+### Wie Daten in hubble für Routen bereitgestellt werden
 
+Da hubble's Architektur auf der von NuxtJS basiert, erfolgt die Konfiguration von Routen über das Einhalten der
+[Ordner Struktur](https://nuxtjs.org/guide/directory-structure), die NuxtJS vorgibt.
 
-There are 2 files that are special:
-* The __`~/pages/index.vue`__ which corresponds to the root route:
-```
-https://<DOMAIN-NAME>.com/
-```
-* The __`_.vue`__ which handles all dynamic routes:
+Es gibt verschiedene Arten von Routen in hubble, die sich aus den Dateien im __`~/pages`__ Ordner ergeben.
+Die __`~/pages/_.vue`__ stellt dabei eine Besonderheit dar: Diese Datei ist für das Routing von allen dynamischen
+Routen verantwortlich.
+
+Beispiel für eine dynamische Route:
 ```
 https://<DOMAIN-NAME>.com/:productID
 ```
 
-Both of these have a layout defined which is used as the surrounding 'default markup' in which the actual content from the route is embedded into.
-To learn more about available layouts in hubble please refer to the [Layouts](layouts.md) section of the documentation.
+Außerdem haben alle Seiten im  __`~/pages`__ Ordner ein Layout definiert, in dessen Markup der eigentliche 
+Inhalt der Route eingebettet wird. Um mehr über die in hubble verfügbaren Layouts zu erfahren, kann der 
+Abschnitt [Layouts](layouts.md) der Dokumentation referenziert werden.
 
 
-Inspecting the __`index.vue`__ further a re-occurring pattern throughout the __`~/pages`__ directory can be identified:
-Besides defining a __`layout`__, there is also always an array for the __`middleware`__ option.
+Bei der näheren Untersuchung der __`~/pages/index.vue`__ lässt sich ein wiederkehrendes Muster im __`~/pages`__ Ordner
+identifizieren:
+Außer der Auflistung des Layouts unter __`layout`__, gibt es zudem auch immer ein Array unter der Option __`middleware`__.
 
 ``` js{5,11}
 // ~/pages/index.vue 
@@ -36,17 +39,24 @@ export default {
 }
 ```
 
-The task of the __middleware__ is to initialize the Vuex store state by dispatching the needed __`actions`__ that are responsible for requesting data from API endpoints.
+Die Aufgabe der __Middleware__ in hubble ist es, den Vuex Store State zu initialisieren, indem die __`actions`__ aufgerufen werden, 
+die dann Requests an API Endpunkte schicken und ein State Update zur Folge haben.
+
 
 ::: tip
-To initialize additional state for specific pages define and add new __middleware__ to the respective page and reference Vuex store modules for any read/write operations.
+Um zusätzlichen State für bestimmte Seiten zu definieren, ist eine neue Middleware zu erstellen, die für
+Read/Write Operationen Vuex Store Module referenziert und in der __`middleware`__ Option der Seite hinzuzufügen ist.
 :::
 
-#### An Example
-The menu is shown on all (non-checkout) pages + the __`~/pages/checkout/cart.vue`__. This means that all those pages list the middleware __`apiResourceMenu`__ because it is responsible for initiating the request of the needed menu data.
 
-#### Main Steps (_simplified_):
-* __Step 1__: __`~/pages/_.vue`__
+### Ein Beispiel
+Das Menü ist Teil der meisten Seiten, was bedeutet, jene Seiten haben die Middleware __`apiResourceMenu`__ in ihrer
+__`middleware`__ Option aufgelistet. Da Middlewares vor dem Rendering der jeweiligen Seite verarbeitet werden, ist in diesem 
+Fall der Auslöser für das Initialisieren des Vuex Store States mit den Menüdaten somit Aufgabe der Middleware __`apiResourceMenu`__.
+
+
+#### Hauptschritte (_vereinfacht_):
+* __Schritt 1__: __`~/pages/_.vue`__
 ``` js{7}
 // ~/pages/_.vue
 export default {
@@ -61,7 +71,7 @@ export default {
 }
 ```
 
-* __Step 2__: __`~/modules/@hubblecommerce/hubble/core/middleware/apiResourceMenu.js`__
+* __Schritt 2__: __`~/modules/@hubblecommerce/hubble/core/middleware/apiResourceMenu.js`__
 ``` js
 // ~/modules/@hubblecommerce/hubble/core/middleware/apiResourceMenu.js
 // ...
@@ -69,9 +79,22 @@ store.dispatch('modApiMenu/getMenu', {})
 // ...
 ```
 
-* __Step 3__: __`~/modules/@hubblecommerce/hubble/core/store/sw/modApiMenu.js`__
+* __Schritt 3__: __`~/modules/@hubblecommerce/hubble/core/store/sw/modApiMenu.js`__
 
-Note that this step is specific to Shopware and that there is an equivalent __`getMenu`__ action for usage with the [hubble API](../api) at __`~/modules/@hubblecommerce/hubble/core/store/api/modApiMenu.js`__.
+Es sollte beachtet werden, dass folgender Ausschnitt aus einer Shopware spezifischen Datei ist und es eine äquivalente
+__`getMenu`__ Vuex __`action`__ für die Verwendung mit der [hubble API](../api) unter __`~/modules/@hubblecommerce/hubble/core/store/api/modApiMenu.js`__ gibt.
+
+::: details
+Das hubble Modul (__`~/modules/@hubblecommerce/hubble/module.js`__) wird bei Start der Applikation aufgerufen
+und anhand der in der __`.env`__ eingetragenen __`API_TYPE`__ werden die entsprechenden Shop spezifischen Dateien aus 
+dem Unterordner __`sw`__ oder __`api`__ registriert. Dadurch entfällt der Pfad Prefix für Shop spezifische Vuex Store
+Module, da es in der laufenden Applikation nur ein Store Modul mit dem jeweiligen Namen gibt.
+Siehe dazu __Schritt 2__: Bei dem Aufruf der __`action`__ __`getMenu`__ wird daher direkt das Store Modul __`modApiMenu`__ referenziert und nicht __`sw/modApiMenu`__.
+
+Für Details zur Funktionsweise von [Modulen in NuxtJS](https://nuxtjs.org/guide/modules) kann die offizielle NuxtJS Dokumentation
+referenziert werden.
+:::
+
 ``` js{3,5,9,14}
 // ~/modules/@hubblecommerce/hubble/core/store/sw/modApiMenu/getMenu.js
 actions: {
@@ -97,7 +120,7 @@ actions: {
 ```
 
 
-* __Step 4__: __`~/modules/@hubblecommerce/hubble/core/store/modApi.js`__
+* __Schritt 4__: __`~/modules/@hubblecommerce/hubble/core/store/modApi.js`__
 ``` js
 // ~/modules/@hubblecommerce/hubble/core/store/modApi.js
 apiCall: {
@@ -119,21 +142,25 @@ apiCall: {
         })
     }
 }
-
 ```
 
-* __Step 5__: __`layouts/hubble.vue`__
+* __Schritt 5__: __`layouts/hubble.vue`__
 
-After the API response is set to the Vuex state it can be accessed in the __`layouts/hubble.vue`__:
+Nachdem die API Response in dem benötigten Format im Vuex State gespeichert wurde, kann die __`layouts/hubble.vue`__, 
+welche für das Rendering des Menüs verantwortlich ist, auf diese Daten zugreifen:
 
-Now depending on the current viewport either the component __```<the-mobile-menu/>```__ or the __```<the-mega-menu/>```__ are being rendered.
+
+Abhängig von dem aktuellen Viewport wird entweder die Komponente __`<the-mobile-menu/>`__ oder __`<the-mega-menu/>`__ angezeigt.
+
 
 ``` html
 <!-- ~/layouts/hubble.vue -->
 <the-mega-menu v-if="!isEmpty(menu)" :data-items="menu" />
 ```
 
-Note that the mapped state __`dataMenu`__ needs to be set to the __`menu`__ value that is passed as the component prop above.
+Es ist zu beachten, dass der Wert aus der __`dataMenu`__ Variable noch unter der lokalen Variable __`menu`__ abgespeichert werden muss,
+da diese an die konkrete Menü Komponente als __`prop`__ übergeben wird, wie oben zu sehen ist (__`:data-items="menu"`__).
+
 
 ``` js
 // ~/layouts/hubble.vue
@@ -144,7 +171,16 @@ computed: {
 }
 ```
 
-##### Learn More
-To learn more about state management in hubble please refer to the [State Management](statemanagement.md) section of the documentation.
 
+### Data Flow und State Management
+
+::: tip
+Middlewares in hubble sind nicht die einzige Stelle, an der API Requests initiiert werden: Auch Komponenten rufen
+__`actions`__ aus dem Vuex Store auf, die API Requests machen.
+:::
+
+
+##### Mehr Erfahren
+Um mehr über State Management in hubble zu erfahren kann der Abschnitt [State Management](statemanagement.md) 
+der Dokumentation referenziert werden.
 
