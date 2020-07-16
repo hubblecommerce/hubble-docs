@@ -1,15 +1,20 @@
 # Configuration
 
-##### General
+## Anpassen der Konfiguration
 
-Important values to establish successful connections with API endpoints like API keys are saved in the __`.env`__ file of the project as environment variables. 
-To provide these values to the application context hubble uses [@nuxtjs/dotenv](https://github.com/nuxt-community/dotenv-module) which makes access to __`.env`__  variables possible through referencing __`process.env`__.
+Zur erfolgreichen Verbindungsherstellung mit API Endpunkten sollten wichtige Werte, wie API Schlüssel, in der __`.env`__
+Datei des Projektes als Umgebungsvariablen gespeichert werden.
+Damit diese Werte im Applikationskontext zur Verfügung stehen, benutzt hubble das [@nuxtjs/dotenv](https://github.com/nuxt-community/dotenv-module)
+Modul. Dieses ermöglicht den Zugriff auf die Variablen in der __`.env`__ Datei über die Referenzierung von __`process.env`__.
+
+Da die __`.env`__ sensitive Informationen enthält, sollten diese nicht Teil des Bundles sein, welches an den Client im
+Applikationsrahmen übermittelt wird. Damit Secret Keys und Datenbankschlüssel nicht im Client Kontext verfügbar sind, müssen explizit die Werte,
+die über __`process.env`__ verfügbar sein sollen auf eine Whitelist gesetzt werden:
+Die Werte, die an den Client gesendet werden können, müssen in der  __`nuxt.config.js`__ unter der Option __`only`__ des __`dotenv`__ Moduls als Teil der 
+ __`buildModules`__ eingetragen werden.
 
 
-
-But as the __`.env`__ file also contains sensitive information which should not be exposed to the client values that are save are already whitelisted inside the __`nuxt.config.js`__  under the __`only`__  option of the __dotenv__ module which is part of the __`buildModules`__.
-
-* __Step 1__: Add values related to API interations to __`.env`__
+* __Schritt 1__: Hinzufügen von API Keys zur __`.env`__
 ``` js
 // .env
 API_TYPE = 'sw' // can be 'sw' or 'api'
@@ -17,7 +22,7 @@ API_SW_ACCESS_KEY = <KEY-FROM-ADMIN-AREA>
 // ...
 ```
 
-* __Step 2__: Whitelist save values in __`nuxt.config.js`__
+* __Schritt 2__: Whitelisting der Client-seitig erlaubten Werte in der __`nuxt.config.js`__
 ``` js
 // nuxt.config.js
 buildModules: [
@@ -30,26 +35,42 @@ buildModules: [
 ]
 ```
 
-* __Step 3__: Access values referencing __`process.env`__ 
+* __Schritt 3__: Zugriff auf die Client-seitig verfügbaren Werte per Referenz auf __`process.env`__ 
 ``` js
 // // ~/modules/@hubblecommerce/hubble/core/store/modApi.js
 let authToken = process.env.API_SW_ACCESS_KEY
 ```
 
-The starter project comes with an __`.env_example`__ file as a reference for which keys you need or may need to establish, for example, a connection with the API to save the customer cart. In the example of Shopware this only works providing an auth token also known as the API access key which should be saved to the respective __`.env`__ variable, in this case the __`API_SW_ACCESS_KEY`__. 
-To read more about how the auth token is used and how user sessions specifically work please refer to the section [User Sessions](./usersession.md) of the documentation.
+Das Starter Projekt enhält eine __`.env_example`__ Datei als Referenz für die Keys und Art von Keys, die benötigt werden oder
+werden könnten. Beispielsweise bei der API Verbindung, über die der Kunden-Warenkorb gespeichert werden soll, wird im Falle von Shopware
+ein Auth Token (API access key) benötigt, damit diese Aktion möglich ist.
 
-Also the __`.env`__ file is added to the __`.gitignore`__ file to prevent adding sensitive information to version control. 
+Dieser API Access Key sollte in der __`.env`__ unter __`API_SW_ACCESS_KEY`__ abgespeichert sein.
+Um mehr über Auth Token und die Funktionsweise von User Sessions in hubble zu erfahren, kann der Abschnitt
+[User Sessions](./usersession.md) der Dokumentation referenziert werden.
+
+
+Außerdem sollte die Datei __`.env`__ in der __`.gitignore`__ eingetragen sein, um das Speichern von sensitiven Informationen in der Versionskontrolle zu verhindern.
+
+``` git
+# .gitignore
+# dotenv environment variables file
+.env
+# ...
+```
 
 ::: warning
-It is important to make sure that only values that are save to be exposed on the client are whitelisted in the __`nuxt.config.js`__.
+Es ist wichtig, dass nur Werte in die Whitelist innerhalb der __`nuxt.config.js`__ eingetragen werden, die keine sensitiven Daten enthalten und damit 
+sicher sind zur Versendung an den Client.
 :::
 
 
-##### hubble Core Module
+### hubble Core Modul
 
-Because hubble core code is shipped as a [NuxtJS module](https://nuxtjs.org/guide/modules) and installed as a dependency configurations to it are made inside the __`nuxt.config.js`__. 
-The default configuration is ready for use after editing the __`.env`__ file according to the guidelines described above.
+Da hubble Core ein [NuxtJS Modul](https://nuxtjs.org/guide/modules) ist und als Dependency installiert wird, können jegliche Art von
+Konfigurationen über die __`nuxt.config.js`__ vorgenommen werden.
+Die Default Konfiguration ist bereit zur Benutzungsaufnahme, nachdem die __`.env`__ Datei, den oben beschriebenen Richtlinien entsprechend,
+angepasst wurde.
 
 
 ``` js
@@ -70,3 +91,4 @@ hubble: {
 },
 // ...
 ```
+
