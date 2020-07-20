@@ -20,7 +20,7 @@ im Vuex Store und zusätzlich als Cookie im Browser abgespeichert.
 
 Die Voraussetzung, um einen __`sw-context-token`__ von der API zu erhalten, ist das Setzen des Auth Tokens im Request. 
 Dieser Auth Token ist im Admin Panel erreichbar und muss in die __`.env`__ Datei des Projektes eingetragen werden.
-Mehr Informationen zum Umgang mit den in der __`.env`__ eingetragenen Werte gibt es im Abschnitt [Konfiguration](./configuration.md).
+Mehr Informationen zum Umgang mit den in der __`.env`__ eingetragenen Werte gibt es im Abschnitt [Konfiguration](configuration.md).
 
 
 * __Schritt 1__: Eintrag des Auth Keys in die __`.env`__
@@ -32,7 +32,7 @@ API_SW_ACCESS_KEY = <KEY-FROM-ADMIN-AREA>
 
 ::: warning
 Client-seitig erlaubte Keys müssen in der __`nuxt.config.js`__ auf die Whitelist gesetzt werden,
-damit diese zur Verfügung stehen. Zur korrekten Einrichtung sollte der Abschnitt [Konfiguration](./configuration.md) referenziert werden.
+damit diese zur Verfügung stehen. Zur korrekten Einrichtung sollte der Abschnitt [Konfiguration](configuration.md) referenziert werden.
 :::
 
 

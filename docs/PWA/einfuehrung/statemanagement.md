@@ -2,6 +2,8 @@
 
 ### Architektur und State Management 
 
+![State Management](./statemanagement.svg)
+
 Hubble verwendet [Vuex](https://vuex.vuejs.org/), unter der Anwendung einer Modulstruktur, als Hauptlösung für das State Management.
 Die Store Module beinhalten die von den Seiten und Komponenten benötigten Daten in dem jeweiligen __`state`__ Objekt
 und werden somit für alle __Read/Write__ Operationen verwendet. Dafür existieren verschiedene Arten von Funktionen,
@@ -49,7 +51,7 @@ Modul- und Funktionsnamen verfügbar.
 
 
 #### Einbindung von Shop spezifischen Store Modulen
-Dieser Teil wird auch im Abschnitt [Lazy Loading](./lazyloading.md) erläutert.
+Dieser Teil wird auch im Abschnitt [Lazy Loading](lazyloading.md) erläutert.
 
 Das hubble Modul (__`~/modules/@hubblecommerce`__) wird bei Start der Applikation aufgerufen (__`~/modules/@hubblecommerce/hubble/module.js`__)
 und anhand der in der __`.env`__ eingetragenen __`API_TYPE`__ werden die entsprechenden Shop spezifischen Dateien aus 

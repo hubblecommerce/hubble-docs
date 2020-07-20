@@ -1,6 +1,8 @@
 # Page Types
 
 ### Kategorieseiten
+
+
 Das Rendering von Kategorieseiten geschieht durch die __`~/pages/_.vue`__. Da die __`~/pages/_.vue`__ für alle dynamischen Routen verantwortlich ist, wird als Unterscheidungskriterium die __`state`__ Variable 
 __`pageType`__ aus dem Vuex Store verwendet. Der Wert von __`pageType`__ ergibt sich aus dem API Response Objekt. Das Request dazu wird durch die Middleware __`apiResourceRoute`__ initiiert.
 Für Kategorieseiten ist der __`pageType`__ Wert __`category`__, wordurch die Komponente __`ViewCategory`__ eingebunden wird. 
@@ -24,6 +26,8 @@ Diese Blöcke enthalten die entsprechenden zur Darstellung benötigten Komponent
 
 #### hubble-API
 
+![Kategorieseite](./categorypages.svg)
+
 | Komponenten | Aufgaben |
 | --- | --- | 
 | __`breadcrumbs`__ | zeigt die aktuelle Position in der Navigationsstruktur an |
@@ -46,6 +50,8 @@ Die primären Komponenten, die __`product-listing-card`__ enthält:
 
 
 ### Produktdetailseiten
+
+![Produktdetailseiten](./detailpage.svg)
 
 Produktdetailseiten gehören zu den Seitenarten, die über  __`~/pages/_.vue`__ gerendert werden.
 Da die __`~/pages/_.vue`__ für alle dynamischen Routen zuständig ist, wird dort als Unterscheidungskriterium die __`state`__ Variable __`pageType`__ aus dem Vuex Store verwendet.
@@ -84,7 +90,7 @@ CMS Seiten sind im Falle von Shopware ebenfalls vom Entitätstyp __Kategorie__, 
 
 ### Struktur der __`~/pages/_.vue`__
 
-Das Template *(vereinfacht)*, welches __`ViewCategory`__ für [Kategorieseiten](./pagetypes.md#kategorieseiten), __`ViewProduct`__ für [Produktdetailseiten](./pagetypes.md#produktdetailseiten) und  __`ViewContent`__ für [CMS Seiten](./pagetypes.md#cms-seiten) einbindet:
+Das Template *(vereinfacht)*, welches __`ViewCategory`__ für [Kategorieseiten](pagetypes.mdategorieseiten), __`ViewProduct`__ für [Produktdetailseiten](pagetypes.mdroduktdetailseiten) und  __`ViewContent`__ für [CMS Seiten](pagetypes.mdms-seiten) einbindet:
 ``` html
 <!-- ~/pages/_.vue -->
 <component :is="currentComponent" v-if="pageType !== null" />

@@ -47,7 +47,7 @@ ein Auth Token (API access key) benötigt, damit diese Aktion möglich ist.
 
 Dieser API Access Key sollte in der __`.env`__ unter __`API_SW_ACCESS_KEY`__ abgespeichert sein.
 Um mehr über Auth Token und die Funktionsweise von User Sessions in hubble zu erfahren, kann der Abschnitt
-[User Sessions](./usersession.md) der Dokumentation referenziert werden.
+[User Sessions](usersession.md) der Dokumentation referenziert werden.
 
 
 Außerdem sollte die Datei __`.env`__ in der __`.gitignore`__ eingetragen sein, um das Speichern von sensitiven Informationen in der Versionskontrolle zu verhindern.

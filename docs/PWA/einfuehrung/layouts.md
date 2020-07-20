@@ -25,7 +25,7 @@ und das Suchfeld anzeigen.
 Komponenten, die auf allen (non-__`checkout`__) Seiten erscheinen sollen, müssen in das Default Layout (__`~/layouts/hubble.vue`__) eingefügt werden.
 :::
 
-Unter dem Abschnitt [Ablenkungsfreie Layouts](./layouts.md#ablenkungsfreie-layouts) der hubble Dokumentation gibt es mehr Informationen zu Layouts bei __`checkout`__ Seiten.
+Unter dem Abschnitt [Ablenkungsfreie Layouts](layouts.mdblenkungsfreie-layouts) der hubble Dokumentation gibt es mehr Informationen zu Layouts bei __`checkout`__ Seiten.
 
 ##### Ein Beispiel für die Art von Komponenten, die hubble in Layouts einbindet 
 Vom Hinzufügen von Produkten zur Wunschliste, bis zur Änderung der Rechnungsadresse, existiert immer die Möglichkeit

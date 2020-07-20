@@ -1,5 +1,7 @@
 # Routing & Data Flow
 
+![State Management](./pagerouting.svg)
+
 ### Wie Daten in hubble für Routen bereitgestellt werden
 
 Da hubble's Architektur auf der von NuxtJS basiert, erfolgt die Konfiguration von Routen über das Einhalten der

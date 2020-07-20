@@ -61,14 +61,20 @@ module.exports = {
                         'middlewares',
                         'plugins',
                         'assets',
-                        'routing',
-                        'theming',
-                        'statemanagement',
-                        'layouts',
-                        'lazyloading',
-                        'usersession',
-                        'configuration',
-                        'pagetypes'
+                    ]
+                },
+                {
+                    title: 'Einführung',   // required
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                        'einfuehrung/theming',
+                        'einfuehrung/routing',
+                        'einfuehrung/statemanagement',
+                        'einfuehrung/layouts',
+                        'einfuehrung/lazyloading',
+                        'einfuehrung/usersession',
+                        'einfuehrung/configuration',
+                        'einfuehrung/pagetypes'
                     ]
                 },
                 {
