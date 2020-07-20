@@ -90,7 +90,8 @@ CMS Seiten sind im Falle von Shopware ebenfalls vom Entitätstyp __Kategorie__, 
 
 ### Struktur der __`~/pages/_.vue`__
 
-Das Template *(vereinfacht)*, welches __`ViewCategory`__ für [Kategorieseiten](pagetypes.mdategorieseiten), __`ViewProduct`__ für [Produktdetailseiten](pagetypes.mdroduktdetailseiten) und  __`ViewContent`__ für [CMS Seiten](pagetypes.mdms-seiten) einbindet:
+Das Template *(vereinfacht)*, welches __`ViewCategory`__ für [Kategorieseiten](pagetypes.md#kategorieseiten),
+__`ViewProduct`__ für [Produktdetailseiten](pagetypes.md#produktdetailseiten) und  __`ViewContent`__ für [CMS Seiten](pagetypes.md#cms-seiten) einbindet:
 ``` html
 <!-- ~/pages/_.vue -->
 <component :is="currentComponent" v-if="pageType !== null" />

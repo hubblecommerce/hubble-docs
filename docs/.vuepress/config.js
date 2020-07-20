@@ -61,6 +61,7 @@ module.exports = {
                         'middlewares',
                         'plugins',
                         'assets',
+                        'accounts'
                     ]
                 },
                 {
