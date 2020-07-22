@@ -63,7 +63,8 @@ module.exports = {
                         'assets',
                         'accounts',
                         'warenkorb',
-                        'orders'
+                        'orders',
+                        'products'
                     ]
                 },
                 {

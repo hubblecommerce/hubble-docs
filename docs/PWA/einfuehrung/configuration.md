@@ -1,4 +1,4 @@
-# Configuration
+# Konfiguration
 
 ## Anpassen der Konfiguration
 
@@ -14,11 +14,12 @@ Die Werte, die an den Client gesendet werden können, müssen in der  __`nuxt.co
  __`buildModules`__ eingetragen werden.
 
 
-* __Schritt 1__: Hinzufügen von API Keys zur __`.env`__
+* __Schritt 1__: Hinzufügen von Keys zur __`.env`__
 ``` js
 // .env
-API_TYPE = 'sw' // can be 'sw' or 'api'
-API_SW_ACCESS_KEY = <KEY-FROM-ADMIN-AREA>
+API_TYPE = 'api' // can be 'sw' or 'api'
+API_CLIENT_ID = <API_CLIENT_ID>
+STORE_ID = <STORE_ID>
 // ...
 ```
 
@@ -28,7 +29,8 @@ API_SW_ACCESS_KEY = <KEY-FROM-ADMIN-AREA>
 buildModules: [
     ['@nuxtjs/dotenv', {
         only: [
-            'API_SW_ACCESS_KEY',
+            'API_CLIENT_ID',
+            'STORE_ID',
              // ...
         ]
     }]
@@ -37,17 +39,13 @@ buildModules: [
 
 * __Schritt 3__: Zugriff auf die Client-seitig verfügbaren Werte per Referenz auf __`process.env`__ 
 ``` js
-// // ~/modules/@hubblecommerce/hubble/core/store/modApi.js
-let authToken = process.env.API_SW_ACCESS_KEY
+// ~/modules/@hubblecommerce/hubble/core/store/modApi.js
+{ storeId: process.env.STORE_ID }
 ```
 
 Das Starter Projekt enhält eine __`.env_example`__ Datei als Referenz für die Keys und Art von Keys, die benötigt werden oder
-werden könnten. Beispielsweise bei der API Verbindung, über die der Kunden-Warenkorb gespeichert werden soll, wird im Falle von Shopware
-ein Auth Token (API access key) benötigt, damit diese Aktion möglich ist.
-
-Dieser API Access Key sollte in der __`.env`__ unter __`API_SW_ACCESS_KEY`__ abgespeichert sein.
-Um mehr über Auth Token und die Funktionsweise von User Sessions in hubble zu erfahren, kann der Abschnitt
-[User Sessions](usersession.md) der Dokumentation referenziert werden.
+werden könnten. 
+Der Abschnitt [User Sessions](usersession.md) der Dokumentation enthält ein Beispiel zur Verwendung von Werten aus der __`.env`__.
 
 
 Außerdem sollte die Datei __`.env`__ in der __`.gitignore`__ eingetragen sein, um das Speichern von sensitiven Informationen in der Versionskontrolle zu verhindern.

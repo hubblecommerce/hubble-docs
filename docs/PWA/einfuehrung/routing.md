@@ -81,41 +81,43 @@ store.dispatch('modApiMenu/getMenu', {})
 // ...
 ```
 
-* __Schritt 3__: __`~/modules/@hubblecommerce/hubble/core/store/sw/modApiMenu.js`__
+* __Schritt 3__: __`~/modules/@hubblecommerce/hubble/core/store/api/modApiMenu.js`__
 
-Es sollte beachtet werden, dass folgender Ausschnitt aus einer Shopware spezifischen Datei ist und es eine äquivalente
-__`getMenu`__ Vuex __`action`__ für die Verwendung mit der [hubble API](../api) unter __`~/modules/@hubblecommerce/hubble/core/store/api/modApiMenu.js`__ gibt.
+Es sollte beachtet werden, dass folgender Ausschnitt aus einer [hubble API](../api) spezifischen Datei ist und es eine äquivalente
+__`getMenu`__ Vuex __`action`__ für die Verwendung mit Shopware unter __`~/modules/@hubblecommerce/hubble/core/store/sw/modApiMenu.js`__ gibt.
 
 ::: details
 Das hubble Modul (__`~/modules/@hubblecommerce/hubble/module.js`__) wird bei Start der Applikation aufgerufen
 und anhand der in der __`.env`__ eingetragenen __`API_TYPE`__ werden die entsprechenden Shop spezifischen Dateien aus 
 dem Unterordner __`sw`__ oder __`api`__ registriert. Dadurch entfällt der Pfad Prefix für Shop spezifische Vuex Store
 Module, da es in der laufenden Applikation nur ein Store Modul mit dem jeweiligen Namen gibt.
-Siehe dazu __Schritt 2__: Bei dem Aufruf der __`action`__ __`getMenu`__ wird daher direkt das Store Modul __`modApiMenu`__ referenziert und nicht __`sw/modApiMenu`__.
+Siehe dazu __Schritt 2__: Bei dem Aufruf der __`action`__ __`getMenu`__ wird daher direkt das Store Modul __`modApiMenu`__ referenziert und nicht __`api/modApiMenu`__.
 
 Für Details zur Funktionsweise von [Modulen in NuxtJS](https://nuxtjs.org/guide/modules) kann die offizielle NuxtJS Dokumentation
 referenziert werden.
 :::
 
 ``` js{3,5,9,14}
-// ~/modules/@hubblecommerce/hubble/core/store/sw/modApiMenu/getMenu.js
+// ~/modules/@hubblecommerce/hubble/core/store/api/modApiMenu/getMenu.js
 actions: {
-    async getMenu({ commit, state, dispatch }, payload) {
+    async getMenu({ commit, dispatch }) {
         return new Promise(function(resolve, reject) {
             dispatch('apiCall', {
                 action: 'get',
-                tokenType: 'sw',
+                tokenType: 'api',
                 apiType: 'data',
-                endpoint: '/sales-channel-api/v1/category?limit=500&associations[seoUrls][]'
-                }, { root: true })
-                    .then((response) => {
-                        dispatch('mappingMenu', response.data.data)
-                            .then((res) => {
-                                commit('setDataMenu', res);
-                            });
-
-                         resolve(response);
-                    })
+                endpoint: '/api/json/menu/children',
+                params: {
+                    _size: 30
+                }
+            }, { root: true })
+            .then((response) => {
+                commit('setDataMenu', {
+                    data: response.data
+                });
+                // ... 
+            })
+            // ...
         });
     }
 } 
@@ -133,7 +135,7 @@ apiCall: {
             axios({
                 method: payload.action,
                 url: baseUrl + payload.endpoint,
-                headers: headers, // includes sw-context-token if api type === 'sw'
+                headers: headers,
                 params: payloadParams, // GET params
                 data: payloadData // POST data
             }).then((response) => {

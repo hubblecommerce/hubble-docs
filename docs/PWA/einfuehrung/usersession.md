@@ -2,7 +2,7 @@
 
 User Sessions in hubble spielen eine wichtige Rolle bei der lokalen Zwischenspeicherung des Warenkorbs und der Wishlist.
 Es existieren 3 Layer von lokaler Zwischenspeicherung des States:
-1. Speicherung im Vuex Store
+1. Speicherung im lokalen Vuex Store
 2. Speicherung über __`$localForage`__ im Browser
 3. Speicherung als Cookie im Browser
 
@@ -10,24 +10,40 @@ Es ist wichtig, im Projekt eine angemessene Lifetime für __`$localForage`__ und
 Im hubble Projekt existieren bereits voreingetragene Defaultwerte für Gültigkeitsdauern in dem jeweiligen Store Modul.
 
 
-#### Use Case: Shopware als Backend
+### Auth Token und [hubble API](../api) als Proxy
 
-Durch das Hinzufügen von Produkten zum Warenkorb wird durch die __`ProductDetailAddToCart`__ Komponente bei der ersten
-Interaktion eine __`action`__ im zugehörigen Vuex Store Modul __`sw/modCart`__ aufgerufen, mit der Aufgabe einen 
-[sw-context-token](https://docs.shopware.com/en/shopware-platform-dev-en/sales-channel-api/sales-channel-cart-api?category=shopware-platform-dev-en/sales-channel-api)
-zu erhalten. Da dieser Token in subsequenten Interaktionen mit der API benötigt wird, wird dieser im darauf folgenden Schritt lokal
-im Vuex Store und zusätzlich als Cookie im Browser abgespeichert.
+Durch das Hinzufügen von Produkten zum Warenkorb wird durch die __`ProductDetailAddToCart`__ Komponente eine
+__`action`__ im zugehörigen Vuex Store Modul __`api/modCart`__ aufgerufen, die zur erneuten Berechnung
+des Warenkorbs die __`recalculateCart`__ __`action`__ aufruft. Diese ist dafür zuständig, 
+dass der Request zur Rekalkulation an die API gesendet wird und setzt die entsprechenden Endpoint und Warenkorb Daten.
+Damit der Request jedoch erfolgreich ist, wird ein Auth Token im Request Objekt benötigt. Um ein gültiges Token von
+der API zu erhalten, müssen dafür __Client ID__ und __Client Secret__, sogenannte Client Credentials,
+verwendet werden. Diese zwei Werte sollten in der __`.env`__ 
+Datei des Projektes eingetragen sein. Zur korrekten Konfiguration und Verwendung von Werten aus der __`.env`__ Datei 
+kann der Abschnitt [Konfiguration](./configuration.md) referenziert werden.
+Der erhaltene Token, wird als Bearer Authentication Token bezeichnet und ist im Response Objekt im Feld __`access_token`__
+enthalten.
+Die Implementation zum Erhalt eines Bearer Authentication Tokens und dessen Speicherung im Vuex Store State ist Teil
+der Middleware __`apiAuthenticate`__. Diese ist in den meisten Routen als Middleware aufgelistet und wird somit immer vor
+dem Rendering der jeweiligen Route ausgeführt. Dadurch können eingebundene Komponenten in subsequenten Requests den Token
+verwenden.
 
-Die Voraussetzung, um einen __`sw-context-token`__ von der API zu erhalten, ist das Setzen des Auth Tokens im Request. 
-Dieser Auth Token ist im Admin Panel erreichbar und muss in die __`.env`__ Datei des Projektes eingetragen werden.
-Mehr Informationen zum Umgang mit den in der __`.env`__ eingetragenen Werte gibt es im Abschnitt [Konfiguration](configuration.md).
+Es werden die folgenden Felder benötigt, um ein Bearer Authentication Token zu erhalten:
++ Base URL
++ Endpoint
++ Client ID
++ Client Secret
 
+Dafür müssen folgende Schritte durchgeführt werden:
 
-* __Schritt 1__: Eintrag des Auth Keys in die __`.env`__
+* __Schritt 1__: Eintrag der Felder in die __`.env`__
 
-``` js
-// .env
-API_SW_ACCESS_KEY = <KEY-FROM-ADMIN-AREA>
+``` txt
+# .env
+API_BASE_URL = '<API_BASE_URL>'
+API_CLIENT_ID = '<CLIENT_ID>'
+API_CLIENT_SECRET = '<CLIENT_SECRET>'
+API_ENDPOINT_AUTH = 'oauth/token'
 ```
 
 ::: warning
@@ -36,16 +52,20 @@ damit diese zur Verfügung stehen. Zur korrekten Einrichtung sollte der Abschnit
 :::
 
 
-* __Schritt 2__ : Zur Verwendung des Keys wird __`process.env`__ referenziert
+* __Schritt 2__ : Zur Verwendung der Felder wird __`process.env`__ referenziert
 ``` js
 // ~/modules/@hubblecommerce/hubble/core/store/modApi.js
-let authToken = process.env.API_SW_ACCESS_KEY
+// ...
+baseUrl: process.env.API_BASE_URL,
+endpoint: process.env.API_ENDPOINT_AUTH,
+clientId: process.env.API_CLIENT_ID,
+clientSecret: process.env.API_CLIENT_SECRET
+// ...
 ```
 
-Dies bedeutet, dass im Falle von Shopware der __`sw-context-token`__ kennzeichnendes Merkmal der Session ist.
+Dies bedeutet, dass der Bearer Authentication Token kennzeichnendes Merkmal der Session ist.
 Dadurch wird ermöglicht, dass Shopbesucher Produkte dem Warenkorb beliebig hinzufügen und entfernen können, sowie die
-gewünschte Menge anpassen können, ohne sich dabei anmelden oder registrieren zu müssen.
-
+gewünschte Menge anpassen können, ohne sich dabei anmelden oder registrieren zu müssen.  
 Falls Shopbesucher das Browserfenster ohne eine Anmeldung oder Registrierung  verlassen, bleibt der Zustand des Warenkorbs für einen bestimmten Zeitraum erhalten. Ermöglicht wird dies durch
 die oben beschriebenen Layer zur Zwischenspeicherung im Browser: Cookies und __`$localForage`__.
 
@@ -61,35 +81,40 @@ verwendet. Für größeren Speicherbedarf, wie bei der vollständigen Erfassung 
 
 ::: tip
 Die Reihenfolge der Zustandsspeicherung nach Veränderung des States folgt immer demselben Schema:
-Ein Request an einen API Endpunkt wird über die __`action`__ __`modApi/apiCall`__ gemacht, welche den API Access Key aus
-der __`.env`__ und den __`sw-context-token`__ benötigt. Die Response dazu wird im lokalen Vuex Store mit Hilfe des Moduls
-__`sw/modCart`__ gespeichert und anschließend im Browser als Cookie und per __`$localForage`__ gespeichert.
-Der Aufruf der __`action`__ __`sw/modCart/saveCartToStorage`__ folgt immer auf jenen API Request, der aufgrund
-einer Interaktion mit dem Warenkorb ausgelöst wurde.
+Ein Request an einen API Endpunkt wird über die __`action`__ __`modApi/apiCall`__ gemacht, welche den Bearer Authentication Token 
+benötigt. Die jeweilige Response dazu wird im lokalen Vuex Store und anschließend ebenfalls
+im Browser als Cookie und per __`$localForage`__ gespeichert.
 :::
 
-* __Schritt 1__ (*vereinfacht*):
-``` js
-// ~/modules/@hubblecommerce/hubble/core/store/sw/modCart.js
-updateItem({ commit, state, dispatch }, payload) {
-    return new Promise((resolve, reject) => {
-        // makes API patch request w/ payload object
-        dispatch('swUpdateLineItem', { id: state.productToUpdate, qty: state.qtyToUpdate })
-            .then((res) => {
-                // updates vuex store state 
-                commit('setCartItemsCount', state.cart.items_qty + payload.qty );
 
-                // saves cart to browser storage via localForage
-                dispatch('saveCartToStorage', { response: res }) 
-            }
-        }
-}
+``` js
+// ~/modules/@hubblecommerce/hubble/core/store/api/modCart.js
+// send API request to recalculate cart via shop system
+// this step needs a valid Bearer Authentication Token
+dispatch('recalculateCart', { order: JSON.stringify(order) })
+    .then((response) => {
+        // 1) store to local Vuex Store
+        commit('setCart', response.order.cart);
+        commit('setTotals');
+        
+        // 2) store via $localForage
+        localStorageHelper.setCreatedAt(_.clone(state.cart), state.localStorageLifetime)
+            .then((response) => {
+                this.$localForage.setItem(state.cookieName, response);
+            });
+        
+        // 3) store as cookie
+        let smallCart = _.pick(state.cart, ['items_qty']);
+        let _cart = getters.getCartEncoded(smallCart);
+        
+        this.$cookies.set(state.cookieName, _cart, {
+            path: state.cookiePath,
+            expires: getters.getCookieExpires
+        });
+    })
 ```
 
-* __Schritt 2__ (*vereinfacht*):
-``` js
-// inside saveCartToStorage action
-this.$localForage.setItem(state.cookieName, response);
-```
-
+::: tip
+Die hubble API agiert als Proxy zwischen der hubble PWA und dem Shop Backend. 
+:::
 
