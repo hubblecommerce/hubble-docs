@@ -61,6 +61,7 @@ module.exports = {
                         'einfuehrung/dynamicimports',
                         'einfuehrung/usersession',
                         'einfuehrung/configuration',
+                        'einfuehrung/pagetypes',
                     ]
                 },
                 {
