@@ -4,24 +4,64 @@
 
 ![State Management](./statemanagement.svg)
 
-Hubble verwendet [Vuex](https://vuex.vuejs.org/), unter der Anwendung einer Modulstruktur, als Hauptlösung für das State Management.
-Die Store Module beinhalten die von den Seiten und Komponenten benötigten Daten in dem jeweiligen __`state`__ Objekt
-und werden somit für alle __Read/Write__ Operationen verwendet. Dafür existieren verschiedene Arten von Funktionen,
+Damit die Shopdaten wie z.B. Informationen zu Produkten und Kategorien, allen Komponenten global zur Verüfung stehen, 
+benutzt hubble die Vue.js Erweiterung Vuex.
+Vuex ist fester Bestandteil von NuxtJs [Vuex Store in Nuxt](https://nuxtjs.org/guide/vuex-store).
+
+Jede Entität hat dabei ihr eigenes Vuex Store Modul unter /store. 
+Die Store Module beinhalten die von den Seiten und Komponenten benötigten Daten in __`state`__ Objekten. 
+States können nur mithilfe von Funktionen verändert werden. Dafür existieren verschiedene Arten von Funktionen,
 die für die jeweilige Tätigkeit aufgerufen werden: __`getters`__, __`actions`__ und __`mutations`__.
-Dieser Konvention von Vuex folgend werden somit alle Store Interaktionen nur über die passende Funktionsart durchgeführt.  
 
-::: tip
-Für eine vereinfachte Syntax werden in hubble sogenannte Vuex __map helper__ verwendet.
-:::
-
-Die in hubble verwendete Syntax zur Referenzierung von Store Funktionen:
+Aufbau Vuex Store Modul:
 ``` js
-// ~/components/customer/LoginForm.vue (simplified)
+export default function (ctx) {
+    const modWishlist = {
+        namespaced: true,
+        state: () => ({
+            wishlistItemsCount: 0,
+            wishlistItemsObj: {},
+            wishlistId: false,
+
+            cookieName: 'hubbleWishlist',
+            localStorageLifetime: 720 // 720 hours = 30 days
+        }),
+        getters: {...},
+        mutations: {...},
+        actions: {...}
+    };
+
+    ctx.store.registerModule('modWishlist', modWishlist);
+}
+```
+
+Dieser Konvention von Vuex folgend, werden somit alle Store Interaktionen über die passende Funktionsart durchgeführt.  
+Für eine vereinfachte Syntax nutzt hubble sogenannte Vuex __map helper__:
+``` js
+// ~/components/customer/LoginForm.vue
+import { mapState, mapActions, mapMutations } from 'vuex';
+
 export default {
+    computed: {
+        ...mapState({
+            customer: state => state.modApiCustomer.customer,
+            wishlistState: state => state.modWishlist.wishlistItemsObj
+        })
+    },
+    
     methods: {
         ...mapActions({
-            logIn: 'modApiCustomer/logIn' // maps action to local function
+            logIn: 'modApiCustomer/logIn',
+            getWishlist: 'modApiCustomer/getWishlist',
+            updateWishlist: 'modApiCustomer/updateWishlist',
+            saveToStore: 'modWishlist/saveToStore'
         }),
+        ...mapMutations({
+            setWishlistId: 'modWishlist/setWishlistId',
+            setWishlistItemsCount: 'modWishlist/setWishlistItemsCount',
+            setWishlistItemsObj: 'modWishlist/setWishlistItemsObj'
+        }),
+        // ...
         submitLoginForm: function() {
             // ...
             this.logIn(validCredentials) // uses mapped action function
@@ -31,27 +71,7 @@ export default {
 } 
 ```
 
-#### Arten von Store Modulen
-
-Zusätzlich zu der generellen Unterteilung von Shop Funktionalitäten, wie z.B. Warenkorb und Wunschliste,
-in unterschiedliche Module, gibt es außerdem Shop spezifische Module, die jeweils in den Modul Unterordnern
-__`sw`__ und __`api`__ hinterlegt sind. Der Warenkorb gehört dabei zu den Shop spezifischen und die Wunschliste
-zu den allgemeingültigen Modulen.
-
-| Store Modul | Verwendung |
-| --- | --- | 
-| __`hubble/core/store/modApi.js`__ | gültig für alle Shopsysteme |
-| __`hubble/core/store/api/modApiProduct.js`__ | gültig nur für den API Typ '__api__' ([hubble API](../api)) |
-| __`hubble/core/store/sw/modApiProduct.js`__ | gültig nur für den API Typ '__sw__' |
-
-::: tip
-Für Funktionalitäten, die von dem gewählten Shopsystem abhängen, sind in hubble unterschiedliche Ordner mit denselben
-Modul- und Funktionsnamen verfügbar.
-:::
-
-
 #### Einbindung von Shop spezifischen Store Modulen
-Dieser Teil wird auch im Abschnitt [Lazy Loading](lazyloading.md) erläutert.
 
 Das hubble Modul (__`~/modules/@hubblecommerce`__) wird bei Start der Applikation aufgerufen (__`~/modules/@hubblecommerce/hubble/module.js`__)
 und anhand der in der __`.env`__ eingetragenen __`API_TYPE`__ werden die entsprechenden Shop spezifischen Dateien aus 
@@ -66,19 +86,17 @@ Zum Referenzieren von Store Modulen in Komponenten:
 })
 ```
 
-::: tip
-Der Store ist in hubble über ein eigenes Modul, mit dem Namen __`@hubblecommerce`__ eingebunden und befindet sich unter 
-```
-~/modules/@hubblecommerce/hubble/store
-```
-:::
+Daraus ergibt es sich, dass es Store Module gibt die von allen Shopsystemen benutzt werden und andere die nur von speziellen benutzt werden.
+
+| Store Modul | Verwendung |
+| --- | --- | 
+| __`hubble/core/store/modApi.js`__ | gültig für alle Shopsysteme |
+| __`hubble/core/store/api/modApiProduct.js`__ | gültig nur für den API Typ '__api__' ([hubble API](../api)) |
+| __`hubble/core/store/sw/modApiProduct.js`__ | gültig nur für den API Typ '__sw__' |
 
 
-Für Details zur Funktionsweise von [Modulen in NuxtJS](https://nuxtjs.org/guide/modules) kann die offizielle NuxtJS Dokumentation
-referenziert werden.
 
-Für eine detaillierte Beschreibung der Funktionsweise von State Management in Vuex und spezifisch im Kontext von Nuxt können die folgenden offiziellen
-Ressourcen referenziert werden:
-
+#### Nützliche Quellen:
+* [Module in NuxtJS](https://nuxtjs.org/guide/modules)
 * [Vuex](https://vuex.vuejs.org/) 
 * [Vuex Store in Nuxt](https://nuxtjs.org/guide/vuex-store)
