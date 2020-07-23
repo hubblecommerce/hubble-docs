@@ -56,7 +56,8 @@ module.exports = {
                     collapsable: false, // optional, defaults to true
                     children: [
                         'einfuehrung/routing',
-                        'einfuehrung/statemanagement'
+                        'einfuehrung/statemanagement',
+                        'einfuehrung/layouts'
                     ]
                 },
                 {
