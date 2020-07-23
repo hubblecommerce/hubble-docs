@@ -1,6 +1,8 @@
 # Theming
 
-### Konfiguration   
+## Konfiguration   
+
+### Theme konfigurieren 
 
 Es existiert ein responsives Default Theme in hubble, welches es erleichtert darauf aufbauend in kurzer Zeit
 ein individualisiertes Theme zu erstellen.
@@ -9,12 +11,15 @@ Das im Projekt zu verwendende Theme wird in der __`.env`__ Datei definiert:
 # .env
 THEME = 'hubble'
 ```
- 
-Komponenten Templates sind mit Klassen versehen, deren Style Deklarationen sich in einem getrennten __`scss`__ Ordner befinden:
+
+Entgegen des Single File Component Ansatzes wird der Style Part jeder Komponente in einer separaten scss Datei gespeichert. 
+Je nachdem welches Theme konfiguriert ist, wird der entsprechende Theme Ordner mit Styles geladen.
+
 ```
-~/assets/scss/hubble
+~/assets/scss/<THEME-FOLDER>
 ```
-Jedoch ist es auch weiterhin möglich Styles in den Komponenten zu definieren.
+
+Die gleiche Mechanik kann genutzt werden um auch andere Theme spezifische Dateien zu laden die sich im ~assets/ Ordner befinden. 
 
 ::: tip
 Die Kompilierung von den Dateien in dem __`scss`__ Ordner ist in hubble bereits konfiguriert. 
@@ -22,35 +27,41 @@ Um neue __`scss`__ Dateien ebenfalls in den Kompilierungsprozess zu integrieren
 ist nur ein Hinzufügen zur __`~/assets/scss/hubble/all.scss`__ notwendig.
 :::
 
-Zusätzlich zu den in der  __`~/assets/scss/hubble/all.scss`__ registrierten Deklarationsdateien für Komponenten spezifische
-Styles, 
-sind dort auch Dateien für Projekt globale Variablen und Deklarationen, wie z.b die 
-__`~/assets/scss/hubble/configuration/global.scss`__,  eingebunden: 
+### SCSS konfigurieren 
+
+Alle scss Dateien werden über die __`~/assets/scss/hubble/all.scss`__ importiert. 
+Es gibt zwei Unterordner. In __`~/assets/scss/hubble/components`__ ist für jede Vue.js Komponente eine entsprechende scss Datei hinterlegt.
+In __`~/assets/scss/hubble/configuration`__ befinden sich alle scss Variablen und Mixins die für das Styling der App relevant sind. 
 
 ``` scss
-// ~/assets/scss/hubble/all.scss
+// ~/assets/scss/hubble/configuration/theme.scss
 
-// Configuration, Variables and Mixins
-@import "configuration/global";
-@import "configuration/boostrap-essentials";
-@import "configuration/fonts";
-/* ... */
+$primary: #880E4F !default;
+$secondary: #EAE9EA !default;
+$accent: #880E4F !default;
+$highlight: #BD1A20 !default;
+$background: #fff !default;
+$background-light: #F8F8F8 !default;
+$border-color: #EAE9EA !default;
+$text-primary: #2C2E31 !default;
+$text-primary-on-background: #2C2E31 !default;
+$available-accent: #76BD1A !default;
+$font-family: 'Lato', Helvetica, Arial, sans-serif !default;
+$text-light: #535358 !default;
+$header-height-desktop: 80px !default;
+$border-radius: 0 !default;
 
-// Components
-@import "components/product-listing";
-@import "components/product-listing-card";
-/* ... */
+$base-padding: 10px !default;
+$base-padding-md: 20px !default;
 
 ```
 
-Die einzelnen Dateien dazu befinden sich zur Bewahrung
-der Übersichtlichkeit in dem Unterordner __`configuration`__. Dieser befindet sich mit dem Ordner __`components`__ auf einer Ebene.
-Die strikte Einhaltung dieser Ordnerstruktur innerhalb des Theme Ordners ist jedoch nicht notwendig. Alleinige Regel ist die 
-Existenz der __`~/assets/scss/<THEME-FOLDER>/all.scss`__ Datei und der korrekte Pfadeintrag der Dateien, die
-eingebunden werden sollen.
+
+Die strikte Einhaltung dieser Ordnerstruktur innerhalb des Theme Ordners ist jedoch nur eine Empfehlung. Zwingend ist allerdings die 
+Existenz der __`~/assets/scss/<THEME-FOLDER>/all.scss`__ Datei und der korrekte Pfadeintrag der Dateien, die eingebunden werden sollen.
 
 
-### Aufbau des hubble Themes
+## Aufbau des hubble Themes
 
 Die im hubble Theme verwendeten Standardwerte für Fonts und Farben sind jeweils in der __`colors.scss`__ und 
 __`typography.scss`__ definiert und eignen sich als schnelle Möglichkeit das Theme anzupassen.
@@ -123,15 +134,17 @@ auszugleichen und damit ein gleichmäßiges Erscheinungsbild der Shopseite für 
 :::
 
 Layout spezifische Deklarationen befinden sich in der __`~/assets/scss/hubble/components/hubble.scss`__ und folgen 
-im Aufbau dem generellen Schema, welches im Projekt Anwendung findet:
-Styles werden von mobilen Geräten ausgehend, mit den primären Breakpoints __`min-width: 768px`__ (Tablet) und
-__`min-width: 1024`__ (Desktop), definiert. 
-Falls diese Breakpoints in den Komponenten referenziert werden müssen, um Klassen hinzuzufügen oder zu entfernen etc., 
-dann wird dafür [nuxt-mq](https://www.npmjs.com/package/nuxt-mq), welches auf dem Vue.js Plugin
-[vue-mq](https://github.com/AlexandreBonaventure/vue-mq) basiert, verwendet. 
-Die in den Komponenten verwendeten Breakpoints werden dabei über __`this.$mq`__ referenziert und können die Werte __`sm`__, 
-__`md`__ und __`lg`__ einnehmen. Für die Konfiguration dieser Breakpoint Werte kann die __`nuxt.config.js`__ verwendet
-werden.
+im Aufbau dem generellen Schema, welches im Projekt Anwendung findet.
+
+## Responsive Styling 
+
+Styles werden nach dem mobile first Ansatz von mobilen Geräten ausgehend, mit den primären Breakpoints __`min-width: 768px`__ (Tablet) 
+und __`min-width: 1024`__ (Desktop), definiert. 
+
+Diese Breakpoints können auch im Script Teil der Komponenten benutzt werden, z.B. um Klassen hinzuzufügen oder zu entfernen.
+Dafür wird [nuxt-mq](https://www.npmjs.com/package/nuxt-mq) verwendet. 
+
+Die Konfiguration dieser Breakpoint Werte befindet sich in der __`nuxt.config.js`__.
 
 Konfiguration:
 ``` js
@@ -157,9 +170,11 @@ Verwendung:
 <add-to-wishlist v-if="$mq === 'lg'" class="add-to-wishlist-button" :item="dataProduct" />
 ```
 
-Für das eigentliche Layout und das definieren des Layout Grids wird [Bootstrap](https://getbootstrap.com/) verwendet,
-wobei nur die in hubble verwendeten Klassen Styles und Sass Mixins über die
-__`~/assets/scss/hubble/configuration/bootstrap-essentials.scss`__ eingebunden werden.
+## Bootstrap 
+
+Für das eigentliche Layout und das definieren des Layout Grids wird [Bootstrap](https://getbootstrap.com/) verwendet.
+Wobei nur die in hubble verwendeten Klassen Styles und Sass Mixins über die __`~/assets/scss/hubble/configuration/bootstrap-essentials.scss`__ 
+eingebunden sind und einfach um weitere Bootrstrap Klassen und Funktionen erweitert werden können.
 
 ``` scss
 // ~/assets/scss/hubble/components/hubble.scss
