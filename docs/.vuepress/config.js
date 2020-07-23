@@ -52,6 +52,13 @@ module.exports = {
             ],
             '/PWA/': [
                 {
+                    title: 'Einführung',   // required
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                        'einfuehrung/routing'
+                    ]
+                },
+                {
                     title: 'hubble Module',   // required
                     collapsable: false, // optional, defaults to true
                     children: [
