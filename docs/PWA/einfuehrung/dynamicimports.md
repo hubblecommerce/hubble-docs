@@ -1,4 +1,4 @@
-# Lazy Loading
+# Dynamic Imports
 ### Optimierungstechniken in hubble
 
 In hubble werden Komponenten, Middleware und Plugins unter Anwendung von Lazy Loading Techniken implementiert.
