@@ -57,7 +57,8 @@ module.exports = {
                     children: [
                         'einfuehrung/routing',
                         'einfuehrung/statemanagement',
-                        'einfuehrung/layouts'
+                        'einfuehrung/layouts',
+                        'einfuehrung/lazyloading',
                     ]
                 },
                 {
