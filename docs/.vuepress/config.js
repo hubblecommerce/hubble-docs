@@ -8,15 +8,15 @@ module.exports = {
     themeConfig: {
         logo: '/assets/images/hubble-logo.png',
         nav: [
-            { text: 'PWA', link: '/PWA/' },
-            { text: 'API', link: '/API/' },
-            { text: 'Component Library', link: '/Components/' },
+            { text: 'PWA', link: '/pwa/' },
+            { text: 'API', link: '/api/' },
+            { text: 'Component Library', link: '/components/' },
             { text: 'Demo', link: 'https://demo.hubblecommerce.io/' },
             { text: 'Website', link: 'https://www.hubblecommerce.io/' },
             { text: 'Github', link: 'https://github.com/hubblecommerce/hubble-frontend-pwa' },
         ],
         sidebar: {
-            '/API/': [
+            '/api/': [
                 {
                     title: 'API',   // required
                     collapsable: false, // optional, defaults to true
@@ -50,7 +50,7 @@ module.exports = {
                     ]
                 },
             ],
-            '/PWA/': [
+            '/pwa/': [
                 {
                     title: 'hubble Module',   // required
                     collapsable: false, // optional, defaults to true
@@ -64,7 +64,8 @@ module.exports = {
                         'accounts',
                         'warenkorb',
                         'orders',
-                        'products'
+                        'products',
+                        'katalogsuche',
                     ]
                 },
                 {
@@ -128,7 +129,7 @@ module.exports = {
                     ]
                 },
             ],
-            '/Components/': [
+            '/components/': [
                 {
                     title: 'Basic Components',   // required
                     collapsable: false, // optional, defaults to true
