@@ -75,7 +75,7 @@ module.exports = {
                         'einfuehrung/routing',
                         'einfuehrung/statemanagement',
                         'einfuehrung/layouts',
-                        'einfuehrung/lazyloading',
+                        'einfuehrung/dynamicimports',
                         'einfuehrung/usersession',
                         'einfuehrung/configuration',
                         'einfuehrung/pagetypes'
