@@ -62,6 +62,7 @@ module.exports = {
                         'einfuehrung/usersession',
                         'einfuehrung/configuration',
                         'einfuehrung/pagetypes',
+                        'einfuehrung/theming',
                     ]
                 },
                 {
