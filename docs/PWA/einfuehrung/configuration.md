@@ -1,9 +1,8 @@
 # Konfiguration
 
-## Anpassen der Konfiguration
+## Konfiguration von Umgebungsvariablen
 
-Zur erfolgreichen Verbindungsherstellung mit API Endpunkten sollten wichtige Werte, wie API Schlüssel, in der __`.env`__
-Datei des Projektes als Umgebungsvariablen gespeichert werden.
+Umgebungsvariablen des Projektes werden in der Datei __`.env`__ gespeichert.
 Damit diese Werte im Applikationskontext zur Verfügung stehen, benutzt hubble das [@nuxtjs/dotenv](https://github.com/nuxt-community/dotenv-module)
 Modul. Dieses ermöglicht den Zugriff auf die Variablen in der __`.env`__ Datei über die Referenzierung von __`process.env`__.
 
@@ -12,7 +11,6 @@ Applikationsrahmen übermittelt wird. Damit Secret Keys und Datenbankschlüssel 
 die über __`process.env`__ verfügbar sein sollen auf eine Whitelist gesetzt werden:
 Die Werte, die an den Client gesendet werden können, müssen in der  __`nuxt.config.js`__ unter der Option __`only`__ des __`dotenv`__ Moduls als Teil der 
  __`buildModules`__ eingetragen werden.
-
 
 * __Schritt 1__: Hinzufügen von Keys zur __`.env`__
 ``` js
@@ -45,10 +43,6 @@ buildModules: [
 
 Das Starter Projekt enhält eine __`.env_example`__ Datei als Referenz für die Keys und Art von Keys, die benötigt werden oder
 werden könnten. 
-Der Abschnitt [User Sessions](usersession.md) der Dokumentation enthält ein Beispiel zur Verwendung von Werten aus der __`.env`__.
-
-
-Außerdem sollte die Datei __`.env`__ in der __`.gitignore`__ eingetragen sein, um das Speichern von sensitiven Informationen in der Versionskontrolle zu verhindern.
 
 ``` git
 # .gitignore
@@ -63,13 +57,10 @@ sicher sind zur Versendung an den Client.
 :::
 
 
-### hubble Core Modul
+## Konfiguration vom hubble Core Modul
 
-Da hubble Core ein [NuxtJS Modul](https://nuxtjs.org/guide/modules) ist und als Dependency installiert wird, können jegliche Art von
-Konfigurationen über die __`nuxt.config.js`__ vorgenommen werden.
-Die Default Konfiguration ist bereit zur Benutzungsaufnahme, nachdem die __`.env`__ Datei, den oben beschriebenen Richtlinien entsprechend,
-angepasst wurde.
-
+Da hubble Core ein [NuxtJS Modul](https://nuxtjs.org/guide/modules) ist und als Dependency installiert wird, können
+Konfigurationen über die __`nuxt.config.js`__ folgendermaßen vorgenommen werden:
 
 ``` js
 // nuxt.config.js
@@ -89,4 +80,3 @@ hubble: {
 },
 // ...
 ```
-
