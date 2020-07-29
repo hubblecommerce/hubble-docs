@@ -4,16 +4,17 @@
 
 ![State Management](./statemanagement.svg)
 
-Damit die Shopdaten wie z.B. Informationen zu Produkten und Kategorien, allen Komponenten global zur Verüfung stehen, 
-benutzt hubble die Vue.js Erweiterung Vuex.
-Vuex ist fester Bestandteil von NuxtJs [Vuex Store in Nuxt](https://nuxtjs.org/guide/vuex-store).
+Große Anwendungen werden häufig komplex, da mehrere Statuselemente über viele Komponenten verteilt sind und  zwischen diesen Wechselwirkungen bestehen. Um diese Herausforderung zu lösen, bietet Vue vuex an. Vuex ist fester Bestandteil von NuxtJs [Vuex Store in Nuxt](https://nuxtjs.org/guide/vuex-store). Auf diese Bibliothek setzt auch hubble.
 
-Jede Entität hat dabei ihr eigenes Vuex Store Modul unter /store. 
+Auf diese Weise stehen diverse Daten wie z.B. Informationen zu Produkten und Kategorien, allen Komponenten global zur Verüfung und können entsprechend verwendet werden.
+
+Jede Entität nutzt dabei ihr eigenes Vuex Store Modul unter /store.
+
 Die Store Module beinhalten die von den Seiten und Komponenten benötigten Daten in __`state`__ Objekten. 
-States können nur mithilfe von Funktionen verändert werden. Dafür existieren verschiedene Arten von Funktionen,
+Die States können nur mithilfe von Funktionen verändert werden. Dafür existieren verschiedene Arten von Funktionen,
 die für die jeweilige Tätigkeit aufgerufen werden: __`getters`__, __`actions`__ und __`mutations`__.
 
-Aufbau Vuex Store Modul: 
+Die folgende Darstellung zeigt den Aufbau eines Vuex Store Moduls: 
 ``` js
 export default function (ctx) {
     const modWishlist = {
