@@ -1,6 +1,9 @@
 # Layouts
 
-hubble verwendet den von NuxtJs empfohlenen Workflow für Seiten und Layouts. 
+In einem Layout wird der Rahmen für die Applikation bzw. die jeweilige Seite definiert. 
+Dies können beispielsweise ein wiederkehrender Header und Footer sein. Eine Applikation kann dabei auf unterschiedliche Layouts zurückgreifen. 
+
+hubble verwendet dabei den von NuxtJs empfohlenen Workflow für Seiten und Layouts. 
 Welches Layout eine Seite benutzt, wird in der Layout Property der jeweiligen Seiten Komponente definiert. 
 
 ``` js
@@ -12,10 +15,10 @@ export default {
 }
 ```
 
-In einem Layout wird der Rahmen für den Seiteninhalt definiert. 
-Meistens ist das ein Header und ein Footer.  
+
 Dies bedeutet, dass der Inhalt von [Pages](pagetypes.md) in das jeweils angegebene Layout eingebettet wird.
 Dabei legt der slot `<nuxt />` die Stelle in einem Layout fest in die der Inhalt gerendert wird.
+
 
 ``` vue{19}
 // ~/layouts/hubble.vue
@@ -56,38 +59,7 @@ und wird von den meisten Seiten unter __`~/pages/`__ verwendet.
 Dies bedeutet, dass fast alle Seiten die gleichen Navigationselemente, wie beispielsweise die Wunschliste, den Benutzeraccount
 und das Suchfeld anzeigen.
 
-::: tip
-Komponenten, die auf allen (non-__`checkout`__) Seiten erscheinen sollen, müssen in das Default Layout (__`~/layouts/hubble.vue`__) eingefügt werden.
-:::
-
-Unter dem Abschnitt [Ablenkungsfreie Layouts](layouts.md#ablenkungsfreie-layouts) der hubble Dokumentation gibt es mehr Informationen zu Layouts auf __`checkout`__ Seiten.
-
-
-## Ablenkungsfreie Layouts
-
-Wie oben erwähnt, verwenden zwar die meisten Pages das Layout __`hubble`__ (__`~/layouts/hubble.vue`__), jedoch nicht alle.
-Um ein Ablenkungsfreies Checkout Erlebnis zu ermöglichen, stellt hubble die Layouts __`hubble_light`__ und __`hubble_express`__ bereit. 
-Ablenkungsfrei bedeutet in diesem Zusammenhang, dass weniger Komponenten im Layout eingebunden werden und somit der Checkout
-Prozess als prominente Hauptaktion verbleibt.
-
-::: details
-Bis auf die __`CheckoutCart`__ (__`~/pages/checkout/cart.vue`__) verwenden die Seiten im
-__`checkout`__ Ordner nicht das Default Layout.
-Die __`CheckoutCart`__ bildet eine Ausnahme unter den __`checkout`__ Seiten, da es erlaubt den Kaufprozess fortzusetzen
-oder den Warenkorb zu editieren.
-:::
-
-
-### Übersicht Layouts, die von Checkout Seiten verwendet werden:
-| hubble | hubble_light | hubble_express | 
-| --- | --- | --- |
-| cart.vue | login.vue | amazon.vue |
-|  | payment.vue | shopware-guest.vue |
-|  | success.vue | shopware-onepage.vue |
-|  | summary.vue | shopware-success.vue |
-
-
-### Übersicht Komponenten, die von den Layouts eingebunden werden:
+## Übersicht der eingebundenen Komponenten je Layout
 
 | hubble | hubble_light | hubble_express | 
 | --- | --- | --- |
@@ -110,6 +82,28 @@ oder den Warenkorb zu editieren.
 | TrustedShopsBadge |  |  |
 
 
-##### Mehr Erfahren
+## Ablenkungsfreie Layouts
+
+Wie oben erwähnt, verwenden zwar die meisten Pages das Layout __`hubble`__ (__`~/layouts/hubble.vue`__), jedoch nicht alle.
+
+Um einen ablenkungsfreien Kassenprozess zu ermöglichen, stellt hubble die Layouts __`hubble_light`__ und __`hubble_express`__ bereit. 
+Ablenkungsfrei bedeutet in diesem Zusammenhang, dass weniger Komponenten im Layout eingebunden werden und somit der Checkout
+Prozess als prominente Hauptaktion verbleibt.
+
+Ausgenommen die __`CheckoutCart`__ (__`~/pages/checkout/cart.vue`__) verwenden die Seiten im
+__`checkout`__ Verzeichnis somit das reduzierte Layout. 
+
+
+### Übersicht Layouts, die von Checkout Seiten verwendet werden:
+| hubble | hubble_light | hubble_express | 
+| --- | --- | --- |
+| cart.vue | login.vue | amazon.vue |
+|  | payment.vue | shopware-guest.vue |
+|  | success.vue | shopware-onepage.vue |
+|  | summary.vue | shopware-success.vue |
+
+
+
+## Mehr Erfahren
 Mehr über die verschiedenen View Arten im Kontext von NuxtJS: [Views](https://nuxtjs.org/guide/views)
 
