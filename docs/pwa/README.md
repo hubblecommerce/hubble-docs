@@ -160,13 +160,13 @@ After a short time you can access your app via http://localhost:3336/
 
 The structure of the hubble module is based on the nuxt.js [directory structure](https://nuxtjs.org/guide/directory-structure). 
 
-[Stores](./stores.md)
+[Stores]()
  
-[Middleware](./middlewares.md)
+[Middleware]()
  
-[Plugins](./plugins.md)
+[Plugins]()
 
-[Assets](./assets.md) 
+[Assets]() 
 
 
 
