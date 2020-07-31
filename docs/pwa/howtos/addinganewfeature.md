@@ -381,5 +381,85 @@ export default async (context) => {
 }
 ```
 
+## Styling der Komponente
+### Anlegen der __`.scss`__ Datei
+Um nun die __`LastViewedProducts`__ Komponente zu Stylen ist der Konvention des hubble Starterprojektes folgend
+eine __`.scss`__ Datei mit dem Namen der Komponente in der
+__`~/assets/scss/hubble/components`__ zu erstellen. Die Namensgebung und Einbindung im __`components`__ Ordner ist optional
+und kann von der Konvention abweichen.
+
+__Hinweis: __`~/assets/scss/hubble/`__ ist der Theme Ordner, der in der __`.ENV`__ angegeben wurde __`THEME = 'hubble'`__.__
+
+In dieser Datei können nun die Klassen aus dem Template
+verwendet werden, um ein gewünschtes Styling zu definieren. Mit dem mobile-first Ansatz, werden dabei als Erstes alle Styles für mobile
+Viewports definiert und nur Änderungen, die sich für non-mobile Screens ergeben via Media Queries eingebunden. 
+Außerdem können die im hubble Projekt definierten Sass Variablen verwendet werden, um z.B. wie im Folgenden die
+Schriftgröße zu setzen (__`$font-size-subtitle`__).
+
+Die __`last-viewed-products.scss`__ Datei hat somit folgenden generellen Aufbau (vereinfacht dargestellt):
+
+``` scss
+/* ~/assets/scss/hubble/components/last-viewed-products.scss */
+.last-viewed--wrp {
+    .last-viewed--title { ... }
+
+    .last-viewed--list {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+
+        .last-viewed--clickable {
+            ...
+
+            a {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        .last-viewed--name {
+            font-size: $font-size-subtitle;
+            font-weight: 700;
+            text-align: center;
+            align-self: center;
+            padding: 5px 0
+        }
+    }
+}
+
+@media(min-width: 768px) {
+    .last-viewed--wrp {
+        .last-viewed--title { ... }
+
+        .last-viewed--list {
+            justify-content: space-between;
+
+            .last-viewed--clickable { ... }
+
+            .last-viewed--image {
+                height: 150px;
+            }
+
+            .last-viewed--name {
+                align-self: flex-end;
+            }
+        }
+    }
+}
+
+```
+
+
+### Einbinden in den Kompilierungsprozess
+Die Styles sind an dieser Stelle zwar definiert, jedoch haben diese keine Auswirkungen auf die sichtbare UI. 
+Neue Sass Dateien müssen erst als Teil der Kompilierung von __`.scss`__ zu __`.css`__ definiert werden.
+Zum Einbinden der neuen __`.scss`__ Datei in den Kompilierungsprozess, ist diese in der __`~/assets/scss/hubble/all.scss`__ zu importieren:
+``` scss
+@import "components/last-viewed-products";
+```
+Dies gehört zur Vorkonfiguration in hubble und ist somit nicht optional, zumindest insofern die Default Projekt Einstellungen verwendet werden.
+
 
 
