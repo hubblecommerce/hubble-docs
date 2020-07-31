@@ -8,6 +8,7 @@ module.exports = {
     themeConfig: {
         logo: '/assets/images/hubble-logo.png',
         nav: [
+            { text: 'Getting Started', link: '/gettingstarted/' },
             { text: 'PWA', link: '/pwa/' },
             { text: 'API', link: '/api/' },
             { text: 'Component Library', link: '/components/' },
@@ -16,6 +17,30 @@ module.exports = {
             { text: 'Github', link: 'https://github.com/hubblecommerce/hubble-frontend-pwa' },
         ],
         sidebar: {
+            '/gettingstarted/': [
+                {
+                    title: 'Einführung',   // required
+                    path: '/gettingstarted/introduction',
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                        'gettingstarted/introduction',
+                        'gettingstarted/architectureandbigpicture',
+                        'gettingstarted/techstack',
+                        'gettingstarted/systemrequirements',
+                        'gettingstarted/setupinstallation',
+                    ]
+                },
+                {
+                    title: 'Beispiel Projekte / Boilerplate',   // required
+                    path: '/gettingstarted/exampleprojectsboilerplate/shopware6',
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                        'exampleprojectsboilerplate/shopware6',
+                        'exampleprojectsboilerplate/magento2',
+                        'exampleprojectsboilerplate/anybackend'
+                    ]
+                },
+            ],
             '/api/': [
                 {
                     title: 'API',   // required

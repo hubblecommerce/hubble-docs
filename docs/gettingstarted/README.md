@@ -1,3 +1,5 @@
+# Getting Started
+
 # Shopware 6 Quickstart
 
 Following sections helps you to quickly setup hubble as a PWA for your Shopware 6.
@@ -8,8 +10,8 @@ The following installation guide was tested on MacOS and Linux environments. The
 
 ## Requirements
 
-* Node.js \(&gt;=8.0.0\)
-* NPM \(&gt;=6.0.0\)
+* Node.js \(&gt;=10.20.1\)
+* NPM \(&gt;=6.14.4\)
 * [Shopware 6 API Plugin](https://github.com/hubblecommerce/shopware6-api-plugin)
 * [Shopware 6 Payone Plugin](https://store.shopware.com/payon69044615910f/payone-payment-fuer-shopware-6.html)
 
