@@ -195,9 +195,10 @@ module.exports = {
                 },
                 {
                     title: 'How Tos',   // required
-                    path: '/pwa/howtos/addingapage',
+                    path: '/pwa/howtos/addinganewfeature',
                     collapsable: false, // optional, defaults to true
                     children: [
+                        'howtos/addinganewfeature',
                         'howtos/addingapage',
                         'howtos/loadingcontentfromlegacy',
                         'howtos/twatogoogleplaystore'
