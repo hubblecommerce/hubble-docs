@@ -1,12 +1,12 @@
 # User Sessions
 
 User Sessions in hubble spielen eine wichtige Rolle bei der clientseitigen Zwischenspeicherung benutzerbezogener Daten wie z.B. Wunschliste und Warenkorb.
-Alle Daten die verarbeitet werden, müssen via Vuex Store bereitgestellt werden (siehe [State Management](../statemanagement)).
-Deshalb ist es das naheliegenste diese Objekte eins zu eins clientseitig im Browser des Anwenders zu speichern.
-Eindimensionale bzw. statische Daten werden dafür in einem Cookie gespeichert. Z.B. auswahl der aktuellen Sprache. 
-Alle anderen Entitäten die größer sind als ein reguläres Cookie (2kb), werden im local Storage gespeichert z.B. Warenkorb, Wunschliste. 
+Alle Daten, die verarbeitet werden, müssen via Vuex Store bereitgestellt werden (siehe [State Management](../statemanagement)).
+Deshalb ist naheliegend, diese Objekte eins zu eins clientseitig im Browser des Anwenders zu speichern.
+Eindimensionale bzw. statische Daten werden dafür in einem Cookie gespeichert; beispielsweise die Aauswahl der aktuellen Sprache. 
+Alle anderen Entitäten die größer sind als ein reguläres Cookie (2 KB), werden im local Storage gespeichert; z.B. Warenkorb und Wunschliste. 
 
-Es ergeben sich drei Arten von Speicher:
+Grundsätzlich stehen in hubble drei Arten von Speicher zur Verfügung:
 1. Speicherung von Daten zur Laufzeit im Vuex Store
 2. Speicherung von großen Objekten über __`$localForage`__ im Browser
 3. Speicherung von kleinen Objekten Cookie im Browser
@@ -38,7 +38,7 @@ dispatch('recalculateCart', { order: JSON.stringify(order) })
     })
 ```
 
-Anders als Cookies, haben Daten im local Storage keine automatisch gesetztes Ablaufdatum. hubble bietet Helferfunktionen um die 
+Anders als Cookies, haben Daten im local Storage kein automatisch gesetztes Ablaufdatum. hubble bietet Helferfunktionen um die 
 Lebensdauer des local storage zu regulieren. 
 
 In hubble wird die Speicherung via __`$localForage`__ dabei über das [localforage-nuxt](https://www.npmjs.com/package/localforage-nuxt) Modul,
