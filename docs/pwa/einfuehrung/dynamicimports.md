@@ -9,13 +9,13 @@ Technisch basiert die Lösung auf dem Prinzip, dass Webpack anhand von `import` 
 So wird der Chunk bzw. die JS Datei nur dann geladen wenn diese aktiv importiert wird. 
 
 Für Routen bzw. Seiten erstellt NuxtJs automatisch Chunks. Das dynamische Importieren von Komponenten innerhalb eines Layouts oder einer Seite muss man
-selbst beim programmieren berücksichtigen. 
+selbst beim Programmieren berücksichtigen. 
 
 
 ## Dynamisches importieren von JS
 ### Dynamisches importieren von Vue Komponenten
 
-Um eine Vue.js Komponente dynamisch zu laden reicht es sie auf folgende Art und Weise einzubinden:
+Um eine Vue.js Komponente dynamisch zu laden, reicht es sie auf folgende Art und Weise einzubinden:
 
 ``` js
 components: {
@@ -25,7 +25,7 @@ components: {
 
 
 ### Dynamisches importieren von Middleware
-Für die Einbindung von Middleware, die nicht von allen Seiten verwendet wird, eignet sie die Verwendung einer [anonymen Middleware](https://nuxtjs.org/api/pages-middleware/#anonymous-middleware).
+Für die Einbindung von Middleware, die nicht von allen Seiten verwendet wird, eignet sich die Verwendung einer [anonymen Middleware](https://nuxtjs.org/api/pages-middleware/#anonymous-middleware).
 Anstatt die Middlware als String in der Middleware zu definieren wird sie via import Funktion eingebunden: 
 
 ``` js
@@ -44,14 +44,14 @@ export default {
 
 ### Dynamisches importieren von Plugins
 In NuxtJs ermöglichen es sogenannte Plugins externe JS Bibliotheken und Module leicht einzubinden und diese in global im App Kontext zur Verfügung zu stellen:
-Ein gutes Beispiel für Funktionalität, die global auf jeder Seite verfügbar sein muss, ist die __`FlashMessages`__ Komponente.
+Ein gutes Beispiel für eine Funktionalität, die global auf jeder Seite verfügbar sein muss, ist die __`FlashMessages`__ Komponente.
 Durch das Einbinden dieser in der __`~/modules/@hubblecommerce/hubble/core/plugins/global.js`__ , 
-ist es nicht mehr notwendig in jedem Layout ein __`import`__ Statement für die __`FlashMessages`__ Komponente hinzuzufügen.
+ist es nicht mehr notwendig, in jedem Layout ein __`import`__ Statement für die __`FlashMessages`__ Komponente hinzuzufügen.
 
-NuxtJs empfiehlt Code von Drittanbietern via Plugins zu installieren. Doch vorsicht: nicht alle Plugins werden auf allen Seiten benutzt, 
+NuxtJs empfiehlt Code von Drittanbietern via Plugins zu installieren. Doch Vorsicht: Nicht alle Plugins werden auf allen Seiten benutzt, 
 daher ist es nicht effizient diese global einzubinden. 
 
-Aus diesem Grund ist bei hubble die Plugin Initialisierung nicht in dem Modulordner __`~/modules/@hubblecommerce/hubble/core/plugins/`__. 
+Aus diesem Grund findet die Plugin Initialisierung bei hubble  nicht in dem Modulordner __`~/modules/@hubblecommerce/hubble/core/plugins/`__ statt. 
 Stattdessen wird das jeweilige Plugin nur in dem __`created`__ Hook der Komponente initialisiert, die das Plugin auch wirklich benutzt.
  
 ``` js
