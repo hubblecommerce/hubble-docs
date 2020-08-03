@@ -21,7 +21,7 @@ auch wenn der Shop zu einem späteren Zeitpunkt besucht wird.
 
 ::: tip
 Es existieren immer mehrere Möglichkeiten, dieselbe Funktionalität zu erreichen. Dieser Guide beginnt mit einer Variante, um 
-verschiedene Implementationsmöglichkeiten in hubble vorzustellen und passt den bestehenden Ansatz im Laufe des Guides.
+verschiedene Implementationsmöglichkeiten in hubble vorzustellen und passt den bestehenden Ansatz im Laufe des Guides an.
 :::
 
 #### What you'll learn
