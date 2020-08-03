@@ -106,6 +106,7 @@ module.exports = {
                         'architectureanddataflow/prefetching',
                         'architectureanddataflow/lazyloading',
                         'architectureanddataflow/backendintegration',
+                        'architectureanddataflow/layouts',
                     ]
                 },
                 {
@@ -119,7 +120,7 @@ module.exports = {
                 },
                 {
                     title: 'Page Types',   // required
-                    path: '/pwa/pagetypes/navigation',
+                    path: '/pwa/pagetypes/',
                     collapsable: false, // optional, defaults to true
                     children: [
                         'pagetypes/navigation',
