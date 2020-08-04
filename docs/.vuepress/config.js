@@ -221,7 +221,7 @@ module.exports = {
                 },
                 {
                     title: 'How Tos',   // required
-                    path: '/pwa/howtos/addinganewfeature',
+                    path: '/pwa/howtos/',
                     collapsable: false, // optional, defaults to true
                     children: [
                         'howtos/addinganewfeature',
