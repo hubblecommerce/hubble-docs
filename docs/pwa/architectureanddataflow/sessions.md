@@ -9,7 +9,7 @@ Alle anderen Entitäten die größer sind als ein regulärer Cookie (2 KB), werd
 Grundsätzlich stehen in hubble drei Arten von Speicher zur Verfügung:
 1. Speicherung von Daten zur Laufzeit im Vuex Store
 2. Speicherung von großen Objekten über __`$localForage`__ im Browser
-3. Speicherung von kleinen Objekten Cookie im Browser
+3. Speicherung von kleinen Objekten als Cookie im Browser
 
 ``` js
 // ~/modules/@hubblecommerce/hubble/core/store/api/modCart.js
@@ -59,30 +59,22 @@ Diese Helper Funktionen werden zusammen mit dem [localforage-nuxt](https://www.n
 welches [localForage](https://github.com/localForage/localForage) für NuxtJS implementiert, eingesetzt.
 
 
-## Auth Token und [hubble API](../../api) als Proxy
 
-hubble Api verwendet als Sicherheitsmechanismus die OAuth2 Methode.
-Damit ein Request an die API erfolgreich ist, wird ein Auth Token im Request Objekt benötigt. 
-Um ein gültiges Token von der API zu erhalten, müssen dafür __Client ID__ und __Client Secret__, sogenannte Client Credentials,
-verwendet werden. Diese zwei Werte sollten in der __`.env`__ 
-Datei des Projektes eingetragen sein. Mehr zur korrekten Konfiguration und Verwendung von Werten aus der __`.env`__ Datei 
-unter dem Abschnitt [Konfiguration](../configuration.md).
+## User Sessions basierend auf Auth Token
+Damit Daten sowohl im Browserspeicher, als auch im Vuex Store gespeichert werden können, muss dafür zuerst ein erfolgreicher
+API Request erfolgen. API Requests in hubble zeichnen sich darin aus, dass diese nur unter Verwendung gültiger
+Client Credentials erfolgen, sowie dem daraus resultierenden Erhalt eines Auth Tokens.
+Dabei sind Client Credentials in die __`.env`__ einzutragen und existieren je Shop,
+wodurch diese in dem jeweiligen Shop Admin Bereich erhältlich sind. Zur korrekten und sicheren Verwendung der __`.env`__
+sollte der Abschnitt [Konfiguration](../configuration.md) referenziert werden. 
+Auth Token jedoch existieren pro Session und sind während der Gültigkeitsdauer der Session Teil jedes Requests. 
 
-Der erhaltene Token, wird als Bearer Authentication Token bezeichnet und ist im Response Objekt im Feld __`access_token`__ enthalten.
-Die Implementation zum Erhalt eines Bearer Authentication Tokens und dessen Speicherung im Vuex Store State ist Teil
-der Middleware __`apiAuthenticate`__. Diese ist in den meisten Routen als Middleware aufgelistet und wird somit immer vor
-dem Rendering der jeweiligen Route ausgeführt. Dadurch können eingebundene Komponenten in subsequenten Requests den Token
-verwenden.
-
-Es müssen folgende Felder in der .env Datei ausgefüllt sein, um ein Bearer Authentication Token zu erhalten:
-+ Base URL
-+ Endpoint
-+ Client ID
-+ Client Secret
-
-Der Bearer Authentication Token ist kennzeichnendes Merkmal der Session gegenüber der API.
-Er wird als Header bei jedem API Aufruf mitgesendet, um den API Benutzer als valide einzustufen. 
-
-::: tip
-Die hubble API agiert als Proxy zwischen der hubble PWA und dem Shop Backend. 
+::: tip 
+Der Erhalt eines gültigen Auth Tokens pro Session ist nur möglich, wenn Client Credentials aus dem Shop Admin Bereich in
+der __`.env`__ eingetragen wurden.
 :::
+
+Für eine detaillierte Beschreibung, des Ablauf zum Erhalt des Auth Tokens und der Verwendung dieser, kann der 
+Abschnitt [Backends](../backends/) referenziert werden. Dieser enthält Informationen zur hubble Data API, Shopware 6 und
+den Besonderheiten, der jeweiligen Backend Lösung, die es zu beachten gilt für API Requests.
+
