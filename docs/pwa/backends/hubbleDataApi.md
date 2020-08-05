@@ -1,3 +1,7 @@
+---
+pageClass: theguide
+---
+
 # Hubble Data API
 
 ## Auth Token und [hubble API](../../api) als Proxy
@@ -119,6 +123,9 @@ dispatch('recalculateCart', { order: JSON.stringify(order) })
         });
     })
 ```
+
+
+<ImageComponent :src="$withBase('/warenkorb.svg')" />
 
 
 ## hubble Data API spezifische Store Module und Middleware

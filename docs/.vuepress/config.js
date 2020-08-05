@@ -20,14 +20,14 @@ module.exports = {
             '/gettingstarted/': [
                 {
                     title: 'Einführung',   // required
-                    path: '/gettingstarted/introduction',
+                    path: '/gettingstarted/',
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'gettingstarted/introduction',
-                        'gettingstarted/architectureandbigpicture',
-                        'gettingstarted/techstack',
-                        'gettingstarted/systemrequirements',
-                        'gettingstarted/setupinstallation',
+                         // 'gettingstarted/introduction',
+                        'architectureandbigpicture',
+                        'setupinstallation',
+                        'techstack',
+                        'systemrequirements',
                     ]
                 },
                 {
