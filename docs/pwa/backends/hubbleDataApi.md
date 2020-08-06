@@ -125,7 +125,7 @@ dispatch('recalculateCart', { order: JSON.stringify(order) })
 ```
 
 
-<ImageComponent :src="$withBase('/warenkorb.svg')" />
+![Warenkorb](./warenkorb.svg) 
 
 
 ## hubble Data API spezifische Store Module und Middleware

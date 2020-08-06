@@ -234,13 +234,6 @@ module.exports = {
                     title: 'API Reference',   // required
                     path: '/pwa/apireference',
                     collapsable: false, // optional, defaults to true
-                },
-                {
-                    title: 'hubble Module',   // required
-                    collapsable: false, // optional, defaults to true
-                    children: [
-                        'sw6Quickstart'
-                    ]
                 }
             ],
             '/components/': [

@@ -58,8 +58,7 @@ API_BASE_URL      = 'http://shopware.local'
 Dabei ist zu beachten, dass der __`API_SW_ACCESS_KEY`__ für den Storefront Verkaufskanal eingetragen wird und __nicht__ für den
 Headless Verkaufskanal, denn die Headless Variante liefert zur Zeit keine SEO URLs.
 
-<ImageComponent :src="$withBase('/saleschannelaccess.png')" />
-
+![Sales Channel Access](../pwa/saleschannelaccess.png) 
 
 ## Starten der hubble PWA im Entwicklungsmodus
 ``` bash

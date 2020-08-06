@@ -46,7 +46,7 @@ Außerdem wird hier jeweils auch der __`pageType`__ auf __`product`__ gesetzt, w
 Diese enthält alle Komponenten zur Darstellung der Produktdetailseite.
 
 ``` js{4,5,8,13}
-// `~/modules/@hubblecommerce/hubble/core/middleware/sw/apiResourceRoute.js
+// ~/modules/@hubblecommerce/hubble/core/middleware/sw/apiResourceRoute.js
 return new Promise((resolve, reject) => {
     store.dispatch('modApiProduct/mappingProduct', { product: matchingProduct })
         .then((res) => {
@@ -463,3 +463,99 @@ Dies gehört zur Vorkonfiguration in hubble und ist somit nicht optional, zumind
 
 
 
+## Auslagern in eine neue Middleware
+
+Das Feature ist nun zwar funktionell einsetzbar, jedoch gibt es durch die Verwendung des Vuex Stores eine weitere
+Vereinfachungsmöglichkeit: 
+Nachdem das API Response Objekt geparsed wurde, wird es in der __`apiResourceRoute`__ an die __`mutation`__
+__`modApiProduct/setDataProduct`__ weitergegeben. Diese wiederum speichert die, für die __`LastViewedProducts`__ 
+Komponente, benötigten Daten global im Vuex Store ab.
+Somit können diese Daten nun auch außerhalb der __`apiResourceRoute`__ referenziert werden: Eine nachgelagerte Middleware kann
+dadurch die Daten der __`viewedProducts`__ Liste hinzufügen.
+
+Hier ist die Iniitierung für die Abspeicherung im Vuex Store zu sehen:
+``` js{4}
+// ~/modules/@hubblecommerce/hubble/core/middleware/sw/apiResourceRoute.js
+store.dispatch('modApiProduct/mappingProduct', { product: matchingProduct })
+    .then((res) => {
+        store.commit('modApiProduct/setDataProduct', {
+            data: {
+                result: {
+                    item: res
+                }
+            }
+        });
+        // ...
+    })
+```
+
+Hier ist die Abspeicherung im Vuex Store durch die __`mutation`__ zu sehen: 
+``` js
+// ~/modApiProduct.js
+setDataProduct: (state, payload) => {
+    state.dataProduct = payload.data;
+},
+```
+
+Dies bedeutet, dass die neue Middleware nun das Feld __`dataProduct`__ referenzieren kann.
+Zum Anlegen dieser neuen Middleware gilt folgendes zu beachten: Da dies keine Middleware ist, die
+auf allen Seiten zum Einsatz kommt momentan, sondern nur vor dem Rendering der ProduktDetailseite
+ausgeführt werden soll, kann diese in einen, vom __`~/middleware/`__ Ordner, separaten Ordner gespeichert werden,
+um als sogenannte [anonyme Middleware](https://nuxtjs.org/api/pages-middleware/#anonymous-middleware) eingebunden zu werden:
+
+__1.Schritt__: Anlegen eines neuen Ordners im Projekt. Entweder wie folgt über das Terminal oder über die Editor Oberfläche.
+``` bash
+mkdir middleware-anonymous
+cd middleware-anonymous
+touch lastViewedProductsProvide.js
+```
+
+__2.Schritt__: Extrahieren und Anpassen der vorherigen Implementation.
+``` js{6,8}
+import _ from 'lodash';
+
+export default function({ store, route, error }) {
+    return new Promise((resolve, reject) => {
+        if (!_.isEmpty(store.state.modApiProduct.dataProduct)) {
+            const { name, id, url_pds, image } = store.state.modApiProduct.dataProduct.result.item;
+
+            store.commit('modLastViewed/addLastViewedProducts', { name, id, url_pds, image });
+
+            resolve('OK');
+        }
+
+        resolve('OK');
+    })
+}
+```
+
+Wie oben zu erkennen ist, kann über den Vuex Store an beliebiger Stelle auf die gewünschten Produktdetails zugegriffen werden.
+Wie hier zu sehen ist, sogar nur auf einen Bruchteil der vorhandenen Felder: __`name`__, __`id`__, __`url_pds`__ und __`image`__.
+
+Daraus folgend kann die Überschreibung der Middleware __`apiResourceRoute`__ aus dem Projekt entfernt werden und die
+Deaktivierung aus den hubble Modul Einstellungen in der __`~/nuxt.config.js`__ ausgetragen werden.
+
+``` js
+// ~/nuxt.config.js (simplified)
+hubble: {
+    // ...
+    deactivateMiddleware: [],
+    // ...
+}
+```
+
+Noch ist die Funktionalität jedoch nicht wiederhergestellt: Es gilt die neue Middleware __`lastViewedProductsProvide`__, 
+nachgelagert der __`apiResourceRoute`__, aufzulisten in der __`~/pages/_.vue`__:
+
+``` js
+// ~/pages/_.vue (simplified)
+import lastViewedProductsProvide from '~/middleware-anonymous/lastViewedProductsProvide.js
+export default {
+    // ...
+    middleware: [
+        // ...
+        lastViewedProductsProvide
+    ],
+    // ...
+}
+```
