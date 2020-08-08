@@ -2,7 +2,13 @@
 pageClass: theguide
 ---
 
-# Setup / Installation
+# Kickstart mit Shopware 6
+
+## Backend
+
+Für Shopware 6 als Backend bietet hubble eine direkt nutzbare Integration.
+
+Shopware's [Sales Channel](https://docs.shopware.com/en/shopware-platform-dev-en/sales-channel-api) und [Store API](https://docs.shopware.com/en/shopware-platform-dev-en/store-api-guide)'s werden direkt über das __`@hubblecommerce`__ Modul angesprochen.
 
 ## Überblick
 
@@ -92,10 +98,3 @@ Es ist folgender Eintrag notwendig in der __`~/.env`__:
 ```dotenv
 API_TYPE = 'api'
 ```
-
-
-## Shopware 6 als Backend
-
-Für Shopware 6 als Backend bietet hubble eine direkt nutzbare Integration.
-
-Shopware's [Sales Channel](https://docs.shopware.com/en/shopware-platform-dev-en/sales-channel-api) und [Store API](https://docs.shopware.com/en/shopware-platform-dev-en/store-api-guide)'s werden direkt über das __`@hubblecommerce`__ Modul angesprochen.
