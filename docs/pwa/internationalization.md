@@ -34,10 +34,6 @@ Fall __`~/locales`__. Im Folgenden ist die dazugehörige Default Einstellung fü
 // ...
 ```
 
-Erwähnenswert ist die Möglichkeit die entsprechenden Übersetzungsdateien nur bei Bedarf
-zu laden. Dies ist möglich durch die Zeile: __`lazy: true`__. Mehr über diese Funktionalität
-gibt es im Abschnitt [Lazy Load Translations](https://i18n.nuxtjs.org/lazy-load-translations.html)
-der [nuxt-i18n](https://i18n.nuxtjs.org/) Dokumentation. 
-Somit werden auch für Lokalisierungsdateien, die Prinzipien aus der hubble Dokumentation zum
-[Lazy Loading](/pwa/architectureanddataflow/lazyloading.md) eingehalten.
-Dort gibt es auch genaueres zu Optimierungsmethoden, die in hubble angewendet werden.
+Besonders erwähnenswert ist die Möglichkeit, die entsprechenden Übersetzungsdateien nur bei Bedarf zu laden. Hierzu ist der Parameter __`lazy: true`__ in der nuxt-i18n Konfiguration hinzuzufügen, siehe oben. Weitere Informationen zu dieser Funktionalität sind diesem Abschnitt [Lazy Load Translations](https://i18n.nuxtjs.org/lazy-load-translations.html) der [nuxt-i18n](https://i18n.nuxtjs.org/) Dokumentation zu entnehmen. 
+
+Somit werden auch für Lokalisierungsdateien, die Prinzipien des [Lazy Loading](/pwa/architectureanddataflow/lazyloading.md) eingehalten.
