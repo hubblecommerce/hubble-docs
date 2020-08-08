@@ -4,15 +4,7 @@ pageClass: theguide
 
 # Setup / Installation
 
-## Setup von hubble mit Shopware 6 als Backend
-
-Abweichend von anderen Shopsystemen als Backendlösung, bietet hubble für Shopware 6 als Backend, eine separate Lösung:
-Shopware's [Sales Channel](https://docs.shopware.com/en/shopware-platform-dev-en/sales-channel-api) 
-und [Store API](https://docs.shopware.com/en/shopware-platform-dev-en/store-api-guide)'s werden direkt
-über das __`@hubblecommerce`__ Modul angesprochen.
-
-
-## Overview
+## Überblick
 
 Das Repository besteht aus einer vorkonfigurierten [NuxtJS](https://nuxtjs.org/) Version,
 die hubble als NuxtJS Modul im __`~/modules/`__ Ordner enthält:
@@ -100,3 +92,10 @@ Es ist folgender Eintrag notwendig in der __`~/.env`__:
 ```dotenv
 API_TYPE = 'api'
 ```
+
+
+## Shopware 6 als Backend
+
+Für Shopware 6 als Backend bietet hubble eine direkt nutzbare Integration.
+
+Shopware's [Sales Channel](https://docs.shopware.com/en/shopware-platform-dev-en/sales-channel-api) und [Store API](https://docs.shopware.com/en/shopware-platform-dev-en/store-api-guide)'s werden direkt über das __`@hubblecommerce`__ Modul angesprochen.
