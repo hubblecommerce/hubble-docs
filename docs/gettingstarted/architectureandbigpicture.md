@@ -1,34 +1,27 @@
 # Architektur und Überblick
 
-## Die hubble PWA: ein Frontend für alle
+## Die hubble PWA - Ein Frontend für Alle
 
-Die hubble PWA ist eine Frontend-Lösung für eCommerce Plattformen.
-Ob Magento, Magento 2, Shopware oder xt:Commerce, es können die gleichen hubble
-UI Komponenten und Funktionalitäten verwendet werden. Dabei existieren bereits alle gängigen Shopseitenarten,
-wie z.B. Kategorien, Produktdetails und Warenkorb.
-Zudem können nicht nur die bestehenden hubble Komponenten verwendet werden, sondern
-auch leicht eigene entwickelt werden: hubble basiert auf [NuxtJS](https://nuxtjs.org/), womit die Komponenten
-Entwicklung in [Vue.js](https://vuejs.org/) stattfindet.
-Da NuxtJS stark auf die Verwendung der Ordnerstruktur ausgelegt ist, wird für eine Erweiterung
-primär nur das Anlegen der Dateien im jeweils passenden Ordner benötigt. 
-Außerdem lassen sich in Kombination mit [Vuex](https://vuex.vuejs.org/) flexible Benutzeroberflächen erstellen, bei denen die
-Komponenten nach belieben wiederverwendet, angepasst und im Nachhinein umpositioniert werden können.
-Denn die Daten, die Komponenten anzeigen werden in hubble im Vuex Store verarbeitet und verwaltet.
-Dadurch gibt es eine eindeutige Trennung zwischen Präsentationselementen und State Verwaltung.
-Benutzer Interaktionen mit den visuellen Elementen führen also meist zu einer Weiterleitung an den
-Vuex Store, der bei Bedarf API Requests durchführt und die Daten formatiert und aufbereitet für die Komponenten.
-Dabei ist all dies bereits vorkonfiguriert und bereit zu Verwendung.
-Zusätzlich zu den Vorkonfigurationen, die Teil von NuxtJS Projekten sind, existieren auch weitere Module
-und Einstellungen, die durch hubble hinzugefügt wurden. Für eine komplette Liste der aktuell im Projekt verwendeten
-Dependencies kann die [~/package.json](https://github.com/hubblecommerce/hubble-frontend-pwa/blob/master/package.json)
-referenziert werden. Bestehende Konfigurationsoptionen dazu können in der 
-[~/nuxt.config.js](https://github.com/hubblecommerce/hubble-frontend-pwa/blob/master/nuxt.config.js) eingesehen
-und angepasst werden.
+Die hubble PWA ist eine Frontend-Lösung für die gängigen eCommerce Plattformen und indivudelle Architekturen.
 
-Für die Anbindung zum Shopsystem gibt es in hubble aktuell zwei Möglichkeiten:
-Zum einen die hubble Data API und zum anderen die jeweiligen Shopware API Endpunkte.
-Beide Varianten haben dabei einen vergleichbaren Ansatz: Die API führt die Kalkulationen durch und liefert
-ein Ergebnis, welches im Frontend für die Anzeige angepasst und letztendlich angezeigt wird. 
+Ob Magento, Magento 2, Shopware oder xt:Commerce, es können die gleichen hubble UI Komponenten und Funktionalitäten verwendet werden. hubble stellt hierfür bereits die gängigen Funktionen und Bedienelemente bereit: CMS, Kategorie, Suche Produktseite, Warenkorb, Checkout und Kundenkonto.
 
-Die hubble Data API verwendet eine Kombination aus [Laravel](https://laravel.com/)
-und [Elasticsearch](https://www.elastic.co/de/elasticsearch/).
+Um einen hohen Individualisierungsgrad zu erreichen, können nicht nur die bestehenden hubble Komponenten verwendet werden, sondern auch leicht eigene Funktionen entwickelt werden: hubble basiert auf [NuxtJS](https://nuxtjs.org/). Der Entwickler arbeitet somit in weit verbreiteten Technologien und dem Framework [Vue.js](https://vuejs.org/) und kann somit auf umfassende Ressourcen zurückgreifen. 
+
+In Kombination mit [Vuex](https://vuex.vuejs.org/) flexible Benutzeroberflächen erstellen, bei denen die Komponenten nach belieben wiederverwendet, angepasst und je nach Anforderung umpositioniert werden können.
+
+Sämtliche Daten, die Komponenten anzeigen werden in hubble im Vuex Store verarbeitet und verwaltet. Dadurch ergibt sicht eine eindeutige Trennung zwischen Präsentationselementen und State Verwaltung. Benutzerinteraktionen führen zu einer Weiterleitung an den Vuex Store, der bei Bedarf API Requests durchführt, die zurückerhaltenden Daten formatier und für die Komponenten aufbereitet.
+
+hubble ist modular aufgebaut und nutzt einerseits eigene Module als auch externe. Eine komplette Liste der aktuell im Projekt verwendeten Dependencies kann der [~/package.json](https://github.com/hubblecommerce/hubble-frontend-pwa/blob/master/package.json) entnommen werden. 
+
+Bestehende Konfigurationsoptionen dazu können in der [~/nuxt.config.js](https://github.com/hubblecommerce/hubble-frontend-pwa/blob/master/nuxt.config.js) eingesehen und angepasst werden.
+
+Wie erwähnt, ist hubble ein Frontend. Somit benötigt es stets ein Backend, welches Daten liefert und annimmt. 
+
+Für die Anbindung zu Shopsystemen stehen in hubble aktuell zwei Möglichkeiten zur Verfügung:
+
+Zum einen kann die jeweiige API des Shopsystems verwendet werden. Für Shopware 6 stellt hubble bereits eine direkte Integration der wesentlichen Endpunkte bereit.
+
+Für komplexe Anforderungen oder die Anbindung individueller Backends, stellen wir mit der hubble DataAPI sowie der hubble PaymentAPI zwei Lösungen mit hoher Flexibät zur Verfügung. Die DataAPI sowie PaymentAPI verwenden eine Kombination aus [Laravel](https://laravel.com/) und [Elasticsearch](https://www.elastic.co/de/elasticsearch/).
+
+Beide Varianten haben dabei einen vergleichbaren Ansatz und werden in der hubble PWA abstrahiert und gleichartig behandelt. 
