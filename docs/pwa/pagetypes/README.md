@@ -10,7 +10,7 @@ Folgende Seitentypen sind implementiert:
 - [Kategorie](/pwa/pagetypes/catalogcategory)
 - [Suche](/pwa/pagetypes/search)
 - [Produktseite](/pwa/pagetypes/productdetailpage)
-- [Warenkorb](/pwa/pagetypes/cart)
+- [Warenkorb](/pwa/pagetypes/checkout/#checkoutcart)
 - [Checkout](/pwa/pagetypes/checkout)
 - [Kundenaccount](/pwa/pagetypes/customeraccount)
 
