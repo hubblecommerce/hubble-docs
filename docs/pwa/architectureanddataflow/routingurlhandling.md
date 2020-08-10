@@ -226,3 +226,42 @@ Den Unterkomponenten des Layouts können dann als Properties diese Daten überge
 <!-- ~/layouts/hubble.vue -->
 <the-mega-menu v-if="!isEmpty(dataMenu)" :data-items="dataMenu" />
 ```
+
+## Möglichkeiten zur Navigation zwischen Routen
+Durch die Navigationsmöglichkeiten in NuxtJS ergeben sich folgende für hubble:
+Zum einen ist es möglich die __`<nuxt-link>`__ Komponente zu verwenden, für die bei Bedarf auch
+Prefetching global oder lokal, je Link, aktiviert werden kann. 
+Bezüglich der Verwendung der Prefetching Funktionalität in hubble und der bestehenden Konfiguration
+kann der Abschnitt [Prefetching](./prefetching.md) der Dokumentation referenziert werden.
+
+Zum anderen existiert die Möglichkeit direkt den Router über __`this.$router`__ zu referenzieren.
+Diese Variante eignet sich, wenn es diverser Vorprüfungen oder Vorkalkulationen bedarf, bevor eine 
+entsprechende Weiterleitung stattfinden kann.
+Im Folgenden ist dazu ein einfaches Beispiel aus dem Overlay Menü der Wunschliste,
+welches in hubble als __`offCanvas`__ bekannt ist, zu sehen:
+
+``` js
+// ~/components/customer/WishlistLayer.vue
+methods: {
+    checkoutWishlist: function() {
+        this.hideMenu();
+    
+        this.$router.push({
+            path: this.localePath('customer-wishlist')
+        });
+    }
+}
+```
+Obiger __`push`__ auf __`'customer-wishlist'`__ führt auf die Seite __`http://localhost:3336/customer/wishlist`__.
+
+Der dazugehörige Template Ausschnitt, welcher zum Aufruf der Methode führt, sieht wie folgt aus:
+``` html
+<button v-if="qty > 0"
+        class="wishlist-button button-primary"
+        @click.prevent="checkoutWishlist()"
+>
+    {{ $t('Go to wishlist') }}
+
+    <material-ripple />
+</button>
+```
