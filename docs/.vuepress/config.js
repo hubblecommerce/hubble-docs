@@ -25,7 +25,8 @@ module.exports = {
                     children: [
                          // 'gettingstarted/introduction',
                         'architectureandbigpicture',
-                        'setupinstallation',
+                        'setupinstallationSW6',
+                        'setupinstallationHubbleDataAPI',
                         'techstack',
                         'systemrequirements',
                     ]
