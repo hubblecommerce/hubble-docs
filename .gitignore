@@ -6,4 +6,4 @@ node_modules
 
 package-lock.json
 
-.vuepress
+.vuepress/dist
