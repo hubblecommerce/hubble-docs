@@ -1,3 +1,7 @@
+---
+pageClass: theguide
+---
+
 # Entwicklung des Features "Zuletzt angesehene Produkte"
 
 #### Beschreibung
@@ -117,8 +121,11 @@ export const actions = { }
 
 ### Anlegen der Komponente __`LastViewedProducts`__
 
-![Komponente LastViewedProducts](../lastViewedProductsUIwCursor.svg)
-
+<ImageComponent 
+    :src="$withBase('/lastViewedProductsUIwCursor.svg')"
+    alt="Komponente LastViewedProducts"
+    backgroundColor="white">
+</ImageComponent>
 
 __Das Template der Komponente__:
 ``` html

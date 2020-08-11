@@ -1,6 +1,14 @@
+---
+pageClass: theguide
+---
+
 # Routing / URL Handling
 
-![State Management](../pagerouting.svg)
+<ImageComponent 
+    :src="$withBase('/pagerouting.svg')"
+    alt="State Management"
+    backgroundColor="white">
+</ImageComponent>
 
 ## Auflösen von Routen
 Da hubble's Architektur auf der von NuxtJS basiert, erfolgt die Konfiguration von Routen über das Einhalten der

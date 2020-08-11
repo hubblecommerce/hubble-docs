@@ -1,3 +1,7 @@
+---
+pageClass: theguide
+---
+
 # Kataloge / Kategorien
 
 ## Kategorieseiten
@@ -8,7 +12,12 @@ Seite [Routing & Dataflow](/pwa/einfuehrung/routing.html#auflosen-von-dynamische
 
 
 ### Schematischer Aufbau der Kategorieseite:
-![Kategorieseite](../categorypages.svg) 
+
+<ImageComponent 
+    :src="$withBase('/categorypages.svg')"
+    alt="Kategorieseite"
+    backgroundColor="white">
+</ImageComponent> 
 
 Die primären Komponenten, die __`ViewCategory`__ enthält:
 | API | Komponenten | Aufgaben |

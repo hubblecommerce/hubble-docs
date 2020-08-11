@@ -1,8 +1,16 @@
+---
+pageClass: theguide
+---
+
 # State
 
 ### Store Architektur und State Management 
 
-![State Management](../statemanagement.svg)
+<ImageComponent 
+    :src="$withBase('/statemanagement.svg')"
+    alt="State Management"
+    backgroundColor="white">
+</ImageComponent>
 
 Eine Shopseite enthält eine Vielzahl an ineinander verschachtelter Komponenten, deren Anordnung und Zahl sich im Laufe der 
 Zeit verändert. Viele dieser Komponenten benötigen dabei die gleichen State Informationen und haben auch

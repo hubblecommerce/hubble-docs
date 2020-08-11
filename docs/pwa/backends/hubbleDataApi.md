@@ -3,6 +3,12 @@ pageClass: theguide
 ---
 
 # Hubble Data API
+<ImageComponent 
+    :src="$withBase('/hubble-data-api-stack.svg')"
+    alt="Hubble Data API"
+    backgroundColor="black"
+    padding="80px">
+</ImageComponent>
 
 ## Auth Token und [hubble API](../../api) als Proxy
 
@@ -125,7 +131,11 @@ dispatch('recalculateCart', { order: JSON.stringify(order) })
 ```
 
 
-![Warenkorb](./warenkorb.svg) 
+<ImageComponent 
+    :src="$withBase('/warenkorb.svg')"
+    alt="Warenkorb"
+    backgroundColor="white">
+</ImageComponent>
 
 
 ## hubble Data API spezifische Store Module und Middleware

@@ -1,7 +1,16 @@
+---
+pageClass: theguide
+---
+
 # Produktdetailseiten
 
 ### Schematischer Aufbau der Produktdetailseite:
-![Produktdetailseiten](../detailpage.svg) 
+
+<ImageComponent 
+    :src="$withBase('/detailpage.svg')"
+    alt="Produktdetailseiten"
+    backgroundColor="white">
+</ImageComponent> 
 
 Für den Inhalt einer Produktdetailseite ist die Komponente __`~components/productdetail/ViewProduct.vue`__ zuständig. 
 Warum es sich bei diesem Einstiegspunkt nicht um eine Page handelt kann auf der 
