@@ -255,5 +255,6 @@ Verfügung stehen sollen, können dabei die folgenden Kapitel der Shopware Entwi
 + [Adding a custom CMS block](https://docs.shopware.com/en/shopware-platform-dev-en/how-to/custom-cms-block)
 + [Adding a custom CMS element](https://docs.shopware.com/en/shopware-platform-dev-en/how-to/custom-cms-element?category=shopware-platform-dev-en/how-to)
 
-Für Möglichkeiten zur Individualisierung existierender Erlebniswelt Komponenten in hubble folgt in Kürze ein Abschnitt
-in der [How To](../howtos) Section, dieser Dokumentation.
+Für Möglichkeiten zur Individualisierung existierender Erlebniswelt Komponenten in hubble kann der Abschnitt
+[Abbildung der Erlebniswelten in hubble](../howtos/reusingblocksslots.md) in der [How To](../howtos) Section
+dieser Dokumentation referenziert werden.
