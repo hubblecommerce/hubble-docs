@@ -29,6 +29,7 @@ module.exports = {
                         'setupinstallationHubbleDataAPI',
                         'techstack',
                         'systemrequirements',
+                        'contribution',
                     ]
                 },
                 {
