@@ -145,6 +145,11 @@ module.exports = {
                     collapsable: false, // optional, defaults to true
                 },
                 {
+                    title: 'SEO',   // required
+                    path: '/pwa/seo',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
                     title: 'Performance',   // required
                     path: '/pwa/performance/introduction',
                     collapsable: false, // optional, defaults to true
