@@ -12,8 +12,16 @@ und anhand des, in der __`.env`__ eingetragenen, __`API_TYPE`__ werden die entsp
 entweder aus dem Unterordner __`sw`__ oder __`api`__ registriert. Dadurch entfällt der Pfad Prefix für Shop
 spezifische Vuex Store Module, da es in der laufenden Applikation nur ein Store Modul mit dem jeweiligen Namen gibt. 
 
+| Store Modul | Verwendung |
+| --- | --- | 
+| __`hubble/core/store/modApi.js`__ | gültig für alle Shopsysteme |
+| __`hubble/core/store/api/modApiProduct.js`__ | gültig nur für den API Typ '__api__' ([hubble API](../api)) |
+| __`hubble/core/store/sw/modApiProduct.js`__ | gültig nur für den API Typ '__sw__' |
 
-::: tip
-Um zusätzlichen State für bestimmte Seiten zu definieren, ist eine neue Middleware zu erstellen, die für
-Read/Write Operationen Vuex Store Module referenziert und in der __`middleware`__ Option der Seite hinzuzufügen ist.
-::: 
+Zum Aufruf von Store Modulen in Komponenten:
+``` js
+// ~/components/customer/LoginForm.vue (simplified)
+...mapActions({
+    logIn: 'modApiCustomer/logIn' // name of module === 'modApiCustomer', name of action === 'logIn'
+})
+```

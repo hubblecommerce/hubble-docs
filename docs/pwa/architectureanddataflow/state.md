@@ -13,16 +13,12 @@ pageClass: theguide
 </ImageComponent>
 
 Eine Shopseite enthält eine Vielzahl an ineinander verschachtelter Komponenten, deren Anordnung und Zahl sich im Laufe der 
-Zeit verändert. Viele dieser Komponenten benötigen dabei die gleichen State Informationen und haben auch
-oft den Anspruch diese zu editieren.
-Außerdem wird im initialen Aufruf und in jedem Refresh eine serverseitig gerenderte Seite an den Client ausgeliefert.
-Dafür müssen jedoch die benötigten Daten außerhalb der Komponenten bereitstehen um eine [korrekte Wiederherstellung
-der Interaktivität im Client](https://ssr.vuejs.org/guide/data.html#data-store) zu gewährleisten.
+Zeit verändert. Viele dieser Komponenten benötigen dabei die gleichen Daten und haben auch oft den Anspruch diese zu editieren.
 
-Um somit einen einfachen Zugriff auf Daten für alle bestehenden und zukünftigen Komponenten zu ermöglichen und sowohl serverseitiges,
-als auch clientseitiges Rendering zu ermöglichen, setzt hubble auf die State Management Lösung Vuex. 
+Damit alle Komponenten Zugriff auf diese Daten haben ohne diese immer wieder als Properties weiterreichen zu müssen, 
+setzt hubble auf die State Management Lösung Vuex. 
 Dabei ist Vuex fester Bestandteil von NuxtJS ([Vuex Store in Nuxt](https://nuxtjs.org/guide/vuex-store)) und dadurch bereits vorkonfiguriert:
-Dateien, die sich im Ordner __`~/store/`__ befinden, werden automatisch als Teil des Vuex Stores registriert.
+Dateien, die sich im Ordner __`~/store/`__ befinden, werden automatisch als Vuex Modul registriert.
 
 Die von den Seiten und Komponenten benötigten Daten befinden sich in __`state`__ Objekten im Vuex Store. 
 In der hubble Architektur existieren dabei je nach Entität (Produkt, Kategorie, Kunde etc.) getrennte
@@ -30,7 +26,7 @@ Store Module unter __`~/modules/@hubblecommerce/hubble/core/store/`__.
 
 Ein Auszug der Vuex Store Module, die sich durch die Entitäten ableiten lassen:
 
-| Store Modul | 
+| Store Module | 
 | --- | 
 | __`modCart`__ | 
 | __`modSearch`__ |  
@@ -44,11 +40,10 @@ Ein Auszug der Vuex Store Module, die sich durch die Entitäten ableiten lassen:
 | __`modCookieNotice`__ | 
 
 
-Änderungen am State können nur mithilfe von Funktionen vorgenommen werden. 
-Dafür existieren verschiedene Arten von Funktionen,
-die für die jeweilige Tätigkeit aufgerufen werden: __`getters`__, __`actions`__ und __`mutations`__.
+Daten werden in States gespeichert. Änderungen am State können nur mithilfe von Funktionen vorgenommen werden. 
+Dafür existieren verschiedene Arten von Funktionen die für die jeweilige Tätigkeit aufgerufen werden: __`getters`__, __`actions`__ und __`mutations`__.
 
-Der Aufbau eines Vuex Store Moduls im __`@hubblecommerce`__ Modul ist wie folgt: 
+Der Aufbau eines Vuex Store Moduls ist wie folgt: 
 ``` js
 export default function (ctx) {
     const modWishlist = {
@@ -72,7 +67,7 @@ export default function (ctx) {
 
 
 Dieser Konvention von Vuex folgend, werden somit alle Store Interaktionen über die passende Funktionsart durchgeführt.  
-Für eine vereinfachte Syntax nutzt hubble in Komponenten sogenannte Vuex __map helper__:
+Für eine vereinfachte Syntax nutzt hubble in Komponenten die __Vuex map helper__:
 ``` js
 // ~/components/customer/LoginForm.vue
 import { mapState, mapActions, mapMutations } from 'vuex';
@@ -105,34 +100,6 @@ export default {
         }
     }
 } 
-```
-
-
-#### Einbindung von Shop spezifischen Store Modulen
-Im __`@hubblecommerce`__ Modul gibt es nicht nur eine Unterscheidung von Vuex Store Modulen nach Entität, sondern auch 
-nach dem Shopsystem, welches im Backend verwendet wird. Da es spezifische Logik zur Verarbeitung und 
-zum Request Prozess je nach Backend gibt, gewährleistet eine Trennung kleinere Client Bundles.
-
-| Store Modul | Verwendung |
-| --- | --- | 
-| __`hubble/core/store/modApi.js`__ | gültig für alle Shopsysteme |
-| __`hubble/core/store/api/modApiProduct.js`__ | gültig nur für den API Typ '__api__' ([hubble API](../api)) |
-| __`hubble/core/store/sw/modApiProduct.js`__ | gültig nur für den API Typ '__sw__' |
-
-
-Damit also nur die relevanten Store Module Teil des Client Bundles sind existiert folgender Vorgang:
-
-Das hubble Modul (__`~/modules/@hubblecommerce`__) wird bei Start der Applikation ausgeführt (__`~/modules/@hubblecommerce/hubble/module.js`__)
-und anhand der, in der __`.env`__ eingetragenen, __`API_TYPE`__ werden die entsprechenden Shop spezifischen Dateien aus 
-dem Unterordner __`sw`__ oder __`api`__ registriert. Dadurch entfällt der Pfad Prefix für Shop spezifische Vuex Store
-Module, da es in der laufenden Applikation nur ein Store Modul mit dem jeweiligen Namen gibt.
-
-Zum Referenzieren von Store Modulen in Komponenten:
-``` js
-// ~/components/customer/LoginForm.vue (simplified)
-...mapActions({
-    logIn: 'modApiCustomer/logIn' // name of module === 'modApiCustomer', name of action === 'logIn'
-})
 ```
 
 

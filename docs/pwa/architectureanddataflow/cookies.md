@@ -14,8 +14,7 @@ Im Folgenden ist das in hubble verwendete Schema, am Beispiel des Bezahlvorgangs
 
 Der clientseitige Aufruf von __`actions`__ erfolgt im Plugin:
 ``` js
-// ~/modules/@hubblecommerce/hubble/core/plugins/api/nuxt-client-init_no_ssr.js  - this line is the same as for /sw
-// ~/modules/@hubblecommerce/hubble/core/plugins/sw/nuxt-client-init_no_ssr.js  - this line is the same as for /api
+// ~/modules/@hubblecommerce/hubble/core/plugins/[BACKEND]/nuxt-client-init_no_ssr.js
 export default async (ctx) => {
    // ..
     await ctx.store.dispatch('modApiPayment/setOrderByCookie', ctx);
