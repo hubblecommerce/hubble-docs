@@ -1,6 +1,7 @@
 # Ein neue Route (Seite) hinzufügen
 
-Nun, da die Funktionalität zur Speicherung und Anzeige der zuletzten angesehenen Produkte existiert, möchten wir diese auf einer eigenen Seintanansicht darstellen. Somit gilt es, hierfür eine separate Route anzulegen. Wie dies funktioniert, soll im Folgenden aufgezeigt werden.
+Nun, da die Funktionalität zur Speicherung und Anzeige der zuletzten angesehenen Produkte existiert, möchten wir diese auf einer eigenen Seintanansicht darstellen. 
+Somit gilt es, hierfür eine separate Route anzulegen. Wie dies funktioniert, soll im Folgenden aufgezeigt werden.
 
 #### Beschreibung
 
@@ -23,7 +24,9 @@ Um ein Mapping zwischen Komponenten und einer Route zu erhalten, wird lediglich 
 touch viewedproducts.vue
 ```
 
-Jede in diese Datei hinzugefügte Komponente, ist danach beim Besuch der Seite __`http://localhost:3336/customer/viewedproducts`__ sichtbar. Da wir vorhaben, die zuletzt angesehenen Produkte anzuzeigen, kann die im vorherigen Abschnitt erstellte __`LastViewedProducts`__ Komponente wiederverwendet werden. Im Folgenden befindet sich ein Ausschnitt des relevanten Programmcodes:
+Jede in diese Datei hinzugefügte Komponente ist danach beim Besuch der Seite __`http://localhost:3336/customer/viewedproducts`__ sichtbar. 
+Da wir vorhaben die zuletzt angesehenen Produkte anzuzeigen, kann die im vorherigen Abschnitt erstellte __`LastViewedProducts`__ Komponente wiederverwendet werden. 
+Im Folgenden befindet sich ein Ausschnitt des relevanten Programmcodes:
 
 ``` html
 <!-- ~/pages/customer/viewedproducts.vue -->
@@ -148,9 +151,8 @@ methods: {
 },
 ```
 
-Beim Aufruf der Seite __`http://localhost:3336/customer/viewedproducts`__, werden dem __`viewedProducts`__ Array, keine
-weiteren Elemente hinzugefügt, wodurch ein Aufruf der __`action`__ __`modLastViewed/saveViewedProductsToLocalForage`__
-nicht benötigt wird. 
+Beim Aufruf der Seite __`http://localhost:3336/customer/viewedproducts`__, werden dem __`viewedProducts`__ Array, keine weiteren Elemente hinzugefügt, 
+wodurch ein Aufruf der __`action`__ __`modLastViewed/saveViewedProductsToLocalForage`__ nicht benötigt wird. 
 Somit ist also eine Abfrage der aktuellen Route notwendig.
 Dafür eignet es sich in der __`LastViewedProducts`__ eine weitere __`computed`__ Property anzulegen:
 
