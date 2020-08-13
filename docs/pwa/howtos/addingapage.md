@@ -83,57 +83,34 @@ Um dieses Verhalten auch im __`Network`__ Tab des Browser Inspektors zu beobacht
 
 ### Erweiterung der Komponente __`LastViewedProducts`__
 
-Damit die __`LastViewedProducts`__ Komponente nun auf unserer neuen Seite mehr Elemente anzeigt, als auf der Produktdetailseite, ist eine Abfrage der aktuellen Route notwendig. Dafür eignet es sich in der __`LastViewedProducts`__ eine sogenannte __`computed`__ Property anzulegen. Im weiteren Verlauf dieses HowTos gehen wir noch näher darauf ein.
+Damit die __`LastViewedProducts`__ Komponente nun auf unserer neuen Seite mehr Elemente anzeigt,
+als auf der Produktdetailseite, kann dafür das Feld __`props`__ verwendet werden:
 
 ``` js
-// ~/components/productutils/LastViewedProducts.vue 
-computed: {
-    onViewedProductsPage: function () {
-        return this.$route.path.includes('/customer/viewedproducts');
-    },
-    // ...
-}
+// ~/components/productutils/LastViewedProducts.vue
+props: {
+    numberOfItems: {
+        type: Number,
+        required: true
+    }
+},
 ```
-Im Template diese Unterscheidung der anzuzeigenden Anzahl an Elementen eben falls berücksichtigt werden. Auch hier eignet die dafür eine __`computed`__ Property, welche die oben erstellte ihrerseits verwendet:
+
+Im Template muss diese Unterscheidung der anzuzeigenden Anzahl an Elementen ebenfalls berücksichtigt werden.
+Hier eignet sich dafür eine __`computed`__ Property, welche den als Prop übergebenen Wert verwendet:
 
 ``` js 
 // ~/components/productutils/LastViewedProducts.vue 
 computed: {
     // ...
     selectionOfViewedProducts: function () {
-        if (this.onViewedProductsPage) {
-            return this.viewedProducts.filter((viewedProduct, index) => index < this.maxSaved)
-        } else {
-            return this.viewedProducts.filter((viewedProduct, index) => index < this.minToShow)
-        }
+        return this.viewedProducts.filter((viewedProduct, index) => index < this.numberOfItems)
     }
 }
 ```
 
-Im oben erstellten Snippet existieren zwei Referenzen, die bisher nicht definiert wurden:  __`this.maxSaved`__, die die maximale Anzahl an zu speichernden Elementen definiert sowie  die __`this.minToShow`__, welche für die maximale Anzahl der anzuzeigenden Elemente auf der ProduktDetailseite steht.
 
-Da es ebenfalls Vergleiche zu der maximalen Anzahl im Vuex Store Modul __`modLastViewed.js`__ gibt, sollten diese Werte also am besten global gespeichert werden:
-
-``` js
-// ~/components/productutils/LastViewedProducts.vue 
-...mapState({
-    minToShow: state => state.modLastViewed.minToShow,
-    maxSaved: state => state.modLastViewed.maxSaved
-}),
-```
-
-Diese Werte gilt es als nächstes im Vuex Store Modul __`modLastViewed.js`__, als Teil des States zu definieren:
-``` js
-// ~/store/modLastViewed.js
-export const state = () => ({
-    // ...
-    minToShow: 5,
-    maxSaved: 8
-})
-```
-Somit lassen sich auch die Zahlen in dem Store Modul anpassen und können beispielsweise über __`state.minToShow`__ referenziert werden. Die konkreten Anpassungen dazu können dem Repository entnommen werden: [~/store/modLastViewed.js](https://github.com/hubblecommerce/hubble-frontend-pwa/blob/hubble-93/store/modLastViewed.js).
-
-Nun zu der Verwendung der angelegten __`computed`__ Properties __`selectionOfViewedProducts`__ und __`onViewedProductsPage`__.
+Nun zu der Verwendung der angelegten __`computed`__ Property __`selectionOfViewedProducts`__.
 Da es nicht immer alle Elemente der Liste anzuzeigen gilt, muss das Basis Array (__`viewedProducts`__), welches zur Iteration verwendet wird, mit der gefilterten Liste (__`selectionOfViewedProducts`__) ausgetauscht werden.
 
 ``` html{3}
@@ -173,11 +150,75 @@ methods: {
 
 Beim Aufruf der Seite __`http://localhost:3336/customer/viewedproducts`__, werden dem __`viewedProducts`__ Array, keine
 weiteren Elemente hinzugefügt, wodurch ein Aufruf der __`action`__ __`modLastViewed/saveViewedProductsToLocalForage`__
-nicht benötigt wird. Erneut lässt sich die __`computed`__ Property __`onViewedProductsPage`__ wiederverwenden:
- 
+nicht benötigt wird. 
+Somit ist also eine Abfrage der aktuellen Route notwendig.
+Dafür eignet es sich in der __`LastViewedProducts`__ eine weitere __`computed`__ Property anzulegen:
+
+``` js
+// ~/components/productutils/LastViewedProducts.vue 
+computed: {
+    onViewedProductsPage: function () {
+        return this.$route.path.includes('/customer/viewedproducts');
+    },
+    // ...
+}
+```
+
+Diese kann nun in der __`created`__ Lifecycle Methode der __`LastViewedProducts`__ Komponente verwendet werden:
 ``` js
 // ~/components/productutils/LastViewedProducts.vue
 created() {
     if (process.client && !(this.onViewedProductsPage)) this.$store.dispatch('modLastViewed/saveViewedProductsToLocalForage');
 }
+```
+
+
+Damit nun die gewünschte Anzahl angezeigt wird, muss diese auch an den Stellen, in der die __`LastViewedProducts`__ 
+Komponente eingebunden wird, per Prop übergeben werden. Da durch die Anforderungen an die Funktionalität, die Komponente
+nur an zwei Stellen eingebunden wird, können die unterschiedlichen Werte zentral im Vuex Store State angelegt werden und 
+somit auch innerhalb des Vuex Stores über __`state.minToShow`__ und __`state.maxSaved`__ referenziert werden.
+
+``` js
+// ~/store/modLastViewed.js
+export const state = () => ({
+    // ...
+    minToShow: 5,
+    maxSaved: 8
+})
+```
+Dabei ist __`maxSaved`__, die maximale Anzahl an zu speichernden Elementen und __`minToShow`__, die maximale Anzahl der anzuzeigenden Elemente auf der ProduktDetailseite.
+
+Die konkreten Anpassungen dazu können dem Repository entnommen werden: [~/store/modLastViewed.js](https://github.com/hubblecommerce/hubble-frontend-pwa/blob/hubble-93/store/modLastViewed.js).
+
+
+Somit lässt sich zum einen die __`ViewProduct.vue`__ anpassen, in der die __`LastViewedProducts`__ eingebunden ist, wofür 
+über __`mapState`__, die im Vuex Store angelegte __`minToShow`__ Variable referenziert werden muss, damit diese als Prop Wert gesetzt werden kann:
+
+``` js
+// ~/components/productdetail/ViewProduct.vue 
+...mapState({
+    // ...
+    minToShow: state => state.modLastViewed.minToShow,
+}),
+```
+
+
+``` html
+<!-- ~/components/productdetail/ViewProduct.vue --> 
+<last-viewed-products :number-of-items="minToShow" />
+```
+
+
+Analog dazu ist die Anpassung der __`viewedproducts.vue`__. Hier ist der Unterschied, dass die __`maxSaved`__ verwendet wird:
+``` js
+// ~/pages/customer/viewedproducts.vue 
+...mapState({
+    // ...
+    minToShow: state => state.modLastViewed.maxSaved,
+}),
+```
+
+``` html
+<!-- ~/pages/customer/viewedproducts.vue -->
+<last-viewed-products :number-of-items="maxSaved" />
 ```
