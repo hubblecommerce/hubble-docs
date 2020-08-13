@@ -107,6 +107,7 @@ module.exports = {
                         'architectureanddataflow/personalizedcontent',
                         'architectureanddataflow/caching',
                         'architectureanddataflow/prefetching',
+                        'architectureanddataflow/dynamicimports',
                         'architectureanddataflow/lazyloading',
                         'architectureanddataflow/backendintegration',
                         'architectureanddataflow/layouts',
