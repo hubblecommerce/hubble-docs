@@ -44,7 +44,6 @@ export default {
 
 
 ### Dynamisches importieren von Plugins
-<<<<<<< HEAD:docs/pwa/einfuehrung/dynamicimports.md
 In NuxtJs ermöglichen es sogenannte Plugins externe JS Bibliotheken und Module leicht einzubinden und diese in global im App Kontext zur Verfügung zu stellen:
 Ein gutes Beispiel für eine Funktionalität, die global auf jeder Seite verfügbar sein muss, ist die __`FlashMessages`__ Komponente.
 
