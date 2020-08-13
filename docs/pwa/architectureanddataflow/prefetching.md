@@ -2,7 +2,7 @@
 
 Durch [Prefetching](https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ) ist es möglich,
 zusätzlich zu den aktuell zur Anzeige und Interaktion benötigten
-Bundles, auch diejenigen bereits vorzuladen, die sich im sichtbaren Bereich des Browserfensters
+JavaScript Bundles, auch diejenigen bereits vorzuladen, die sich im sichtbaren Bereich des Browserfensters
 befinden. Dies geschieht erst nachdem die für die aktuelle Route direkt relevanten Bundles
 geladen sind und ein sogenannter "idle" Zustand erreicht ist.
 Daraus lässt sich zum einen schließen, dass Seiten automatisch in eigene Bundles unterteilt werden
