@@ -1,5 +1,18 @@
 # Backends
 
+hubble ist Backend agnostisch. Grundidee von hubble ist, dass alle online Shops prinzipiell gleich funktionieren. Egal ob Magento, Shopware, WooCommerce, usw. 
+Das hubble Frontend bedient diese Grundfunktionalität und setzt dabei auf eine eigene Daten und Entitätenstruktur. 
+So benötigt man nur noch einen Service der die Daten aus einem beliebigen Shop Framework in das hubble Format bringt. 
+
+Die hubble data API extrahiert Daten aus einem Shopbackend und stellt sie über einen Elastic Seach Index und einer Laravel Api dem Frontend zur Verfügung.
+Man kann jedoch auch ein Shopsystem direkt ansprechen und die Daten zu beziehen. 
+Dafür muss man allerdings selbst zusätzlich das Mapping der Daten vornehmen.
+Für SW6 bietet hubble bereits eine [Lösung der Direktanbindung](../backends/shopware6.md) an die Saleschannel Api an. 
+
+Arten der Anbindung an ein Backend:
+- [hubble Data Api](../backends/hubbleDataApi.md)
+- Direktanbindung an Shopinterne API (z.B. [Saleschannel Api von SW6](../backends/shopware6.md))
+
 ## Unterschiedliche Shopsysteme, gleiche Funktionsaufrufe
 Bei der Delegierung durch die Middleware an den Vuex Store gilt es zu beachten, dass im __`@hubblecommerce`__ Modul
 je nach verwendetem Shopsystem unterschiedliche Vuex Store Module existieren. 
