@@ -57,8 +57,23 @@ $base-padding-md: 20px !default;
 ```
 
 
-Die strikte Einhaltung dieser Ordnerstruktur innerhalb des Theme Ordners ist jedoch nur eine Empfehlung. Zwingend ist allerdings die 
-Existenz der __`~/assets/scss/<THEME-FOLDER>/all.scss`__ Datei und der korrekte Pfadeintrag der Dateien, die eingebunden werden sollen.
+Die strikte Einhaltung dieser Ordnerstruktur innerhalb des Theme Ordners ist jedoch nur eine Empfehlung. 
+Wichtig ist nur, neue Dateien in __`~/assets/scss/<THEME-FOLDER>/all.scss`__ zu importieren.
+
+
+## Bootstrap 
+
+Für das eigentliche Layout und das definieren des Layout Grids wird [Bootstrap](https://getbootstrap.com/) verwendet.
+Wobei nur die in hubble verwendeten Klassen Styles und Sass Mixins über die __`~/assets/scss/hubble/configuration/bootstrap-essentials.scss`__ 
+eingebunden sind und um weitere Bootstrap Klassen und Funktionen erweitert werden können.
+
+``` scss
+// ~/assets/scss/hubble/components/hubble.scss
+.nav-wrp {
+    /* uses sass mixin from Bootstrap */ 
+    @include make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints);
+}
+```
 
 
 ## Aufbau des hubble Themes
@@ -168,18 +183,4 @@ Verwendung:
 ``` html
 <!-- ~/components/productdetail/ProductDetailBuybox.vue -->
 <add-to-wishlist v-if="$mq === 'lg'" class="add-to-wishlist-button" :item="dataProduct" />
-```
-
-## Bootstrap 
-
-Für das eigentliche Layout und das definieren des Layout Grids wird [Bootstrap](https://getbootstrap.com/) verwendet.
-Wobei nur die in hubble verwendeten Klassen Styles und Sass Mixins über die __`~/assets/scss/hubble/configuration/bootstrap-essentials.scss`__ 
-eingebunden sind und einfach um weitere Bootstrap Klassen und Funktionen erweitert werden können.
-
-``` scss
-// ~/assets/scss/hubble/components/hubble.scss
-.nav-wrp {
-    /* uses sass mixin from Bootstrap */ 
-    @include make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints);
-}
 ```
