@@ -8,6 +8,7 @@ module.exports = {
     themeConfig: {
         logo: '/assets/images/hubble-logo.png',
         nav: [
+            { text: 'Getting Started', link: '/gettingstarted/' },
             { text: 'PWA', link: '/pwa/' },
             { text: 'API', link: '/api/' },
             { text: 'Component Library', link: '/components/' },
@@ -16,6 +17,32 @@ module.exports = {
             { text: 'Github', link: 'https://github.com/hubblecommerce/hubble-frontend-pwa' },
         ],
         sidebar: {
+            '/gettingstarted/': [
+                {
+                    title: 'Einführung',   // required
+                    path: '/gettingstarted/',
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                         // 'gettingstarted/introduction',
+                        'architectureandbigpicture',
+                        'setupinstallationSW6',
+                        'setupinstallationHubbleDataAPI',
+                        'techstack',
+                        'systemrequirements',
+                        'contribution',
+                    ]
+                },
+                {
+                    title: 'Beispiel Projekte / Boilerplate',   // required
+                    path: '/gettingstarted/exampleprojectsboilerplate/shopware6',
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                        'exampleprojectsboilerplate/shopware6',
+                        'exampleprojectsboilerplate/magento2',
+                        'exampleprojectsboilerplate/anybackend'
+                    ]
+                },
+            ],
             '/api/': [
                 {
                     title: 'API',   // required
@@ -52,77 +79,173 @@ module.exports = {
             ],
             '/pwa/': [
                 {
-                    title: 'Einführung',   // required
+                    title: 'Design Prinzipien',   // required
+                    path: '/pwa/designprinciples',
                     collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Features',   // required
+                    path: '/pwa/features',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Konfiguration',   // required
+                    path: '/pwa/configuration',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Architektur und Data Flow',   // required
+                    path: '/pwa/architectureanddataflow/routingurlhandling',
+                    collapsable: false, // optional, defaults to true,
                     children: [
-                        'einfuehrung/routing',
-                        'einfuehrung/statemanagement',
-                        'einfuehrung/layouts',
-                        'einfuehrung/dynamicimports',
-                        'einfuehrung/usersession',
-                        'einfuehrung/configuration',
-                        'einfuehrung/pagetypes',
-                        'einfuehrung/theming',
+                        'architectureanddataflow/routingurlhandling',
+                        'architectureanddataflow/dataflow',
+                        'architectureanddataflow/sessions',
+                        'architectureanddataflow/cookies',
+                        'architectureanddataflow/state',
+                        'architectureanddataflow/serviceworkerandmanifest',
+                        'architectureanddataflow/personalizedcontent',
+                        'architectureanddataflow/caching',
+                        'architectureanddataflow/prefetching',
+                        'architectureanddataflow/dynamicimports',
+                        'architectureanddataflow/lazyloading',
+                        'architectureanddataflow/backendintegration',
+                        'architectureanddataflow/layouts',
                     ]
                 },
                 {
-                    title: 'hubble Module',   // required
+                    title: 'Templating',   // required
+                    path: '/pwa/templating/introduction',
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'sw6Quickstart',
-                        '',
-                        'stores',
-                        'middlewares',
-                        'plugins',
-                        'assets'
+                        'templating/introduction',
+                        'templating/ui'
                     ]
                 },
                 {
-                    title: 'Layouts',   // required
+                    title: 'Page Types',   // required
+                    path: '/pwa/pagetypes/',
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'layouts/hubbleLayout',
-                        'layouts/hubbleLightLayout',
-                        'layouts/hubbleExpressLayout',
+                        'pagetypes/navigation',
+                        'pagetypes/catalogcategory',
+                        'pagetypes/search',
+                        'pagetypes/productdetailpage',
+                        'pagetypes/cmspage'
                     ]
                 },
                 {
-                    title: 'Middleware',   // required
+                    title: 'Komponenten',   // required
+                    path: '/pwa/components',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Internationalisierung',   // required
+                    path: '/pwa/internationalization',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'SEO',   // required
+                    path: '/pwa/seo',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Performance',   // required
+                    path: '/pwa/performance/introduction',
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'middleware/middlewareInGeneral'
+                        'performance/introduction',
+                        'performance/generalrequirements',
+                        'performance/lighthouseauditing',
+                        'performance/firebaseperformancemonitoring'
                     ]
                 },
                 {
-                    title: 'Vuex',   // required
+                    title: 'Payments',   // required
+                    path: '/pwa/payments/introduction',
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'vuex/vuexInGeneral'
+                        'payments/introduction',
+                        'payments/paymentsapi',
+                        'payments/paymentsplugins'
                     ]
                 },
                 {
-                    title: 'Pages',   // required
+                    title: 'Analytics',   // required
+                    path: '/pwa/analytics',
                     collapsable: false, // optional, defaults to true
-                    children: [
-                        'pages/checkout',
-                        'pages/customer',
-                    ]
                 },
                 {
-                    title: 'Payment Modules',   // required
+                    title: 'Plugin System',   // required
+                    path: '/pwa/pluginsystem',
                     collapsable: false, // optional, defaults to true
-                    children: [
-                        'paymentModules/payone',
-                        'paymentModules/amazonPay'
-                    ]
                 },
                 {
                     title: 'Testing',   // required
+                    path: '/pwa/testdrivendevelopment',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Error Handling',   // required
+                    path: '/pwa/errorhandling',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Debugging',   // required
+                    path: '/pwa/debugging',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Logging',   // required
+                    path: '/pwa/logging',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Deployment',   // required
+                    path: '/pwa/deployment',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Backends',   // required
+                    path: '/pwa/backends/',
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'testing/',
+                        'backends/shopware6',
+                        'backends/magento2',
+                        'backends/hubbleDataApi'
                     ]
                 },
+                {
+                    title: 'Miscellaneous Duties',   // required
+                    path: '/pwa/miscellaneousduties/optimizingimages',
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                        'miscellaneousduties/optimizingimages'
+                    ]
+                },
+                {
+                    title: 'Troubleshooting',   // required
+                    path: '/pwa/troubleshooting',
+                    collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'How Tos',   // required
+                    path: '/pwa/howtos/',
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                        'howtos/addinganewfeature',
+                        'howtos/addingapage',
+                        'howtos/loadingcontentfromlegacy',
+                        'howtos/overridemiddleware',
+                        'howtos/overridestore',
+                        'howtos/twatogoogleplaystore'
+                    ]
+                },
+                {
+                    title: 'API Reference',   // required
+                    path: '/pwa/apireference',
+                    collapsable: false, // optional, defaults to true
+                }
             ],
             '/components/': [
                 {

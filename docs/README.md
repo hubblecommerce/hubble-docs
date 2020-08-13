@@ -1,17 +1,19 @@
-# Introduction
+# Einführung
 
-> Progressive Web App and high performance shop frontend for every common e-commerce platform built with [Nuxt.js](https://nuxtjs.org/).
+> Hoch performante Progressive Web App für jede gängige E-Commerce Plattform auf Basis von [Nuxt.js](https://nuxtjs.org/).
 
-## Features
+## Feature
 
-✔ Shop integration to Magento, Magento 2, Shopware, xt:Commerce, etc.  
-✔ Includes all common shop page types \(category, detail, etc.\)  
-✔ Excellent Google Lighthouse results in all audits  
-✔ Build up your own shop by using hubble components
+✔ Shop Integration mit Magento, Magento 2, Shopware, xt:Commerce, etc.  
+✔ Enthält alle gängigen Shop Seitenarten (Kategorie, Detailansicht, Warenkorb, Zur Kasse, etc.)  
+✔ Exzellente Google Lighthouse Ergebnisse in allen Audits  
+✔ Toolbox / Framework zum Erstellen eigener Shop Frontends 
 
 ## Links
 
 * [Demo](https://demo.hubblecommerce.io/)
 * [hubblecommerce.io](https://www.hubblecommerce.io)
-* [Github](https://github.com/hubblecommerce/hubble-frontend-pwa)
+* [GitHub](https://github.com/hubblecommerce/hubble-frontend-pwa)
 
+## Contribution
+Um diese Dokumentation zu erweitern, sind die dafür notwendigen Schritte im [hubble Contribution Guide](gettingstarted/contribution.md) beschrieben.
