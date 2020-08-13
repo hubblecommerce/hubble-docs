@@ -99,6 +99,7 @@ module.exports = {
                     collapsable: false, // optional, defaults to true,
                     children: [
                         'architectureanddataflow/routingurlhandling',
+                        'architectureanddataflow/dataflow',
                         'architectureanddataflow/sessions',
                         'architectureanddataflow/cookies',
                         'architectureanddataflow/state',
@@ -200,7 +201,7 @@ module.exports = {
                 },
                 {
                     title: 'Backends',   // required
-                    path: '/pwa/backends/shopware6',
+                    path: '/pwa/backends/',
                     collapsable: false, // optional, defaults to true
                     children: [
                         'backends/shopware6',

@@ -48,51 +48,6 @@ export default {
 }
 ```
 
-
-## Wie Daten für Routen in hubble bereitgestellt werden
-Ob dabei eine Route nur für eingeloggte Benutzer sichtbar sein darf oder ob einer Route die richtigen Daten 
-im Vuex Store State zur Verfügung stehen, wird durch die für die Route definierte Middleware verarbeitet
-und bei Bedarf an den Vuex Store delegiert, da dieser sozusagen die Datenverwaltung und -verarbeitung
-in der hubble Architektur übernimmt.
-
- 
- 
-### Serverseitige Auslieferung einer Seite
-Ein weiterer Vorteil der Zentralisierung der Daten im Vuex Store ist es, dass somit Seiten als statisches
-HTML vom Node.js Server gerendert an den Client ausgeliefert werden können.
-Dadurch befinden sich SEO relevante Informationen in der DOM und können von Suchmaschinen erfasst werden.
-Bei der Entwicklung sollte dabei beachtet werden, dass durch das serverseitige Rendering die Browserumgebung
-und zugehörige Funktionalitäten nicht zur Verfügung stehen. Initiale Aufrufe und ein Seiten Refresh führen
-dabei immer zum serverseitigen Rendering, wobei subsequente Seitennavigationen clientseitig gerendert werden.
-
-
-
-### Clientseitiges Ausliefern von Inhalten
-Middlewares in hubble sind nicht die einzige Stelle, an der API Requests initiiert werden: Auch Komponenten rufen
-__`actions`__ aus dem Vuex Store auf, die API Requests machen. Somit lassen sich bestimmte Inhalte erst von 
-der API erfragen, wenn Shopbesucher diese auch tatsächlich benötigen (z.B. ausgelöst durch Interaktion 
-mit einem Button).
-
-
-
-## Unterschiedliche Shopsysteme, gleiche Funktionsaufrufe
-Bei der Delegierung durch die Middleware an den Vuex Store gilt es zu beachten, dass im __`@hubblecommerce`__ Modul
-je nach verwendetem Shopsystem unterschiedliche Vuex Store Module existieren. 
-Um den jeweiligen Aufruf von Vuex Store Funktionen plattformunabhängig zu halten, 
-werden immer die gleichen Funktionsaufrufe in den Vuex
-Store Modulen verwendet, ungeachtet des Backends. Folgender Mechanismus ermöglicht dies:
-
-Das hubble Modul (__`~/modules/@hubblecommerce/hubble/module.js`__) wird bei Start der Applikation aufgerufen
-und anhand des, in der __`.env`__ eingetragenen, __`API_TYPE`__ werden die entsprechenden Shop spezifischen Dateien
-entweder aus dem Unterordner __`sw`__ oder __`api`__ registriert. Dadurch entfällt der Pfad Prefix für Shop
-spezifische Vuex Store Module, da es in der laufenden Applikation nur ein Store Modul mit dem jeweiligen Namen gibt. 
-
-
-::: tip
-Um zusätzlichen State für bestimmte Seiten zu definieren, ist eine neue Middleware zu erstellen, die für
-Read/Write Operationen Vuex Store Module referenziert und in der __`middleware`__ Option der Seite hinzuzufügen ist.
-::: 
-
  
 ##### Mehr Erfahren
 Um mehr über State Management und zur Verwendungsweise von Vuex in hubble zu erfahren kann
@@ -239,10 +194,9 @@ Den Unterkomponenten des Layouts können dann als Properties diese Daten überge
 Durch die Navigationsmöglichkeiten in NuxtJS ergeben sich folgende für hubble:
 Zum einen ist es möglich die __`<nuxt-link>`__ Komponente zu verwenden, für die bei Bedarf auch
 Prefetching global oder lokal, je Link, aktiviert werden kann. 
-Bezüglich der Verwendung der Prefetching Funktionalität in hubble und der bestehenden Konfiguration
-kann der Abschnitt [Prefetching](./prefetching.md) der Dokumentation referenziert werden.
+Mehr zu Prefetching unter [Prefetching](./prefetching.md).
 
-Zum anderen existiert die Möglichkeit direkt den Router über __`this.$router`__ zu referenzieren.
+Außerhalb von Templates wird Vue Router __`this.$router`__ verwendet für Weiterleitungen.
 Diese Variante eignet sich, wenn es diverser Vorprüfungen oder Vorkalkulationen bedarf, bevor eine 
 entsprechende Weiterleitung stattfinden kann.
 Im Folgenden ist dazu ein einfaches Beispiel aus dem Overlay Menü der Wunschliste,
