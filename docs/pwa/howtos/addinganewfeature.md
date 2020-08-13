@@ -216,46 +216,9 @@ wird eine weitere Möglichkeit vorgestellt, die auf dieser Variante basiert.__
 
 
 
-### Überschreiben von existierenden Store Modulen
-Um bestehende Store Module zu verändern, ist es notwendig eine neue Datei mit demselben Namen unter dem __`~/store`__
-Ordner anzulegen und das ursprüngliche Modul zu deaktivieren:
-
-__1. Anlegen einer neuen Datei__
-
-Um die Basisfunktionalität zu erhalten ist der Inhalt der __`modApiProduct`__ in die neue Datei zu kopieren.
 
 
 
-__2.Deaktivieren des Store Moduls in der __`nuxt.config.js`____
-
-``` js
-hubble: {
-    // ...
-    deactivateStores: ['modApiProduct.js'],
-    // ...
-}
-```
-
-Der __`mutation`__ Aufruf kann nun in die neue Datei eingebunden werden.
-
-### Überschreiben von existierender Middleware
-Das Editieren von existierender Middleware entspricht dem gleichen Schema zur Überschreibung von existieren Store
-Modulen: Es ist notwendig eine Datei mit demselben Namen im Ordner __`~/middleware`__ zu erstellen, die bestehenden Inhalte in die
-neue Datei einzufügen und die ursprüngliche Middleware zu deaktivieren.
-
-__1. Das Anlegen einer neuen Datei__
-
-Um die Basisfunktionalität zu erhalten ist der Inhalt der __`modApiProduct`__ in die neue Datei zu kopieren.
-
-__2. Das Deaktivieren der Middleware aus dem __`@hubblecommerce`__ Modul in der __`nuxt.config.js`____
-``` js
-hubble: {
-    // ...
-    deactivateMiddleware: ['apiResourceRoute.js'],
-    // ...
-}
-```
-Nun kann auch hier der __`mutation`__ Aufruf in die neue Datei eingebunden werden.
 
 ### Verwenden von __`$localForage`__
 Nachdem der __`mutation`__ Aufruf nun in die neuen Dateien eingebunden wurde, werden beim Besuchen von Produktdetailseiten 

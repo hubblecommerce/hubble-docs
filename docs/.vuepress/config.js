@@ -229,6 +229,8 @@ module.exports = {
                         'howtos/addinganewfeature',
                         'howtos/addingapage',
                         'howtos/loadingcontentfromlegacy',
+                        'howtos/overridemiddleware',
+                        'howtos/overridestore',
                         'howtos/twatogoogleplaystore'
                     ]
                 },

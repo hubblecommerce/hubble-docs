@@ -83,7 +83,7 @@ Um dieses Verhalten auch im __`Network`__ Tab des Browser Inspektors zu beobacht
 
 ### Erweiterung der Komponente __`LastViewedProducts`__
 
-Damit die __`LastViewedProducts`__ Komponente nun auf unserer neuen Seite mehr Elemente anzeigt, als auf der Produktdetailseite, ist eine Abfrage der aktuellen Route notwendig. Dafür eignet es sich in der __`LastViewedProducts`__ eine sogenannte __`computed`__ Property anzulegen. Im weiteren Verlauf dieses HowTos gehen wir darauf noch eingehender ein.
+Damit die __`LastViewedProducts`__ Komponente nun auf unserer neuen Seite mehr Elemente anzeigt, als auf der Produktdetailseite, ist eine Abfrage der aktuellen Route notwendig. Dafür eignet es sich in der __`LastViewedProducts`__ eine sogenannte __`computed`__ Property anzulegen. Im weiteren Verlauf dieses HowTos gehen wir noch näher darauf ein.
 
 ``` js
 // ~/components/productutils/LastViewedProducts.vue 
