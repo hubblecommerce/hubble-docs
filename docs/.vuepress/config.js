@@ -238,6 +238,7 @@ module.exports = {
                         'howtos/loadingcontentfromlegacy',
                         'howtos/overridemiddleware',
                         'howtos/overridestore',
+                        'howtos/offcanvas',
                         'howtos/twatogoogleplaystore'
                     ]
                 },

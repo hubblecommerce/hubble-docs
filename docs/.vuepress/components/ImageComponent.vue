@@ -33,6 +33,8 @@
                 return {
                     padding: this.padding,
                     background: this.backgroundColor,
+                    display: 'flex',
+                    justifyContent: 'center'
                 };
             }
         }
