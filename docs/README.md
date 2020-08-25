@@ -9,6 +9,9 @@
 ✔ Exzellente Google Lighthouse Ergebnisse in allen Audits  
 ✔ Toolbox / Framework zum Erstellen eigener Shop Frontends 
 
+<TopicGrid></TopicGrid>
+<br>
+
 ## Links
 
 * [Demo](https://demo.hubblecommerce.io/)
