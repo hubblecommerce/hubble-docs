@@ -4,7 +4,7 @@ Schritte notwendig:
 
 
 ## Requirements
-* [Node.js](https://nodejs.org/en/) \(&gt;=10.20.1\) - enthält __npm__
+* [Node.js](https://nodejs.org/en/) \(&gt;=10.20.1\) 
 * __npm__ \(&gt;=6.14.4\)
 * [NuxtJS Projekt](https://nuxtjs.org/)
 

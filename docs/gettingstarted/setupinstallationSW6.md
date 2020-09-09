@@ -16,10 +16,10 @@ __Hinweis:__ Die folgenden Installationsanweisungen wurden für MacOS und Linux 
 
 ## Requirements
 
-* [Node.js](https://nodejs.org/en/) \(&gt;=10.20.1\) - enthält __npm__
+* [Node.js](https://nodejs.org/en/) \(&gt;=10.20.1\)
 * __npm__ \(&gt;=6.14.4\)
-* [Shopware](https://docs.shopware.com/en/shopware-platform-dev-en/system-guide/system-installation-guides)
-* [Shopware 6 API Plugin](https://github.com/hubblecommerce/shopware6-api-plugin)
+* [Shopware >= 6.3.0](https://docs.shopware.com/en/shopware-platform-dev-en/system-guide/system-installation-guides)
+* [Shopware 6 PWA Plugin](https://github.com/elkmod/SwagShopwarePwa)
 * [Shopware 6 Payone Plugin](https://store.shopware.com/payon69044615910f/payone-payment-fuer-shopware-6.html)
 * [NuxtJS Projekt](https://nuxtjs.org/)
 

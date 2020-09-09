@@ -28,7 +28,6 @@ module.exports = {
                         'setupinstallationSW6',
                         'setupinstallationHubbleDataAPI',
                         'techstack',
-                        'systemrequirements',
                         'contribution',
                     ]
                 },
