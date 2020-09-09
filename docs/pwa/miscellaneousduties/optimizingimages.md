@@ -1,1 +1,0 @@
-# Optimierung von Bildern

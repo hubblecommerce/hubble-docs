@@ -1,10 +1,10 @@
 # Error Handling
 
-In hubble bestehen verschiedene Layer für die Fehlerbehandlung, die im Zusammenhang mit API Calls aufreten.
+In hubble bestehen verschiedene Layer für die Behandlung von Fehlern, die im Zusammenhang mit API Calls aufreten können.
 
 Zum einen gibt es Route-Level Fehler, die beim Routing an eine Middleware zurückgeliefert werden.
 Da die Middleware dazu dient sicherzustellen, dass die Daten für die Route im Vuex Store bereitstehen für das
-Renderung, wird stattdessen, die unter __`~/layouts/error.vue`__ definierte Error Page angezeigt.
+Rendering, wird stattdessen, die unter __`~/layouts/error.vue`__ definierte Error Page angezeigt.
 Seiten sind in NuxtJS standardmäßig unter __`~/pages`__ enthalten und es handelt sich bei der Error Page
 um einen Spezialfall, der im Abschnitt [Error Page](https://nuxtjs.org/guides/directory-structure/layouts#error-page)
 der NuxtJS Dokumentation nachgelesen werden kann. Somit kann für diese, unter  __`~/layouts/`__ definierte, Seite

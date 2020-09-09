@@ -78,11 +78,6 @@ module.exports = {
             ],
             '/pwa/': [
                 {
-                    title: 'Design Prinzipien',   // required
-                    path: '/pwa/designprinciples',
-                    collapsable: false, // optional, defaults to true
-                },
-                {
                     title: 'Features',   // required
                     path: '/pwa/features',
                     collapsable: false, // optional, defaults to true
@@ -103,12 +98,10 @@ module.exports = {
                         'architectureanddataflow/cookies',
                         'architectureanddataflow/state',
                         'architectureanddataflow/serviceworkerandmanifest',
-                        'architectureanddataflow/personalizedcontent',
                         'architectureanddataflow/caching',
                         'architectureanddataflow/prefetching',
                         'architectureanddataflow/dynamicimports',
                         'architectureanddataflow/lazyloading',
-                        'architectureanddataflow/backendintegration',
                         'architectureanddataflow/layouts',
                     ]
                 },
@@ -117,8 +110,7 @@ module.exports = {
                     path: '/pwa/templating/introduction',
                     collapsable: false, // optional, defaults to true
                     children: [
-                        'templating/introduction',
-                        'templating/ui'
+                        'templating/introduction'
                     ]
                 },
                 {
@@ -132,11 +124,6 @@ module.exports = {
                         'pagetypes/productdetailpage',
                         'pagetypes/cmspage'
                     ]
-                },
-                {
-                    title: 'Komponenten',   // required
-                    path: '/pwa/components',
-                    collapsable: false, // optional, defaults to true
                 },
                 {
                     title: 'Internationalisierung',   // required
@@ -175,11 +162,6 @@ module.exports = {
                     collapsable: false, // optional, defaults to true
                 },
                 {
-                    title: 'Plugin System',   // required
-                    path: '/pwa/pluginsystem',
-                    collapsable: false, // optional, defaults to true
-                },
-                {
                     title: 'Testing',   // required
                     path: '/pwa/testdrivendevelopment',
                     collapsable: false, // optional, defaults to true
@@ -187,11 +169,6 @@ module.exports = {
                 {
                     title: 'Error Handling',   // required
                     path: '/pwa/errorhandling',
-                    collapsable: false, // optional, defaults to true
-                },
-                {
-                    title: 'Debugging',   // required
-                    path: '/pwa/debugging',
                     collapsable: false, // optional, defaults to true
                 },
                 {
@@ -215,29 +192,14 @@ module.exports = {
                     ]
                 },
                 {
-                    title: 'Miscellaneous Duties',   // required
-                    path: '/pwa/miscellaneousduties/optimizingimages',
-                    collapsable: false, // optional, defaults to true
-                    children: [
-                        'miscellaneousduties/optimizingimages'
-                    ]
-                },
-                {
-                    title: 'Troubleshooting',   // required
-                    path: '/pwa/troubleshooting',
-                    collapsable: false, // optional, defaults to true
-                },
-                {
                     title: 'How Tos',   // required
                     path: '/pwa/howtos/',
                     collapsable: false, // optional, defaults to true
                     children: [
                         'howtos/addinganewfeature',
                         'howtos/addingapage',
-                        'howtos/loadingcontentfromlegacy',
                         'howtos/overridemiddleware',
                         'howtos/overridestore',
-                        'howtos/twatogoogleplaystore'
                     ]
                 },
                 {
