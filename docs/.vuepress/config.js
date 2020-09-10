@@ -1,3 +1,6 @@
+const glob = require('glob');
+let componentMarkdownFiles = glob.sync('docs/components/generated/**/*.md').map(f => f.replace('docs/components/', ''));
+
 module.exports = {
     title: 'hubble Documentation',
     //base:
@@ -210,43 +213,9 @@ module.exports = {
             ],
             '/components/': [
                 {
-                    title: 'Basic Components',   // required
+                    title: 'Component Library',   // required
                     collapsable: false, // optional, defaults to true
-                    children: [
-                    ]
-                },
-                {
-                    title: 'Customer Components',   // required
-                    collapsable: false, // optional, defaults to true
-                    children: [
-                        'customerComponents/RegisterForm',
-                        'customerComponents/LoginForm',
-                        'customerComponents/CustomerAccountNavigation',
-                        'customerComponents/CustomerAddresses',
-                        'customerComponents/CustomerOrderList',
-                        'customerComponents/CustomerPasswordChange'
-                    ]
-                },
-                {
-                    title: 'Checkout Components',   // required
-                    collapsable: false, // optional, defaults to true
-                    children: [
-                        'checkoutComponents/CartItemsList',
-                        'checkoutComponents/CartItemsListNonInteractive',
-                        'checkoutComponents/Coupons',
-                        'checkoutComponents/OrderComment',
-                        'checkoutComponents/OrderDetail',
-                        'checkoutComponents/PaymentMethods',
-                        'checkoutComponents/ShippingMethods',
-                        'checkoutComponents/Totals',
-                    ]
-                },
-                {
-                    title: 'Payment Components',   // required
-                    collapsable: false, // optional, defaults to true
-                    children: [
-                        'paymentComponents/AmazonPayButton',
-                    ]
+                    children: componentMarkdownFiles
                 }
             ],
         },

@@ -1,6 +1,6 @@
 <template>
     <div :style="backgroundStyles" class="imageComponentBox">
-        <img :src="src" :alt="alt">
+        <img :src="src" :alt="alt" />
     </div>
 
 </template>
