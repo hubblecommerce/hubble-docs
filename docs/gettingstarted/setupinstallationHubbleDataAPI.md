@@ -6,14 +6,16 @@ Schritte notwendig:
 ## Requirements
 * [Node.js](https://nodejs.org/en/) \(&gt;=10.20.1\) - enthält __npm__
 * __npm__ \(&gt;=6.14.4\)
+* [NuxtJS Projekt](https://nuxtjs.org/)
 
 
 ## Installation und Konfiguration der hubble PWA
-Der Code der hubble PWA befindet sich auf GitHub und kann über das Terminal heruntergeladen werden:
+Das hubble Modul ist vefügbar als [npm](https://www.npmjs.com/) Package und kann über das Terminal via __`npm`__ heruntergeladen 
+und als [Nuxt Modul](https://nuxtjs.org/guide/modules/) in NuxtJS Projekten eingebunden werden:
 
 ``` bash
-git clone git@github.com:hubblecommerce/hubble-frontend-pwa.git
-cd hubble-frontend-pwa
+
+
 cp .env_example .env
 npm install 
 ```
