@@ -127,3 +127,38 @@ um z.B. gemäß den NuxtJS Regeln neue Plugins zu registrieren.
 Es sollte immer abgewägt werden, ob eine direkte Anpassung von existierenden Dateien aus dem hubble Modul tatsächlich
 notwendig ist oder es angemessener wäre z.B. eine neue Middleware zu erstellen und in der jeweiligen Seite im __`~/pages/`__ Ordner im __`middleware`__ Array aufzulisten.
 Außerdem sollte sichergestellt sein, dass alle State Variablen, die von den Seiten und deren Komponenten benötigt werden, auch weiterhin im Vuex Store gesetzt werden.
+
+
+## Bestehende Basiskonfigurationsfelder
+
+Falls nicht anders vermerkt, wirkt sich das explizite Setzen von Optionen über die __`~/nuxt.config.js`__ überschreibend aus.
+
+| Basiskonfigurationsfelder | |
+| --- | --- |
+| __`env`__ | wird gemerged mit dem existierenden __module options__ Objekt |
+| __`dotenv`__ | wird gemerged mit dem existierenden __module options__ Objekt  |
+| __`serverMiddleware`__ |  | 
+| __`css`__ |  |  
+| __`router.prefetchLinks`__ | defaultmäßig __`false`__ - kann nicht überschrieben werden  | 
+| __`build.babel.plugins`__ |  | 
+| __`build.babel.presets`__ |  |
+| __`build.extractCSS`__ | defaultmäßig __`true`__ - kann nicht überschrieben werden |
+| __`build.transpile`__ |  |
+
+
+## Default Module 
+
+Die Modul Einstellungen lassen sich, wie oben beschrieben über die [Toplevel Optionen](https://nuxtjs.org/guide/modules#top-level-options) in der __`~/nuxt.config.js`__, überschreiben.
+| Default Module  | 
+| --- |  
+| __`@hubblecommerce/payone`__ |  
+| __`@hubblecommerce/amazon-pay`__ | 
+| __`@nuxtjs/axios`__ |  
+| __`nuxt-mq`__ | 
+| __`@nuxtjs/recaptcha`__ | 
+| __`nuxt-i18n`__ | 
+| __`@nuxtjs/pwa`__ | 
+| __`localforage-nuxt`__ |
+| __`cookie-universal-nuxt`__ |
+| __`@nuxtjs/dotenv`__ |
+| __`@nuxtjs/google-tag-manager`__ |
