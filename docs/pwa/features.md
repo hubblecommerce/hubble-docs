@@ -3,6 +3,7 @@
 ## hubble allgemein
 - schlank und performant 
 - eigenständiges Nuxt.js Modul 
+- updatefähig
 - individuell erweiterbar
 - wird kontinuierlich weiterentwickelt
 - unterstützt PWA Features wie z.B.: Installation auf dem Homescreen und Push Benachrichtigungen via OneSignal

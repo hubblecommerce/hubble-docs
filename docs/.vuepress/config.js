@@ -26,7 +26,7 @@ module.exports = {
                     path: '/gettingstarted/',
                     collapsable: false, // optional, defaults to true
                     children: [
-                         // 'gettingstarted/introduction',
+                        // 'gettingstarted/introduction',
                         'architectureandbigpicture',
                         'setupinstallationSW6',
                         'setupinstallationHubbleDataAPI',
@@ -110,11 +110,8 @@ module.exports = {
                 },
                 {
                     title: 'Templating',   // required
-                    path: '/pwa/templating/introduction',
+                    path: '/pwa/templating/',
                     collapsable: false, // optional, defaults to true
-                    children: [
-                        'templating/introduction'
-                    ]
                 },
                 {
                     title: 'Page Types',   // required

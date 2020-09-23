@@ -29,18 +29,28 @@ __Hinweis:__ Die folgenden Installationsanweisungen wurden für MacOS und Linux 
 Das hubble Modul ist vefügbar als [npm](https://www.npmjs.com/) Package und kann über das Terminal via __`npm`__ heruntergeladen 
 und als [Nuxt Modul](https://nuxtjs.org/guide/modules/) in NuxtJS Projekten eingebunden werden:
 
-``` bash
+1. Install [NuxtJS](https://nuxtjs.org/guides/get-started/installation)
+2. Install hubble NuxtJs Module 
+```sh
+npm i @hubblecommerce/hubble
+```
+3. Add module to nuxt.config.js
+```js
+buildModules: [
+    ['@hubblecommerce/hubble']
+],
 
-
-cp .env_example .env
-npm install 
+/*
+ ** hubble module configuration
+ */
+hubble: {
+    apiType: process.env.API_TYPE
+},
 ```
 
 Um die Entwicklung zu beginnen wird eine __`~/.env`__ benötigt, in die Credentials wie API Keys und Auth Token
 aus den Admin Bereichen der jeweiligen Services einzutragen sind.
-Im Projekt existiert dafür die __`~/.env_example`__ als Referenz für mögliche Einträge. Außerdem enthält die Dokumentation 
-den Abschnitt [Konfiguration](../pwa/configuration.md) mit einer Beschreibung zur korrekten
-und sicheren Verwendung der __`~/.env`__.
+Mehr zur .env unter: [Konfiguration](../pwa/configuration.md).
 
 Im Zusammenhang mit Shopware sind mindestens folgende Einträge notwendig:
 

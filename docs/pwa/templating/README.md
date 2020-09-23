@@ -1,6 +1,50 @@
-# Einführung
+# Templating
 
-## Konfiguration   
+## Überschreiben von Dateien
+hubble verfügt über fertige Layouts, Pages und Components, Assets, usw.. 
+Diese lassen sich einfach überschreiben indem man sie in den jeweiligen Ordner im NuxtJS Root Verzeichnis kopiert. 
+
+Es gibt u.a. folgende Ordner im hubble Modul:
+- layouts
+- assets
+- components
+- plugins
+- store
+- pages
+- middleware
+
+### Workflow
+Um bereits im hubble Modul existierende Dateien zu überschreiben, müssen Ordnerstrukturen und Dateinamen aus dem Modul eingehalten werden.
+
+Anpassen einer bestimmten Komponente z.B. Logo:
+1. Komponente im Modul ausfindig machen: Suche in node_modules/@hubblecommerce/hubble/core nach "Logo"
+2. Komponente **TheLogo.vue** kopieren von<br>
+   node_modules/@hubblecommerce/hubble/core<strong>/components/navigation/TheLogo.vue</strong> nach <br>
+   **components/navigation/TheLogo.vue** 
+3. Kopierte Komponente editieren
+
+
+### API spezifische Ordner
+Nach diesem Schema lassen sich sämtliche Dateien innerhalb von @hubblecommerce/hubble/core überschreiben und anpassen. 
+Eine Besonderheit gilt es dabei zu beachten: Die Ordner __`anonymous-middleware`__, __`middleware`__, __`plugins`__ und __`store`__ enthalten sogenannte API-spezifische Unterordner.
+Außer diesen API-spezifischen Unterordnern können in diesen Ordnern keine weiteren Unterordner erstellt werden, da diese nicht im finalen Build eingebunden werden.
+
+Beispielsweise kann also der Ordner __`middleware`__ wie links aufgebaut sein und der Inhalt wird vollständig verwendet, wohingegen bei der Ordnerstruktur auf der rechten Seite nur der __`sw`__ Ordner eingebunden werden wird: 
+
+<ImageComponent 
+    :src="$withBase('/apiTypeDirs.svg')"
+    alt="apiTypeDirs"
+    backgroundColor="white">
+</ImageComponent>
+
+### Updatefähigkeit
+Es sollte immer abgewägt werden, ob eine direkte Anpassung von existierenden Dateien aus dem hubble Modul tatsächlich
+notwendig ist oder es angemessener wäre eine zusätzliche Datei zu erstellen. Je weniger überschrieben wird, desto weniger muss nach einem Update des hubble 
+Moduls angepasst werden. 
+
+
+
+## Theming   
 
 ### Theme konfigurieren 
 
