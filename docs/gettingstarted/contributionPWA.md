@@ -139,7 +139,7 @@ wird das angegebene Issue automatisch mit dem Pull Request verlinkt und beim erf
 + Im Titel des Pull Requests sollte ebenfalls, zur Erhaltung der Übersichtlichkeit, die Issue Nummer (__`#<NUM>`__) eingefügt werden.
 Dies hilft Reviewern Pull Requests schneller zu bearbeiten.
 
-Falls eine Referenz der entsprechenden Punkte aus den __Hubble Coding Guidelines for Contributors__ möglich ist, sollten die passenden Sections und jeweiligen Punkte im Kommentar erwähnt werden.
+Falls eine Referenz der entsprechenden Punkte aus den __hubble Coding Guidelines for Contributors__ möglich ist, sollten die passenden Sections und jeweiligen Punkte im Kommentar erwähnt werden.
 Dies ist ebenfalls hilfreich zur Einordnung der vorgeschlagenen Änderungen und verbessert die Nachvollziehbarkeit für Reviewer.
 
 Falls mehrere Commits erstellt wurden und diese nicht bereits eine Beschreibung zu der Veränderung zwischen den Commits 
