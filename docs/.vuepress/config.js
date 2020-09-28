@@ -32,6 +32,7 @@ module.exports = {
                         'setupinstallationHubbleDataAPI',
                         'techstack',
                         'contribution',
+                        'contributionPWA',
                     ]
                 },
                 {
