@@ -30,9 +30,7 @@ module.exports = {
                         'architectureandbigpicture',
                         'setupinstallationSW6',
                         'setupinstallationHubbleDataAPI',
-                        'techstack',
-                        'contribution',
-                        'contributionPWA',
+                        'techstack'
                     ]
                 },
                 {
@@ -207,6 +205,16 @@ module.exports = {
                     title: 'API Reference',   // required
                     path: '/pwa/apireference',
                     collapsable: false, // optional, defaults to true
+                },
+                {
+                    title: 'Contribution',   // required
+                    path: '/pwa/contribution/contributionpwa',
+                    collapsable: false, // optional, defaults to true
+                    children: [
+                        'contribution/contributionpwa',
+                        'contribution/contributiondocs',
+                        'contribution/codinguidelines'
+                    ]
                 }
             ],
             '/components/': [

@@ -1,4 +1,4 @@
-## Contribution Guide Dokumentation
+# Contribution Guide Dokumentation
 
 Diese Dokumentation wurde mit [VuePress](https://vuepress.vuejs.org/) erstellt.
 Um diese zu erweitern wird eine lokale Version von der Dokumentation benötigt. 
