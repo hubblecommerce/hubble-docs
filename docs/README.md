@@ -54,7 +54,8 @@ npm run dev
 ```
 
 ## Release History
-
+* 1.1.0
+    * Extracted the hubble core to nuxt module
 * 1.0.0
     * The first proper release
 
@@ -69,5 +70,5 @@ Distributed under the MIT license. See [LICENSE](https://github.com/hubblecommer
 ## Contributing
 
 Eine spezifische Anleitung für Pull Requests ist hier zu finden:
-[hubble Contribution Guide](gettingstarted/contribution.md)
+[hubble Contribution Guide](pwa/contribution/contributionpwa.md)
 
