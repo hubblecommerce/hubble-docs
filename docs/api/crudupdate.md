@@ -26,8 +26,8 @@ make use of it's so called client credentials.
 ## OAuth Client Credentials
 
 ```dotenv
-Client ID: 1
-Client secret: M0ZzBzhFN1yaBM0EFlgiHBBfgkJ1Woj5vmHuxpRK
+Client ID: [Your personal client id]
+Client secret: [Your personal client secret]
 ```
 
 >
@@ -47,8 +47,8 @@ curl -X POST 'https://api-swag.digitalmanufaktur.net/oauth/token'
     -H 'content-type: application/json'
     -d '{
         "grant_type": "client_credentials",
-        "client_id": "1",
-        "client_secret": "M0ZzBzhFN1yaBM0EFlgiHBBfgkJ1Woj5vmHuxpRK",
+        "client_id": "[Your personal client id]",
+        "client_secret": "[Your personal client secret]",
         "scope": "*"
     }'
 
@@ -56,7 +56,7 @@ curl -X POST 'https://api-swag.digitalmanufaktur.net/oauth/token'
 {
     "token_type":"Bearer",
     "expires_in":900,
-    "access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjUyZmIzZDAzYWI0ZTEyMWMyMjZiNWVhZWQ4YmE3ZWQwMDQ2M2Q2NmI2NjIyNjEwYTllMzUyNzUyNjczMjc2N2E5ZDFmMWRkYTc5MmVkMGI5In0.eyJhdWQiOiIzIiwianRpIjoiNTJmYjNkMDNhYjRlMTIxYzIyNmI1ZWFlZDhiYTdlZDAwNDYzZDY2YjY2MjI2MTBhOWUzNTI3NTI2NzMyNzY3YTlkMWYxZGRhNzkyZWQwYjkiLCJpYXQiOjE1NzE4NDE2NDUsIm5iZiI6MTU3MTg0MTY0NSwiZXhwIjoxNTcxODQyNTQ1LCJzdWIiOiIiLCJzY29wZXMiOlsiKiJdfQ.6mtIH7Fr2dA-oEwwCplWcnu7HG50vvnRHxFFciwDYwsL5c2wls9DKTMiy5kN3mdjJOXYvXrhg4JSr4_lOUu85rb51OQIGC3pK9-eu7EGzvI_RvNzfwjO6R3YWL26dmn0ueaBehljcZOlSJQbTs92u_Fhffr6AH1kJhTWmpIIVeq2I6MNSg10hdsWiJK1DaLQbkuctb5orrrS76zEKytWQZ8Fbfx-cPUkqHMzcKWZfdDWiLvQcJU_fg7O5qkq79LuxD2ZFQDfEl3FAnIspdjuqpLxu41uU32f-Hp14yWWdsOGai8hBBu6AB5M28AXuziHO2Ia8uHwqTyBUMLxzEaJ8XLTaIVWP6qL3O6kxkYwZzGgI8XKZK7ys-FYVEURUhg6vlEKUzc0bDuTigLj58rgQBuzcinbkWC1_VGmI0UGd1x_siB_LtMwI9MJfr22C93NqIQqn-ZJzasc0gUAuDEvX-olR3NHwsyatmhwp_JaVDTpdpGa7HgZ-HeB_lEg04T0SKyXCZffNOpf8sF1ijx5a6uPRb4ogv1oSQkC-6mHXMhTAayfawzlIi-x1S739QcyBVg1YiURq8botl7R5HxaMPqwG0sVttiVAhqXwdOFoHZuEo8qKRzEz17iOrSvnfZPQhxGeJB1sjFH8oJgAF0Ly-oLeQDielewO-xRXSHG23g"
+    "access_token":"[Your generated access token]"
 }
 ```
 
@@ -73,7 +73,7 @@ requested access token.
 curl -X POST 'https://api-swag.digitalmanufaktur.net/rocket-api/crud/xtc'
     -H 'accept: application/json'
     -H 'content-type: application/json' 
-    -H 'authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjUyZmIzZDAzYWI0ZTEyMWMyMjZiNWVhZWQ4YmE3ZWQwMDQ2M2Q2NmI2NjIyNjEwYTllMzUyNzUyNjczMjc2N2E5ZDFmMWRkYTc5MmVkMGI5In0.eyJhdWQiOiIzIiwianRpIjoiNTJmYjNkMDNhYjRlMTIxYzIyNmI1ZWFlZDhiYTdlZDAwNDYzZDY2YjY2MjI2MTBhOWUzNTI3NTI2NzMyNzY3YTlkMWYxZGRhNzkyZWQwYjkiLCJpYXQiOjE1NzE4NDE2NDUsIm5iZiI6MTU3MTg0MTY0NSwiZXhwIjoxNTcxODQyNTQ1LCJzdWIiOiIiLCJzY29wZXMiOlsiKiJdfQ.6mtIH7Fr2dA-oEwwCplWcnu7HG50vvnRHxFFciwDYwsL5c2wls9DKTMiy5kN3mdjJOXYvXrhg4JSr4_lOUu85rb51OQIGC3pK9-eu7EGzvI_RvNzfwjO6R3YWL26dmn0ueaBehljcZOlSJQbTs92u_Fhffr6AH1kJhTWmpIIVeq2I6MNSg10hdsWiJK1DaLQbkuctb5orrrS76zEKytWQZ8Fbfx-cPUkqHMzcKWZfdDWiLvQcJU_fg7O5qkq79LuxD2ZFQDfEl3FAnIspdjuqpLxu41uU32f-Hp14yWWdsOGai8hBBu6AB5M28AXuziHO2Ia8uHwqTyBUMLxzEaJ8XLTaIVWP6qL3O6kxkYwZzGgI8XKZK7ys-FYVEURUhg6vlEKUzc0bDuTigLj58rgQBuzcinbkWC1_VGmI0UGd1x_siB_LtMwI9MJfr22C93NqIQqn-ZJzasc0gUAuDEvX-olR3NHwsyatmhwp_JaVDTpdpGa7HgZ-HeB_lEg04T0SKyXCZffNOpf8sF1ijx5a6uPRb4ogv1oSQkC-6mHXMhTAayfawzlIi-x1S739QcyBVg1YiURq8botl7R5HxaMPqwG0sVttiVAhqXwdOFoHZuEo8qKRzEz17iOrSvnfZPQhxGeJB1sjFH8oJgAF0Ly-oLeQDielewO-xRXSHG23g'
+    -H 'authorization: Bearer [Your generated access token]'
     --data '{
         "store_id": "108",
         "subject_id": "4711",
