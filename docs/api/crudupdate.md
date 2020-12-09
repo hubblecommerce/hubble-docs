@@ -42,7 +42,7 @@ response will look like this:
 
 ```bash
 # request
-curl -X POST 'https://api-swag.digitalmanufaktur.net/oauth/token' 
+curl -X POST 'https://api.example.com/oauth/token' 
     -H 'accept: application/json'
     -H 'content-type: application/json'
     -d '{
@@ -70,7 +70,7 @@ requested access token.
 
 ```bash
 # request
-curl -X POST 'https://api-swag.digitalmanufaktur.net/rocket-api/crud/xtc'
+curl -X POST 'https://api.example.com/rocket-api/crud/xtc'
     -H 'accept: application/json'
     -H 'content-type: application/json' 
     -H 'authorization: Bearer [Your generated access token]'
