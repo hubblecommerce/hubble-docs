@@ -1,7 +1,7 @@
 # Jest
 
 ## Einleitung Jest in Hubble
-Jest wird in hubble für unit testing verwendet und behandelt im Optimalfall pro test nur eine Datei und mockt andere funktionen und componenten die von dieser Datei genutzt werden um den Scope einzelner Tests möglichst klein zu halten. Getestet werden mit Jest vorwiegend vue Komponenten die entweder viel logik enthalten, und somit fehleranfällig bei änderungen sind, und Komponenten die sich dynamisch nach interaktion ändern und daten anzeigen.
+Jest wird in hubble für unit testing verwendet und behandelt im Optimalfall pro test nur eine Datei und mockt andere funktionen und componenten die von dieser Datei genutzt werden um den Scope einzelner Tests möglichst klein zu halten. Getestet werden mit Jest vorwiegend vue components die entweder viel logik enthalten, und somit fehleranfällig bei änderungen sind, und vue components die sich dynamisch nach interaktion ändern und daten anzeigen.
 
 ## Setup Jest
 Um Jest tests in hubble nutzen zu können müssen folgende dev dependecies in die __`package.json`__ im root directory des Nuxt Projekts kopiert werden:
@@ -176,7 +176,7 @@ test('Test vuex call from component', async () => {
 })
 ```
 
-# 
+## Übersetzung in hubble
 
 Da in hubble sämtlicher text durch die __`$t`__ Funktion übersetzt wird ist es nötig diese als mock im wrapper anzugeben da es sonst zu fehlermeldungen kommt. Am einfachsten geht dies indem man __`$t`__ als const deklariert und sie beim __`mount'__ als Mock übergibt.
 
@@ -192,9 +192,9 @@ beforeAll( () => {
 })
 ```
 
-# store mapping tests
+## Tests von Shopware
 
-Jest beinhaltet neben component tests auch tests des stores die das korrekte Mapping von Shopware daten überprüft. Für das Testen des mappings wird im __`beforeAll()`__ der API call an Shopware getätigt und mit der Response das mapping aufgerufen mit dessen Ergebnis die Tests durchgeführt werden. Die Daten die gemapped wurden sind werden dann mit den zu erwartenden Daten verglichen. Die zu erwartenden Daten werden in einer config Datei außerhalb des tests definiert und im __`beforeAll()`__ durch die Hilfsfunktion __`computeTestArrays()`__ in ein iterierbares Array umgewandelt. Jedes Element dieses Arrays beeinhaltet den Namen des zu prüfenden Elements, den erwarteten Typen (String, Number, Boolean, etc.) und der zu erwartetende Wert. Im Test wird dann durch das Array Iteriert und jeweils überprüft ob der wert definiert ist, ob er vom richtigen typ ist und ob er den erwarteten Inhalt hat. Außerdem wird dem expect noch eine errorMessage als zweites Parameter übergeben welche als Custom Message ausgegeben wird im Fall das ein Test fehlschlägt damit man sehen kann bei welchem Element der Test fehlschlägt.
+Jest beinhaltet neben component tests auch tests des stores die das korrekte Mapping von Shopware daten überprüft. Für das Testen des mappings wird im __`beforeAll()`__ der API call an Shopware getätigt und mit der Response das mapping aufgerufen mit dessen Ergebnis die Tests durchgeführt werden. Die Daten die gemapped wurden sind werden dann mit den zu erwartenden Daten verglichen. Die zu erwartenden Daten werden in einer config Datei außerhalb des tests definiert und im __`beforeAll()`__ durch die Hilfsfunktion __`computeTestArrays()`__ in ein iterierbares Array umgewandelt. Jedes Element dieses Arrays beeinhaltet den Namen des zu prüfenden Elements, den erwarteten Typen (String, Number, Boolean, etc.) und der zu erwartetende Wert. Im Test wird dann durch das Array Iteriert und jeweils überprüft ob der wert definiert ist, ob er vom richtigen typ ist und ob er den erwarteten Inhalt hat. Außerdem wird dem expect noch die variable __`errorMessage`__ als zweites Parameter übergeben welche als Custom Message ausgegeben wird im Fall das ein Test fehlschlägt damit man sehen kann bei welchem Element der Test fehlschlägt.
 
 ```js
 // modApiCustomer.test.js
