@@ -1,4 +1,4 @@
-# Testing
+# Cypress
 
 ## Teststrategie in hubble und Einleitung in Cypress
 hubble's Teststrategie besteht primär daraus, reales User Verhalten in Tests nachzustellen, was im
