@@ -192,7 +192,7 @@ beforeAll( () => {
 })
 ```
 
-## Tests von Shopware
+## Testen von Mapping der Shopware Daten
 
 Jest beinhaltet neben component tests auch tests des stores die das korrekte Mapping von Shopware daten überprüft. Für das Testen des mappings wird im __`beforeAll()`__ der API call an Shopware getätigt und mit der Response das mapping aufgerufen mit dessen Ergebnis die Tests durchgeführt werden. Die Daten die gemapped wurden sind werden dann mit den zu erwartenden Daten verglichen. Die zu erwartenden Daten werden in einer config Datei außerhalb des tests definiert und im __`beforeAll()`__ durch die Hilfsfunktion __`computeTestArrays()`__ in ein iterierbares Array umgewandelt. Jedes Element dieses Arrays beeinhaltet den Namen des zu prüfenden Elements, den erwarteten Typen (String, Number, Boolean, etc.) und der zu erwartetende Wert. Im Test wird dann durch das Array Iteriert und jeweils überprüft ob der wert definiert ist, ob er vom richtigen typ ist und ob er den erwarteten Inhalt hat. Außerdem wird dem expect noch die variable __`errorMessage`__ als zweites Parameter übergeben welche als Custom Message ausgegeben wird im Fall das ein Test fehlschlägt damit man sehen kann bei welchem Element der Test fehlschlägt.
 
@@ -207,3 +207,13 @@ test('Test cart data mapping', () => {
         })
     })
 ```
+
+## Config Dateien für Mapping Tests
+
+Für das Testen des Korrekten Mappings der Shopware daten werden die config dateien genutzt. Da diese momentan nicht automatisiert werden können muss vor dem Test die config Datei mit gültigen Daten aus der eigenen Shopware umgebung gefüllt werden.
+
+## Next steps
+
+Das befüllen der Config dateien für die mapping tests ist momentan quasi nur dadurch möglich sich einmal per __`console.log()`__ das Akutelle mapping geben zu lassen um es dann gegen zukünftige Änderungen zu testen. Dies würde sich dadurch automatisieren lassen das man eine Hilfsfunktion schreibt die das aktuelle Mapping in die Config datei schreibt. so oder so ist es aber nötig die config datei anzupassen bevor Änderungen durchgeführt werden bzw. zu einem Zeitpunkt dies zu tun in dem man sich sicher ist, dass das Mapping korrekt funktioniert. Es wäre also sinnvoll den Prozess so zu vereinfachen das das per Hand befüllen einfacher wird bzw. sinnvoll automatisiert wird.
+
+Für weitere Component Tests ist es sinnvoll welche zu Testen die einen klar definierten Input und Output haben. Der Input bedeutet hier in der Regel eine Nutzerinteraktion in Form eines geklickten buttons oder einer ähnlichen Interaktion. Der zu testende Output besteht in der Regel aus Vuex aufrufen die als mock im Test zur verfügung stehen damit überprüft werden kann ob sie mit den zu erwatenden Parametern aufgerufen werden.
