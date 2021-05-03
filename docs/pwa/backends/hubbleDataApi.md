@@ -66,7 +66,7 @@ API_ENDPOINT_AUTH = 'oauth/token'
 
 ::: warning
 Client-seitig erlaubte Keys müssen in der __`~/nuxt.config.js`__ auf die Whitelist gesetzt werden,
-damit diese zur Verfügung stehen. Zur korrekten Einrichtung sollte der Abschnitt [Konfiguration](configuration.md) referenziert werden.
+damit diese zur Verfügung stehen. Zur korrekten Einrichtung sollte der Abschnitt [Konfiguration](../configuration.md) referenziert werden.
 :::
 
 
