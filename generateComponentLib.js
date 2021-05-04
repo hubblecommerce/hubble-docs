@@ -21,13 +21,23 @@ const listAllFilesAndDirs = dir => globby(`${dir}/**/*`);
     await fs.mkdirSync(targetDir);
 
     // Generate files from source directory
-    const files = await listAllFilesAndDirs(sourceDir);
-    files.forEach(file => {
-        Vuedoc.md({filename: file})
-            .then((document) => {
+    const files = await listAllFilesAndDirs(sourceDir)
+
+    // for loop will ensure await processing
+    // of each individual file will work as aspected.
+    // This will improve the review process when one
+    // parsing will fail you are able to locate the failing file
+    // by looking at the latest console.debug() message.
+    for (const file of files) {
+        // print currently processed filename to enhance debugging
+        console.debug(`Processing '${file}'`)
+        // await each processing ensures the process stops
+        // at the failing file which will make debugging easier
+        await Vuedoc.md({filenames: [file]})
+            .then(document => {
                 const readmeFileName = path.parse(file).base.replace('.vue', '.md')
                 fs.writeFileSync(`${targetDir}/${readmeFileName}`, document);
             })
             .catch((err) => console.error(err));
-    })
+    }
 })();
