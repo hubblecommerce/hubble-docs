@@ -1,0 +1,23 @@
+:root {
+  // brand colors
+  --c-brand: #A20158;
+  --c-brand-light: #c0026b;
+
+  --c-tip: #A20158;
+}
+
+html.dark {
+  // brand colors darkmode
+  --c-brand: #d00171;
+  --c-brand-light: #f60189;
+
+  --c-tip: #d00171;
+}
+
+.contains-task-list {
+  padding-left: 0;
+}
+
+.contains-task-list li {
+  list-style-type: none;
+}

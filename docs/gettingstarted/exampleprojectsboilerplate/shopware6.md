@@ -1,1 +1,0 @@
-# Shopware 6 
