@@ -1,4 +1,4 @@
-## Contribution Guide PWA
+# Contribution Guide PWA
 
 **1**: Create issue <br>
 Every change to the code and every pull request must be assigned to an issue.
