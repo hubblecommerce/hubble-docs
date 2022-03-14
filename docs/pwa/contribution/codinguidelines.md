@@ -1,51 +1,41 @@
 # Hubble Coding Guidelines for Contributors
-## Checkliste für eine Komponente 
-### Vue.js:
-- ist eine single file vue.js component 
-- verwendet Properties um das Verhalten der Komponente zu steuern (Konfiguration)
-- verwendet zum Darstellen von Inhalten v-text anstatt v-html
-- verwendet für Anchors die `<nuxt-link>` Komponente
-- verwendet zur Darstellung von Bildern die `<img-lazy>` Komponente wenn möglich mit Maßen für Platzhalter/Ladeanimation (width, height)
-- importiert andere Komponenten / Plugins / Module dynamisch 
-- verhindert Memory Leaks bei der Implementierung durch garbage collection https://vuejs.org/v2/cookbook/avoiding-memory-leaks.html
+## Checklist for a component 
+### A component:
+- is a Vue.js single file component (SFC)
+- uses properties to control the components behaviour (configuration)
+- uses v-text instead v-html to display data in template
+- uses `<nuxt-link>` for internal anchors
+- uses `<img-lazy>` to display images 
+- imports child components dynamically
+- uses garbage collection [to avoid memory leaks](https://vuejs.org/v2/cookbook/avoiding-memory-leaks.html) 
 
 ### Vuex: 
-- hat ein eigenes Vuex Store Modul wenn es sich dabei um eine spezielle Entität handelt 
-- bedient sich an Daten über Properties nur wenn es sich dabei um gekapselte Daten handelt, wenn Daten auch von anderen Komponenten beeinflusst werden, dann Vuex verwenden 
-- verwendet konsequent die Vuex mapping helper 
+- uses Vuex as less as possible
 
-### Unabhängig:
-- funktioniert unabhängig vom Shopsystem gleich (gleiche Datenstruktur)
-- hat so wenig Abhängigkeiten wie möglich (vermeiden von tiefen Verschachtelungen von strukturellen Komponenten)
-- funktioniert in allen modernen Browsern
+### Independent:
+- has as few dependencies as possible
+- works in all modern browsers
 
 ### Responsive:
-- ist auf allen modernen Endgeräten funktional
-- hat eine gleichnamige scss Datei, in der alle Styles der Komponente zu finden sind 
-- verwendet, wenn es nicht über styling funktioniert, für Viewport abhängige Darstellungen die nuxt-mq Funktionen
+- is functional on all modern devices
+- uses the style section of a SFC
+- uses the nuxt-mq functions for viewport dependent renderings if it doesn't work via styling
 
 ### Code Markup:
-- verwendet für JS Helper Funktionen die lodash Library  
-- verwendet selbstschließende html tags wenn möglich z.B. <div />
-- berücksichtigt alle via eslint / prettier festgelegten Regeln bei der Programmierung 
-- verwendet ES6 JS Features 
-- Code ist in englisch 
-- beinhaltet keinen auskommentierten Code
+- use self-closing html tags in template
+- takes into account all rules defined via eslint / prettier when programming
+- uses ES6 JS Features
 
 ### SEO:
-- kann alle relevanten Inhalte serverseitig rendern, um das crawlen von Suchmaschinen zu erleichtern 
-- enthält gültiges HTML Markup (nur eine H1 pro Seite, meta descriptions, images alt tag, anchor rel tags) 
+- can render all relevant content server-side to facilitate search engine crawling
+- contains valid HTML markup (only one H1 per page, meta descriptions, images alt tag, anchor rel tags)
 
 ### Interface:
-- gibt dem Benutzer Feedback für sämtliche Interaktionen z.B. eine Transition oder Animation in einer Geschwindigkeit von 0.2 - 0.3 Sekunden
-- verfügt über eine Bestätigungsmeldung (flash message) wenn es zu Benutzereingaben kommt die einen API Call auslösen der erfolgreich ist 
-- verfügt über eine Fehlermeldung (flash message) wenn es zu Benutzereingaben kommt die einen API Call auslösen der fehlschlägt
-- verfügt über einen eindeutigen Ladeindikator wenn ein API Call getätigt wird 
-- liefert statischen Text nur via Übersetzungsfunktion aus, der mindestens in DE und EN in den jeweiligen Übersetzungsdateien hinterlegt ist 
+- always provides feedback to the user for all interactions, e.g. a transition or animation at a speed of 0.2 - 0.3 seconds
+- displays a confirmation message when it comes to user input that triggers an API call that succeeds
+- displays an error message when it comes to user input that triggers an API call that fails
+- has a clear loading indicator when an API call is made
 
-### Dokumentation:
-- beinhaltet inline Dokumentation um daraus mit hilfe von Vuedoc eine lesbare Dokumentation in den docs.hubble zu generieren
-- hält sich an die Notation von Vuedoc, enthält mindestens eine Beschreibung: https://github.com/vuedoc/md/blob/master/test/fixtures/textarea.example.vue 
-- inline Dokumentation auf englisch 
-
-
+### Documentation:
+- contains inline documentation to generate readable documentation in the docs.hubble with Vuedoc
+- inline documentation in English
