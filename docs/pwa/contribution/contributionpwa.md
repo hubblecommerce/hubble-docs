@@ -1,10 +1,10 @@
-# Contribution Guide PWA
+## Contribution Guide PWA
 
-**1**: Create Issue <br>
-Every change to the code and every pull request must be able to be assigned to an issue.
+**1**: Create issue <br>
+Every change to the code and every pull request must be assigned to an issue.
 The issue ID created is required for the following steps.
 
-**2**: [Fork](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo) 
+**2**: [Fork](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo)
 the [hubble Repository](https://github.com/hubblecommerce/hubble-frontend-pwa) with your Github account.
 
 **3**: Setup NuxtJs
@@ -12,7 +12,7 @@ the [hubble Repository](https://github.com/hubblecommerce/hubble-frontend-pwa) w
 npx create-nuxt-app <PROJECT-NAME>
 ```
 
-**4**: Clone new fork locally
+**4**: Clone new fork
 ``` bash
 cd <PROJECT-NAME>
 mkdir modules
@@ -20,54 +20,63 @@ cd modules
 git clone https://github.com/<YOUR-ACCOUNT-NAME>/hubble-frontend-pwa.git
 ```
 
-**5**: Register Modul to NuxtJs
+**5**: Register module to nuxtjs
 ``` json
 // ~/package.json
-"dependencies": { 
+"devDependencies": { 
     "@hubblecommerce/hubble": "file:modules/hubble-frontend-pwa/@hubblecommerce/hubble"
 }
 ```
 
 ``` js
 // ~/nuxt.config.js
-buildModules: [
+modules: [
     ['@hubblecommerce/hubble']
-],
-
-hubble: {
-    apiType: process.env.API_TYPE
-},
+]
 ```
 
-**6**: Install Dependencies and start app
+**6**: Install dependencies
+``` bash
+npm install
+```
+
+**7**: Edit configs in .env file
+```sh
+# API
+# Define api type:
+# possible source parameters are:
+# api = hubble Api based on elastic search
+# sw = official Shopware 6 API (headless Channel)
+API_SW_ACCESS_KEY = ''
+API_BASE_URL      = ''
+```
+
+**8**: Install dependencies and launch app in dev mode
 ``` bash
 npm install
 npm run dev
 ```
 
-**7**: Track the original repository as the remote of the fork <br>
-Is especially important for the future to keep the fork up to date with the original repository (upstream).
+**9**: Tracking the original repository as a remote fork <br>
+This is especially important to keep the fork up to date to the original repository (upstream).
  ``` bash
-git remote add --track master upstream https://github.com/hubblecommerce/hubble-frontend-pwa.git
+git remote add --track dev upstream https://github.com/hubblecommerce/hubble-frontend-pwa.git
 git fetch upstream
  ```
 
-**8**: Create a new branch for the issue based on the upstream master branch
+**10**: Create a new branch for the issue based on the upstream master branch
 ``` bash
-git checkout -b issue#<NUM> upstream/master
+git checkout -b issue#<NUM> upstream/dev
 ```
 
-**9**: Commit changes (specify issue ID)
+**11**: Push changes to the code to the fork repository (specify issue ID)
 ``` bash
 git add .
 git commit -m "issue#<NUM> my detailed commit message"
 git push -u origin issue#<NUM>
 ```
 
-**10**: Pull Request <br>
-Create a [Pull requests](https://github.com/hubblecommerce/hubble-frontend-pwa/pulls). <br>
-You should now see an automatic suggestion from Github for a new pull request from the branch `issue#<NUM>` you created.
-
-::: warning
-Specify **dev** as the base branch instead of master.
-::: 
+**12**: Pull Request <br>
+Visit [Pull requests von hubble](https://github.com/hubblecommerce/hubble-frontend-pwa/pulls).
+You should se an automatic suggestion from Github to make a new pull request from the created branch `issue#<NUM>`. <br>
+Important! Specify dev as base branch and NOT master.
