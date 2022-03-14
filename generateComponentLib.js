@@ -1,7 +1,6 @@
 const Vuedoc = require('@vuedoc/md');
 const globby = require('globby');
-const fsExtra = require('fs-extra');
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 
 const sourceDir = 'node_modules/@hubblecommerce/hubble/core/components';
@@ -17,7 +16,7 @@ const listAllFilesAndDirs = dir => globby(`${dir}/**/*`);
     }
 
     // Clear old files of target directory
-    await fsExtra.removeSync(targetDir);
+    await fs.removeSync(targetDir);
     await fs.mkdirSync(targetDir);
 
     // Generate files from source directory

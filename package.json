@@ -1,29 +1,17 @@
 {
-  "name": "hubble-documentation",
+  "name": "hubble-docs-next",
   "version": "1.0.0",
-  "description": "Hubble Documentation",
+  "description": "",
   "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "dependencies": {
-    "@hubblecommerce/hubble": "^1.1.0",
-    "@vuedoc/md": "^3.0.0-beta2",
-    "@vuedoc/parser": "^3.0.0-beta4",
-    "fs-extra": "^9.0.1",
-    "globby": "^11.0.1"
+    "markdown-it-task-lists": "^2.1.1",
+    "vuepress": "^2.0.0-beta.36"
   },
-  "devDependencies": {
-    "vuepress": "^1.5.0"
-  },
+  "devDependencies": {},
   "scripts": {
-    "docs:dev": "node generateComponentLib && vuepress dev docs",
-    "docs:build": "node generateComponentLib && vuepress build docs"
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@git.digitalmanufaktur.net:hubble/docs.git"
-  },
-  "author": "digitalmanufaktur",
+  "author": "dmf",
   "license": "ISC"
 }

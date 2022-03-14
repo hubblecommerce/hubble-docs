@@ -1,11 +1,5 @@
 node_modules
-
-.idea
-
+.temp
+.cache
+.idea/
 .DS_Store
-
-package-lock.json
-
-docs/.vuepress/dist
-
-docs/components/generated
