@@ -1,8 +1,11 @@
 {
-  "name": "hubble-docs-next",
-  "version": "1.0.0",
-  "description": "",
+  "name": "hubble-documentation",
+  "version": "1.0.1",
+  "description": "Hubble Documentation",
   "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
   "dependencies": {
     "markdown-it-task-lists": "^2.1.1",
     "vuepress": "^2.0.0-beta.36"
@@ -12,6 +15,10 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
-  "author": "dmf",
+  "repository": {
+    "type": "git",
+    "url": "git@git.digitalmanufaktur.net:hubble/docs.git"
+  },
+  "author": "digitalmanufaktur",
   "license": "ISC"
 }
