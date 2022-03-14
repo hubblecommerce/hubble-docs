@@ -47,14 +47,6 @@ module.exports = {
                     ]
                 },
                 {
-                    text: 'How Tos',
-                    link: '/pwa/howtos/',
-                    collapsable: false,
-                    children: [
-
-                    ]
-                },
-                {
                     text: 'Contribution',
                     link: '/pwa/contribution/contributionpwa',
                     collapsable: false,
