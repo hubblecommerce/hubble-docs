@@ -63,8 +63,11 @@ Simply place a pluginMapping.json in your plugins pwa directory and define a slo
 Corresponding slot in hubble looks like this:
 _@hubblecommerce/hubble/core/components/checkout/PaymentMethods.vue_
 ``` vue.js
-<PluginSlot name="checkout-payment-methods-method" :data="method" />
+<PluginSlot name="checkout-payment-methods-method" :data="{ propertyA: dataA, propertyB: dataB }" :events="{ 'updated:propertyA': (data) => { dataA = data; } }" />
 ```
+
+You can use the _data_ property for all properties your slot component expects. 
+For register event-listeners you can use the _events_ property and pass event names and handlers to it. 
 
 A collection of all used slots you can find in _/swPlugins/pluginMapping.json_ of your projects root directory.
 
