@@ -95,16 +95,32 @@ To do this, add the line "set-sw-plugins-config": "hubble sw-plugins-config" to 
 directories package.json and execute npm run set-sw-plugin-config on the command line. After the dump has finished, 
 restart your application. A complete build is not necessary since runtimeConfigs are used.
 
+## Payment Services
+Configured payments are listed automatically in your checkout thanks to the PaymentMethods.vue component. But often
+that's not enough, in case of payments where you have to enrich your order data with payment specific information.
+For example: A customer selects the credit card payment method. Nowadays most Payment Service Providers need to render 
+an iFrame to request the credit card data and returns you an id you need to store in your order data, so you don't have 
+to handle credit card information by yourself.
+
+In this case you need to:
+- Render iFrame on Credit Card select
+- Call the shop api and provide the ID received by the payment service provider (handle-payment)
+
+To achieve that, hubble PWA provides you some useful slots and composables. Just have a look in the PaymentMethods.vue and
+the HandlePlaceOrder.vue components to see how it works. 
+
+## Why the place order button is missing for specific payments?
+Every payment method which is not shipped by Shopware 6 out of the box, need to render and handle the place order process
+on its own. So maybe the payment plugin you installed doesn't provide any pwa related files. 
+
 ## Plugin skeleton example
-- /Resources
-- /app
-- /pwa
-- /assets
-- /components
-- /composables
-- /layouts
-- /middleware
-- /pages
-- /store
-- package.json
-- pluginMapping.json
+- /Resources/app/pwa
+  - /assets
+  - /components
+  - /composables
+  - /layouts
+  - /middleware
+  - /pages
+  - /store
+  - package.json
+  - pluginMapping.json
