@@ -77,6 +77,9 @@ git push -u origin issue#<NUM>
 ```
 
 **12**: Pull Request <br>
-Visit [Pull requests von hubble](https://github.com/hubblecommerce/hubble-frontend-pwa/pulls).
-You should se an automatic suggestion from Github to make a new pull request from the created branch `issue#<NUM>`. <br>
-Important! Specify dev as base branch and NOT master.
+Go to [Pull Requests](https://github.com/hubblecommerce/hubble-frontend-pwa/pulls).
+You should see an automatic suggestion from Github to make a new pull request from the created branch `issue#<NUM>`. <br>
+
+::: warning
+Specify dev as base branch and NOT master.
+:::
