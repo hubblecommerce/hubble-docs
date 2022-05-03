@@ -12,7 +12,7 @@ module.exports = {
         logoDark: '/assets/images/hubblelogo-bright.svg',
         navbar: [
             { text: 'PWA', link: '/pwa/architecture' },
-            { text: 'Demo', link: 'https://demo.hubblecommerce.io/' },
+            { text: 'Demo', link: 'https://demo.hubblestudio.io/' },
             { text: 'Website', link: 'https://www.hubblecommerce.io/' },
             { text: 'Github', link: 'https://github.com/hubblecommerce/hubble-frontend-pwa' },
         ],
