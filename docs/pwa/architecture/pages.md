@@ -1,4 +1,5 @@
-# Routing
+# Pages
+[See the pages on github](https://github.com/hubblecommerce/hubble-frontend-pwa/tree/dev/%40hubblecommerce/hubble/core/pages)
 
 ## Static Routes 
 

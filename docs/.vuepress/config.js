@@ -19,13 +19,28 @@ module.exports = {
         sidebar: {
             '/pwa/': [
                 {
-                    text: 'Architecture',
-                    link: '/pwa/architecture',
+                    text: 'What is hubble PWA?',
+                    link: '',
                     children: [
+                        '/pwa/what/overview',
+                        '/pwa/what/techstack',
+                        '/pwa/what/requirements',
+                        '/pwa/what/installation',
+                        '/pwa/what/roadmap',
+                        '/pwa/what/contact',
+                    ]
+                },
+                {
+                    text: 'Architecture',
+                    link: '',
+                    children: [
+                        '/pwa/architecture/shop-connection',
                         '/pwa/architecture/filebasedinheritance',
-                        '/pwa/architecture/routing',
+                        '/pwa/architecture/pages',
                         '/pwa/architecture/preinstalledmodules',
                         '/pwa/architecture/usersession',
+                        '/pwa/architecture/layouts',
+                        '/pwa/architecture/components',
                     ]
                 },
                 {
