@@ -1,5 +1,9 @@
 # Installation
 
+## Prerequisites
+This guide focuses on installing hubble PWA as a Nuxt.js module only, 
+so make sure you meet the [requirements](/pwa/what/requirements.html) first. 
+
 ## Install from scratch including fully configured Nuxt.js project
 
 Install via npx so everything is set up correctly and ready to use. The script prompts you to enter the
