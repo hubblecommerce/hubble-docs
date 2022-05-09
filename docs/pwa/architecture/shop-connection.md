@@ -8,7 +8,7 @@ Usage:
 ```js
 import ApiClient from '@/utils/api-client';
 
-let response = await new ApiClient(app.$config).apiCall({
+let response = await new ApiClient(this.$config).apiCall({
     action: 'get',
     endpoint: 'store-api/context',
     contextToken: contextToken,

@@ -4,7 +4,7 @@
 ## Disclaimer
 Unlike other interface solutions hubble doesn't provide a full component ui library and that for a reason.
 In our opinion most ui libraries aren't flexible enough and always produce an unnecessary overhead which
-conflicts directly with our seek for the best performance possible. 
+conflicts directly with our goal to serve the best performance possible. 
 
 ## Component Approach
 When we create a component, we try to achieve things like look and feel just with plain HTML and CSS (SCSS) at first.

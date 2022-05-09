@@ -24,7 +24,7 @@ git clone https://github.com/<YOUR-ACCOUNT-NAME>/hubble-frontend-pwa.git
 ``` json
 // ~/package.json
 "devDependencies": { 
-    "@hubblecommerce/hubble": "file:modules/hubble-frontend-pwa/@hubblecommerce/hubble"
+    "@hubblecommerce/hubble": "file:modules/hubble-frontend-pwa"
 }
 ```
 
@@ -81,5 +81,5 @@ Go to [Pull Requests](https://github.com/hubblecommerce/hubble-frontend-pwa/pull
 You should see an automatic suggestion from Github to make a new pull request from the created branch `issue#<NUM>`. <br>
 
 ::: warning
-Specify dev as base branch and NOT master.
+Specify dev as base branch and NOT main.
 :::
