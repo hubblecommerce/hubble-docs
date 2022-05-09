@@ -64,7 +64,7 @@ git remote add --track dev upstream https://github.com/hubblecommerce/hubble-fro
 git fetch upstream
  ```
 
-**10**: Create a new branch for the issue based on the upstream master branch
+**10**: Create a new branch for the issue based on the upstream dev branch
 ``` bash
 git checkout -b issue#<NUM> upstream/dev
 ```
