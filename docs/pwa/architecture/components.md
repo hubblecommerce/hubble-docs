@@ -1,5 +1,5 @@
 # Components
-[See the components on github](https://github.com/hubblecommerce/hubble-frontend-pwa/tree/dev/%40hubblecommerce/hubble/core/components)
+[See the components on github](https://github.com/hubblecommerce/hubble-frontend-pwa/tree/main/core/components)
 
 ## Disclaimer
 Unlike other interface solutions hubble doesn't provide a full component ui library and that for a reason.

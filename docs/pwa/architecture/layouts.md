@@ -1,5 +1,5 @@
 # Layouts
-[See the layouts on github](https://github.com/hubblecommerce/hubble-frontend-pwa/tree/dev/%40hubblecommerce/hubble/core/layouts)
+[See the layouts on github](https://github.com/hubblecommerce/hubble-frontend-pwa/tree/main/core/layouts)
 
 ## Default
 hubble provides a default layout which is called default.vue (this layout is loaded by Nuxt automatically, if
