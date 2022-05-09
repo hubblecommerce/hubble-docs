@@ -12,6 +12,11 @@
 - [x] Excellent performance and usability
 - [x] Toolbox / framework for creating your own shop frontend
 
+## Links
+[Demo](https://demo.hubblestudio.io/) |
+[Documentation](https://docs.hubblecommerce.io/pwa/what/overview.html#features) |
+[Website](https://www.hubblecommerce.io/de)
+
 ## Requirements
 - [Shopware >= 6.4.0](https://developer.shopware.com/docs/guides/installation)
 - [Shopware 6 PWA Plugin](https://github.com/elkmod/SwagShopwarePwa)
@@ -76,6 +81,15 @@ npm start
 
 Specific instructions for pull requests can be found [here](pwa/contribution/contributionpwa.md).
 
+## Support
+
+If you like the hubble PWA, feel free to contribute and spread the word on social media.
+Also don't forget to give us a star on github.
+
+## Stay updated
+
+If you like to receive updates about updates and the latest releases just click on "watch" and select the information
+you like to get noticed about.
 
 ## Meta
 
