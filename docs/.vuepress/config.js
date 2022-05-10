@@ -60,6 +60,7 @@ module.exports = {
                     children: [
                         '/pwa/shopware/shopwareplugins',
                         '/pwa/shopware/shopwareemotion',
+                        '/pwa/shopware/sandbox',
                     ]
                 },
                 {
