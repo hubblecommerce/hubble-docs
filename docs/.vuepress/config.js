@@ -16,6 +16,7 @@ module.exports = {
             { text: 'Website', link: 'https://www.hubblecommerce.io/' },
             { text: 'Github', link: 'https://github.com/hubblecommerce/hubble-frontend-pwa' },
         ],
+        contributors: false,
         sidebar: {
             '/pwa/': [
                 {

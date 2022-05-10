@@ -14,6 +14,25 @@ html.dark {
   --c-tip: #d00171;
 }
 
+// Handle darkmode logo inside contents
+.logo-bright {
+  display: block;
+}
+
+.logo-dark {
+  display: none;
+}
+
+html.dark {
+  .logo-bright {
+    display: none;
+  }
+
+  .logo-dark {
+    display: block;
+  }
+}
+
 .contains-task-list {
   padding-left: 0;
 }
