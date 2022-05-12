@@ -1,14 +1,13 @@
 # Requirements
 
-### Shop
-- [Shopware >= 6.4.0](https://developer.shopware.com/docs/guides/installation)
-  - The e-commerce framework you want to connect to
-- [Shopware 6 PWA Plugin](https://github.com/elkmod/SwagShopwarePwa)
-  - A plugin with useful API endpoints to make hubble PWA work with Shopware
-- [API Credentials](https://docs.shopware.com/en/shopware-6-en/settings/saleschannel#api-access) to your online store
-  - to connect hubble PWA with your online store
+## Supported e-commerce platforms
 
-### PWA
+Because hubble PWA needs some data to feed and actions to send, you need a data source like an e-commerce platform first.
+Follow the links for further instructions on how to prepare each one of them to work with hubble PWA:
+
+- [How to set up Shopware 6 to work with hubble PWA](/pwa/shopware/installation.html)
+
+## PWA
 - [Node](https://nodejs.org/en/download/package-manager/) >= v14.18.1
   - Needed for running Nuxt.js
 - [Nuxt.js](https://nuxtjs.org/docs/get-started/installation/) ^2.15.8

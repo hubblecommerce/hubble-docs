@@ -58,6 +58,7 @@ module.exports = {
                     text: 'Shopware 6',
                     link: '/pwa/shopware',
                     children: [
+                        '/pwa/shopware/installation',
                         '/pwa/shopware/shopwareplugins',
                         '/pwa/shopware/shopwareemotion',
                         '/pwa/shopware/sandbox',

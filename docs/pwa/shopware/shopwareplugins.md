@@ -1,7 +1,7 @@
 # Shopware 6 Plugins
 
 ## How to install Shopware 6 Plugins on your hubble PWA?
-1. Go to your SW6 admin and create an [“Integration”](https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen?category=shopware-6-en/settings/system) so your PWA can communicate with your Shop programmatically.
+1. Go to your SW6 admin and create an [Integration](https://docs.shopware.com/en/shopware-6-en/settings/system/integrationen?category=shopware-6-en/settings/system) so your PWA can communicate with your Shop programmatically.
 2. Place the generated **client id** and **client secret** in the _.env_ file of your PWA root directory.
 3. Edit the package.json file of your PWA root directory and add following helper scripts: 
 ``` json

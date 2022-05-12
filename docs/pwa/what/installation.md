@@ -1,8 +1,8 @@
 # Installation
 
 ## Prerequisites
-This guide focuses on installing hubble PWA as a Nuxt.js module only, 
-so make sure you meet the [requirements](/pwa/what/requirements.html) first. 
+This guide focuses on installing hubble PWA as a Nuxt.js module only,
+so before moving on, make sure you meet the [requirements](/pwa/what/requirements.html) first.
 
 ## Install from scratch including fully configured Nuxt.js project
 
@@ -40,6 +40,9 @@ Module have to be registered in **modules**, not **buildModules** to make sure r
 API_SW_ACCESS_KEY = ''
 API_BASE_URL      = ''
 ```
+::: tip
+Read more about where to get the credentials in the [supported e-commerce platforms](/pwa/what/requirements.html#supported-e-commerce-platforms) section.
+:::
 
 ## Build modes
 
