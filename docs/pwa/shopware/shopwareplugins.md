@@ -39,7 +39,13 @@ Plugins are used to add new files and provide components to fill slots only. Plu
 ## What is meant by slots?
 The hubble PWA core code provides vue slots where you can hook in to add your plugin functionality. This way the hubble core stays independent, updatable and maintainable. Should you still miss a slot, you can use the file based inheritance mechanism to add a new slot which you can fill with your plugin component.
 
+<img src="/assets/images/shopware_plugins-1@2x.jpg" alt="hubble PWA Shopware Plugin Slots" style="width: 100%;" />
+
 ## How to tell which component uses which slot?
+
+<br>
+<img src="/assets/images/shopware_plugins-2@2x.jpg" alt="hubble PWA Shopware Plugin Slot Mapping" style="width: 100%;" />
+
 Simply place a pluginMapping.json in your plugins pwa directory and define a slot and component by name and a path to your component. The file should look something like this:
 
 ``` json

@@ -1,6 +1,8 @@
 # Components
 [See the components on github](https://github.com/hubblecommerce/hubble-frontend-pwa/tree/main/core/components)
 
+<img src="/assets/images/components@2x.jpg" alt="hubble PWA Components" style="width: 100%;" />
+
 ## Disclaimer
 Unlike other interface solutions hubble doesn't provide a full component ui library and that for a reason.
 In our opinion most ui libraries aren't flexible enough and always produce an unnecessary overhead which

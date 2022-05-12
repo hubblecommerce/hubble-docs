@@ -19,3 +19,5 @@ When a user scrolls and the slot intersects, the component is downloaded.
 To make sure that not every block is lazy loaded, e.g. the hero element for SEO purposes. The first two sections are 
 never lazy loaded. This number can be edited in the data of the _IntersectionWrapper.vue_ component.
 In some cases it can be useful to give a section an extra flag to decide whether to load a component serverside or not.
+
+<img src="/assets/images/shopware_emotionworlds@2x.jpg" alt="hubble PWA Shopware Lazy Loading Emotionworld Elements" style="width: 100%;" />

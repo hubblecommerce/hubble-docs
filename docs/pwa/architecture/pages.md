@@ -1,6 +1,8 @@
 # Pages
 [See the pages on github](https://github.com/hubblecommerce/hubble-frontend-pwa/tree/main/core/pages)
 
+<img src="/assets/images/page@2x.jpg" alt="hubble PWA Pages" style="width: 100%;" />
+
 ## Static Routes 
 
 Use the usual nuxt [file system routing](https://nuxtjs.org/docs/features/file-system-routing/) to generate the static routes.

@@ -1,7 +1,7 @@
 # Layouts
 [See the layouts on github](https://github.com/hubblecommerce/hubble-frontend-pwa/tree/main/core/layouts)
 
-<img src="/assets/images/layout@2x.jpg" style="width: 100%;" />
+<img src="/assets/images/layout@2x.jpg" alt="hubble PWA Layout" style="width: 100%;" />
 
 ## Default
 hubble provides a default layout which is called default.vue (this layout is loaded by Nuxt automatically, if

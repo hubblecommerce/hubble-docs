@@ -5,10 +5,18 @@ To keep hubble PWA updatable but also customizable it provides an inheritance me
 basis, hubble sets the [nuxt srcDir](https://nuxtjs.org/docs/configuration-glossary/configuration-srcdir/) to _/.hubble_.
 
 On every application build hubble PWA:
-1. creates a .hubble directory in the projects root directory if not already exists  
+1. creates a .hubble directory in the projects root directory if not already exists 
+
+<img src="/assets/images/file_based_inheritance-1@2x.jpg" alt="hubble PWA File-based inheritance Concept Step 1" style="width: 100%;" />
+
 2. takes all hubble core files from _node_modules/@hubblecommerce/hubble/core_ and places them into _.hubble_
-3. takes all nuxt related directories (except for: node_modules, .hubble, .nuxt, .idea) from the project root path and 
-copy them into _.hubble_. Files that already exists will be overwritten.
+
+<img src="/assets/images/file_based_inheritance-2@2x.jpg" alt="hubble PWA File-based inheritance Concept Step 2" style="width: 100%;" />
+
+3. takes all nuxt related directories (except for: node_modules, .hubble, .nuxt, .idea) from the project root path and
+   copy them into _.hubble_. Files that already exists will be overwritten.
+
+<img src="/assets/images/file_based_inheritance-3@2x.jpg" alt="hubble PWA File-based inheritance Concept Step 3" style="width: 100%;" />
 
 ## Overwriting files
 To customize a specific component provided by hubble PWA you just have to:

@@ -1,5 +1,7 @@
 # Shop Connector
 
+<img src="/assets/images/shop_connector@2x.jpg" alt="hubble PWA Shop Connector" style="width: 100%;" />
+
 ## API Client
 To fetch data from your e-commerce system, hubble provides you a helper class called [ApiClient](https://github.com/hubblecommerce/hubble-frontend-pwa/blob/dev/%40hubblecommerce/hubble/core/utils/api-client.js).
 It sets some default headers, accepts POST request data and handles errors if your shop shouldn't be reachable. 
