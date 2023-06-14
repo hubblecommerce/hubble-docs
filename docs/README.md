@@ -1,3 +1,8 @@
+# :warning: This repository is deprecated.  
+**The official hubble PWA documentation moved to https://github.com/hubblecommerce/hubble-frontend-pwa.**  
+  
+  
+  
 <div style="margin-top: -57.6px; display: flex; height: 100vh; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
 
 <img class="logo-bright" src="/assets/images/hubblelogo.svg" style="height:100px; text-align:center;" />
